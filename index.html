@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LITE AI - Neural Core v6</title>
+    <title>LITE AI - Neural Core v7</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
@@ -15,6 +15,7 @@
         .user-bubble { background: #10b981; color: white; border-radius: 20px 20px 4px 20px; }
         .typing-cursor::after { content: '|'; animation: blink 0.7s infinite; color: #10b981; }
         @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+        .llm-badge { font-size: 8px; color: #6ee7b7; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 900; margin-left: 6px; opacity: 0.7; }
     </style>
 </head>
 <body class="flex flex-col h-screen">
@@ -25,8 +26,8 @@
             <span class="text-white font-extrabold tracking-tighter text-2xl">LITE AI</span>
         </div>
         <div class="flex flex-col items-end">
-            <span class="text-[9px] text-gray-500 uppercase font-black tracking-[0.2em]">Neural Engine v6.0</span>
-            <span class="text-[10px] text-emerald-500/70 font-mono">ULTRA RETRIEVAL</span>
+            <span class="text-[9px] text-gray-500 uppercase font-black tracking-[0.2em]">Neural Engine v7.0</span>
+            <span class="text-[10px] text-emerald-500/70 font-mono">LLM + RETRIEVAL</span>
         </div>
     </header>
 
@@ -34,7 +35,7 @@
         <div class="flex justify-start fade-in">
             <div class="bot-bubble text-gray-300 p-4 px-6 rounded-2xl max-w-[90%] text-sm leading-relaxed shadow-2xl">
                 <span class="text-emerald-500 font-black text-[9px] uppercase block mb-2 tracking-widest text-left">System</span>
-                Sistem aktif. Menunggu input saraf dari Lan...
+                Sistem aktif. Otak saya sekarang terkoneksi ke LLM — bisa jawab hampir apapun, Lan!
             </div>
         </div>
     </main>
@@ -55,7 +56,10 @@
         const chatBox = document.getElementById('chatBox');
         const input = document.getElementById('userInput');
 
-        // Memori konteks — ingat 5 percakapan terakhir
+        // URL CodeWords LLM Proxy
+        const LLM_URL = 'https://runtime.codewords.ai/run/kite_ai_llm_proxy_a414ffc0/';
+
+        // Memori konteks — ingat 10 pesan terakhir
         const riwayat = [];
 
         // Kata-kata yang diabaikan saat pencarian (stopwords Indonesia)
@@ -80,18 +84,9 @@
             "Baik, perlu kamu tahu — ",
         ];
 
-        // Variasi respons saat tidak tahu
-        const TIDAK_TAHU = [
-            "Hmm, jujur saya belum punya data soal itu, Lan. Mau aku tambahin ke database dulu?",
-            "Wah, yang ini saya belum tahu, Lan. Coba suntik data baru ke otak saya dulu ya!",
-            "Maaf Lan, kayaknya saraf saya belum sampai ke sana. Data-nya belum ada nih.",
-            "Itu di luar jangkauan saya sekarang, Lan. Tapi kalau kamu masukkan datanya, saya pasti bisa jawab!",
-            "Belum ada info soal itu di memori saya. Mau kita update dulu database-nya?",
-        ];
-
         // Deteksi sapaan sederhana
         const SAPAAN = {
-            patterns: [/^(halo|hai|hi|hey|hello|hei|assalamu|salam)\b/i],
+            patterns: [/^(halo|hai|hi|hey|hello|hei|assalamu|salam)/i],
             replies: [
                 "Halo Lan! Ada yang bisa saya bantu hari ini?",
                 "Hai Lan! Siap bantu. Mau tanya apa nih?",
@@ -102,7 +97,7 @@
 
         // Deteksi terima kasih
         const TERIMAKASIH = {
-            patterns: [/^(terima kasih|makasih|thanks|thx|tq)\b/i],
+            patterns: [/^(terima kasih|makasih|thanks|thx|tq)/i],
             replies: [
                 "Sama-sama Lan! Kalau ada yang lain, tinggal tanya.",
                 "Senang bisa bantu! Ada lagi yang perlu kamu ketahui?",
@@ -113,6 +108,24 @@
 
         input.addEventListener("keypress", (e) => { if (e.key === "Enter") prosesChat(); });
 
+        // ── TANYA KE LLM PROXY ──────────────────────────────────────
+        async function tanyaLLM(pesan) {
+            const history = riwayat.slice(-10).map(h => ({
+                role: h.role === 'bot' ? 'assistant' : 'user',
+                content: h.text
+            }));
+
+            const res = await fetch(LLM_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ message: pesan, history })
+            });
+
+            if (!res.ok) throw new Error('LLM proxy error: ' + res.status);
+            const data = await res.json();
+            return data.reply;
+        }
+
         // ── FUNGSI UTAMA ──────────────────────────────────────────────
         async function prosesChat() {
             const pesan = input.value.trim();
@@ -121,7 +134,7 @@
             addMsg("user", pesan);
             input.value = "";
             riwayat.push({ role: "user", text: pesan });
-            if (riwayat.length > 10) riwayat.shift();
+            if (riwayat.length > 20) riwayat.shift();
 
             const loadId = addThinking();
 
@@ -130,7 +143,7 @@
             if (jawabanCepat) {
                 await delay(600 + Math.random() * 400);
                 document.getElementById(loadId).remove();
-                await addMsgTyping("bot", jawabanCepat);
+                await addMsgTyping("bot", jawabanCepat, false);
                 return;
             }
 
@@ -139,11 +152,12 @@
                 const resIndex = await fetch('brain_index.json');
                 const indexGlobal = await resIndex.json();
 
-                // 2. Scan File Relevan — pakai sistem skor, bukan cuma first match
+                // 2. Scan File Relevan — pakai sistem skor
                 const kueri = tokenize(pesan);
                 const skorFile = hitungSkorFile(kueri, indexGlobal);
 
-                let jawaban = acak(TIDAK_TAHU);
+                let jawaban = null;
+                let isLLM = false;
 
                 if (skorFile.length > 0) {
                     // Ambil file dengan skor tertinggi
@@ -152,17 +166,25 @@
                     const dataTxt = await resData.text();
 
                     // 3. Cari jawaban terbaik di dalam file
-                    jawaban = cariJawabanTerbaik(dataTxt, kueri) || jawaban;
+                    jawaban = cariJawabanTerbaik(dataTxt, kueri);
                 }
 
-                await delay(400 + Math.random() * 600);
+                // 4. Kalau YAML tidak punya jawaban → tanya LLM
+                if (!jawaban) {
+                    isLLM = true;
+                    updateThinking(loadId, 'Berpikir dalam dengan LLM...');
+                    jawaban = await tanyaLLM(pesan);
+                }
+
+                await delay(200 + Math.random() * 300);
                 document.getElementById(loadId).remove();
-                await addMsgTyping("bot", jawaban);
+                await addMsgTyping("bot", jawaban, isLLM);
                 riwayat.push({ role: "bot", text: jawaban });
 
             } catch (err) {
+                console.error(err);
                 if (document.getElementById(loadId)) document.getElementById(loadId).remove();
-                await addMsgTyping("bot", "Saraf terputus Lan! Pastikan file brain_index.json ada dan server sudah berjalan.");
+                await addMsgTyping("bot", "Saraf terputus Lan! Coba lagi sebentar ya.", false);
             }
         }
 
@@ -177,20 +199,17 @@
         // ── HITUNG SKOR setiap file berdasarkan jumlah kata yang cocok ─
         function hitungSkorFile(kueri, indexGlobal) {
             const hasil = [];
-
             for (const entry of indexGlobal) {
                 let skor = 0;
                 for (const k of kueri) {
                     for (const key of entry.keys) {
-                        if (key === k) skor += 3;               // exact match
-                        else if (key.includes(k)) skor += 1;    // partial match
+                        if (key === k) skor += 3;
+                        else if (key.includes(k)) skor += 1;
                         else if (k.includes(key) && key.length > 2) skor += 1;
                     }
                 }
                 if (skor > 0) hasil.push({ file: entry.file, skor });
             }
-
-            // Urutkan dari skor tertinggi
             return hasil.sort((a, b) => b.skor - a.skor);
         }
 
@@ -202,26 +221,20 @@
 
             for (let i = 0; i < lines.length; i++) {
                 const barisBawah = lines[i].toLowerCase();
-
-                // Hitung berapa banyak kata kueri cocok di baris ini
                 let skor = 0;
                 for (const k of kueri) {
                     if (barisBawah.includes(k)) skor++;
                 }
 
                 if (skor > 0 && skor >= skorTerbaik) {
-                    // Scan ke bawah cari baris s:
                     for (let j = i + 1; j < Math.min(i + 10, lines.length); j++) {
                         if (lines[j] && lines[j].trim().startsWith('s:')) {
                             let teksFull = lines[j].split(/s:\s*/)[1] || "";
-
-                            // Sedot baris lanjutan
                             for (let k = j + 1; k < lines.length; k++) {
                                 const cl = lines[k].trim();
                                 if (cl.startsWith('- id:') || cl.startsWith('t:') || cl.startsWith('d:')) break;
                                 teksFull += " " + cl;
                             }
-
                             const teksRapi = teksFull.replace(/^["']|["']$/g, '').trim();
                             if (teksRapi && skor >= skorTerbaik) {
                                 skorTerbaik = skor;
@@ -234,8 +247,6 @@
             }
 
             if (!jawabanTerbaik) return null;
-
-            // Tambahkan variasi pembuka agar terasa manusiawi
             const intro = acak(INTRO_VARIANTS);
             return intro + jawabanTerbaik;
         }
@@ -267,25 +278,25 @@
         }
 
         // ── TYPING EFFECT — teks muncul karakter demi karakter ─────────
-        async function addMsgTyping(role, text) {
+        async function addMsgTyping(role, text, isLLM = false) {
             const isBot = role === "bot";
             const div = document.createElement('div');
             div.className = `flex ${isBot ? 'justify-start' : 'justify-end'} fade-in mb-6`;
             div.innerHTML = `
                 <div class="${isBot ? 'bot-bubble text-gray-300' : 'user-bubble shadow-lg'} p-4 px-6 max-w-[85%] text-sm leading-relaxed shadow-xl">
-                    ${isBot ? '<span class="text-emerald-500 font-black text-[9px] uppercase block mb-2 tracking-[0.2em] text-left">LITE AI Core</span>' : ''}
+                    ${isBot ? `<span class="text-emerald-500 font-black text-[9px] uppercase block mb-2 tracking-[0.2em] text-left">LITE AI Core${isLLM ? '<span class="llm-badge">LLM</span>' : ''}</span>` : ''}
                     <span class="msg-text typing-cursor"></span>
                 </div>`;
             chatBox.appendChild(div);
             chatBox.scrollTop = chatBox.scrollHeight;
 
             const span = div.querySelector('.msg-text');
-            const kecepatan = text.length > 200 ? 12 : text.length > 100 ? 18 : 25;
+            const kecepatan = text.length > 200 ? 10 : text.length > 100 ? 15 : 22;
 
             for (let i = 0; i <= text.length; i++) {
                 span.textContent = text.slice(0, i);
                 chatBox.scrollTop = chatBox.scrollHeight;
-                await delay(kecepatan + Math.random() * 10);
+                await delay(kecepatan + Math.random() * 8);
             }
             span.classList.remove('typing-cursor');
         }
@@ -300,6 +311,11 @@
             chatBox.appendChild(div);
             chatBox.scrollTop = chatBox.scrollHeight;
             return id;
+        }
+
+        function updateThinking(id, text) {
+            const el = document.getElementById(id);
+            if (el) el.querySelector('div').textContent = text;
         }
 
         // ── UTILITAS ───────────────────────────────────────────────────
