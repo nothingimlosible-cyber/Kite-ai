@@ -1,2637 +1,389 @@
 - id: 1000
-  t: Fakta Lubang Hitam
-  s: Siap Bos! Saraf saya udah konek ke database. Mau nanya apa? Black hole itu area
-    di luar angkasa dengan gravitasi kuat banget, bahkan cahaya pun gak bisa kabur
-    dari sana.
+  t: Belajar HTML Dasar
+  s: 'HTML itu tulang punggung web, Lan! Mulai dari tag dasar: h1 buat judul, p buat
+    teks, a buat link, img buat gambar, dan div buat kotak layout. Kuasai ini dulu
+    sebelum lanjut ke CSS.'
   d: '2026-05-08'
 - id: 1001
-  t: Kenapa Web Lemot?
-  s: Biasanya karena gambar kegedean atau file JS yang numpuk. Solusinya kompres gambar
-    dan pakai sistem lazy load.
+  t: Belajar CSS Dasar
+  s: CSS itu yang bikin website kamu keren, Lan. Pelajari selector, properties warna,
+    ukuran (width, height), dan flexbox buat layout. Flexbox itu paling penting sekarang!
   d: '2026-05-08'
 - id: 1002
-  t: Belajar HTML Dasar
-  s: HTML itu tulang punggung web. Fokus kuasai tag <div>, <a> buat link, dan <img>
-    buat gambar. Itu pondasi paling penting.
+  t: Belajar JavaScript
+  s: JavaScript itu nyawa interaktif website. Mulai dari variabel (let, const), fungsi
+    (function), manipulasi DOM (getElementById), dan event listener (addEventListener).
+    Sabar aja Lan, semua butuh proses.
   d: '2026-05-08'
 - id: 1003
-  t: Cara Mulai Affiliate
-  s: Cari produk yang lagi viral di TikTok, bikin konten faceless pake hoodie, taruh
-    link di bio. Konsisten upload 3x sehari.
+  t: Apa itu API
+  s: API itu jembatan antara dua aplikasi, Lan. Ibaratnya kayak pelayan di restoran.
+    Kamu pesan (request), pelayan ambil dari dapur (server), terus bawa balik ke kamu
+    (response). Sekarang banyak pakai REST API dengan format JSON.
   d: '2026-05-08'
 - id: 1004
-  t: Fakta Lubang Hitam
-  s: Black hole itu area di luar angkasa dengan gravitasi kuat banget, bahkan cahaya
-    pun gak bisa kabur dari sana.
+  t: Kenapa Web Lemot
+  s: 'Website lemot biasanya karena: gambar terlalu besar (belum dikompres), terlalu
+    banyak file JS yang dimuat sekaligus, hosting jelek, atau tidak pakai CDN. Solusi
+    pertama: kompres gambar dulu pakai tools seperti TinyPNG.'
   d: '2026-05-08'
 - id: 1005
-  t: Belajar HTML Dasar
-  s: HTML itu tulang punggung web. Fokus kuasai tag <div>, <a> buat link, dan <img>
-    buat gambar. Itu pondasi paling penting.
+  t: Cara Deploy Website
+  s: Buat deploy website gratis, bisa pakai GitHub Pages (hosting gratis dari GitHub),
+    Netlify, atau Vercel. Tinggal push kode ke GitHub, sambungkan ke platform tersebut,
+    dan website kamu langsung online!
   d: '2026-05-08'
 - id: 1006
-  t: Fakta Lubang Hitam
-  s: Black hole itu area di luar angkasa dengan gravitasi kuat banget, bahkan cahaya
-    pun gak bisa kabur dari sana.
+  t: Apa itu GitHub
+  s: GitHub itu tempat menyimpan kode program kamu secara online, sekaligus bisa kolaborasi
+    sama orang lain. Anggap aja seperti Google Drive tapi khusus buat kode. Penting
+    banget buat programmer.
   d: '2026-05-08'
 - id: 1007
-  t: Fakta Lubang Hitam
-  s: Black hole itu area di luar angkasa dengan gravitasi kuat banget, bahkan cahaya
-    pun gak bisa kabur dari sana.
+  t: Tips SEO Website
+  s: 'SEO itu supaya website kamu muncul di Google. Kuncinya: gunakan keyword di judul,
+    tulis konten berkualitas dan panjang, pastikan website cepat dan mobile-friendly,
+    serta dapat backlink dari website lain.'
   d: '2026-05-08'
 - id: 1008
-  t: Rahasia Cuan Konsisten
-  s: Bangun personal branding. Kalau orang udah percaya sama kamu, jual produk apa
-    aja pasti laku.
+  t: Apa itu Python
+  s: Python itu bahasa pemrograman yang paling mudah dipelajari. Sintaksnya bersih
+    dan mudah dibaca. Dipakai untuk AI, data science, web backend, dan otomasi. Kalau
+    mau masuk dunia AI, Python wajib dikuasai, Lan.
   d: '2026-05-08'
 - id: 1009
-  t: Cara Mulai Affiliate
-  s: Cari produk yang lagi viral di TikTok, bikin konten faceless pake hoodie, taruh
-    link di bio. Konsisten upload 3x sehari.
+  t: Perbedaan Frontend dan Backend
+  s: Frontend itu bagian yang dilihat pengguna (HTML, CSS, JS tampilan websitenya).
+    Backend itu bagian di balik layar yang mengolah data (Python, PHP, Node.js logika
+    dan database). Full-stack artinya bisa keduanya.
   d: '2026-05-08'
 - id: 1010
-  t: Sejarah Singkat AI
-  s: AI mulai dikembangin sejak tahun 1950-an. Sekarang makin canggih berkat sistem
-    neural network yang mirip saraf manusia.
+  t: Cara Belajar Coding Cepat
+  s: 'Tips belajar coding efektif: buat proyek nyata sejak awal, jangan cuma nonton
+    tutorial. Mulai dari satu bahasa, kuasai dulu baru ke yang lain. Debug error sendiri
+    sebelum tanya Google. Konsistensi 1 jam per hari lebih baik dari 8 jam sehari
+    sekali.'
   d: '2026-05-08'
 - id: 1011
-  t: Tips SEO Website
-  s: Gunakan keyword yang relevan di judul dan heading. Pastikan website kamu cepat
-    dibuka di HP (Mobile Friendly).
+  t: Apa itu Database
+  s: 'Database itu tempat menyimpan data secara terstruktur. Ada dua jenis utama:
+    SQL (seperti MySQL, PostgreSQL, data dalam tabel) dan NoSQL (seperti MongoDB,
+    data lebih fleksibel). Pilih sesuai kebutuhan proyekmu, Lan.'
   d: '2026-05-08'
 - id: 1012
-  t: Rahasia Cuan Konsisten
-  s: Bangun personal branding. Kalau orang udah percaya sama kamu, jual produk apa
-    aja pasti laku.
+  t: Sejarah Singkat AI
+  s: AI mulai serius dikembangkan sejak tahun 1950-an oleh Alan Turing. Era modern
+    AI dimulai dengan Deep Learning sekitar 2010-an. Sekarang ada GPT, Gemini, dan
+    banyak model canggih lain berkat neural network yang meniru cara kerja otak manusia.
   d: '2026-05-08'
 - id: 1013
-  t: Belajar HTML Dasar
-  s: HTML itu tulang punggung web. Fokus kuasai tag <div>, <a> buat link, dan <img>
-    buat gambar. Itu pondasi paling penting.
+  t: Perbedaan AI dan Machine Learning
+  s: AI itu konsep besarnya yaitu membuat mesin berpikir seperti manusia. Machine
+    Learning itu caranya, mesin belajar dari data tanpa diprogram secara eksplisit.
+    Deep Learning itu sub-bagian ML yang pakai neural network berlapis-lapis.
   d: '2026-05-08'
 - id: 1014
-  t: Tips SEO Website
-  s: Gunakan keyword yang relevan di judul dan heading. Pastikan website kamu cepat
-    dibuka di HP (Mobile Friendly).
+  t: Apa itu ChatGPT
+  s: ChatGPT itu AI buatan OpenAI yang bisa ngobrol layaknya manusia. Dilatih dengan
+    miliaran teks dari internet. Bisa bantu nulis, debug kode, jawab pertanyaan, dan
+    banyak lagi. Tapi ingat, kadang bisa salah atau halusinasi fakta ya Lan.
   d: '2026-05-08'
 - id: 1015
-  t: Cara Mulai Affiliate
-  s: Cari produk yang lagi viral di TikTok, bikin konten faceless pake hoodie, taruh
-    link di bio. Konsisten upload 3x sehari.
+  t: Cara Membuat Aplikasi Mobile
+  s: 'Untuk buat aplikasi mobile, bisa pilih: Flutter (satu kode untuk Android dan
+    iOS), React Native (pakai JavaScript), atau Kotlin (native Android). Untuk pemula,
+    Flutter sekarang paling populer dan dokumentasinya bagus.'
   d: '2026-05-08'
 - id: 1016
-  t: Tips SEO Website
-  s: Gunakan keyword yang relevan di judul dan heading. Pastikan website kamu cepat
-    dibuka di HP (Mobile Friendly).
+  t: Apa itu Git
+  s: 'Git itu sistem version control untuk melacak perubahan kode kamu dari waktu
+    ke waktu. Ibaratnya seperti Ctrl+Z yang bisa balik ke versi manapun. Perintah
+    dasar: git init, git add, git commit, git push. Wajib dikuasai, Lan!'
   d: '2026-05-08'
 - id: 1017
-  t: Belajar HTML Dasar
-  s: HTML itu tulang punggung web. Fokus kuasai tag <div>, <a> buat link, dan <img>
-    buat gambar. Itu pondasi paling penting.
+  t: Cara Membuat Website Portofolio
+  s: 'Website portofolio kamu harus ada: foto profesional, deskripsi singkat tentang
+    diri, list skill, dan proyek-proyek yang pernah dibuat lengkap dengan link. Desain
+    simpel tapi bersih lebih baik daripada rame tapi berantakan.'
   d: '2026-05-08'
 - id: 1018
-  t: Cara Mulai Affiliate
-  s: Cari produk yang lagi viral di TikTok, bikin konten faceless pake hoodie, taruh
-    link di bio. Konsisten upload 3x sehari.
+  t: Apa itu Node.js
+  s: Node.js itu runtime JavaScript di sisi server. Artinya kamu bisa pakai JavaScript
+    tidak hanya di browser, tapi juga untuk backend. Cocok buat API, real-time app
+    (chat), dan microservice. Ekosistemnya besar dengan npm.
   d: '2026-05-08'
 - id: 1019
-  t: Belajar HTML Dasar
-  s: HTML itu tulang punggung web. Fokus kuasai tag <div>, <a> buat link, dan <img>
-    buat gambar. Itu pondasi paling penting.
+  t: Cara Optimasi Gambar Web
+  s: 'Untuk optimasi gambar di web: kompres dengan TinyPNG atau Squoosh, pakai format
+    WebP, implementasi lazy loading (gambar hanya dimuat saat terlihat), dan tentukan
+    ukuran gambar secara eksplisit di HTML.'
   d: '2026-05-08'
 - id: 1020
-  t: Kenapa Web Lemot?
-  s: Biasanya karena gambar kegedean atau file JS yang numpuk. Solusinya kompres gambar
-    dan pakai sistem lazy load.
+  t: Cara Mulai Bisnis Online
+  s: 'Mulai bisnis online: tentukan niche yang kamu suka dan ada pasarnya, riset kompetitor,
+    pilih platform (marketplace, medsos, atau website sendiri), buat konten konsisten,
+    dan sabar di 3 bulan pertama. Validasi produk sebelum modal besar.'
   d: '2026-05-08'
 - id: 1021
   t: Cara Mulai Affiliate
-  s: Cari produk yang lagi viral di TikTok, bikin konten faceless pake hoodie, taruh
-    link di bio. Konsisten upload 3x sehari.
+  s: 'Affiliate marketing: daftar di platform seperti Tokopedia Affiliate, Shopee
+    Affiliate, atau Amazon Associates. Pilih produk yang relevan dengan audiensmu.
+    Buat konten review jujur. Pasang link di bio atau konten. Konsisten posting dan
+    hasilnya terasa dalam 3-6 bulan.'
   d: '2026-05-08'
 - id: 1022
   t: Tips Trading Crypto
-  s: Jangan FOMO. Gunakan indikator Moving Average (MA) buat liat tren. Selalu pasang
-    Stop Loss biar gak likuidasi.
+  s: 'Trading crypto itu berisiko tinggi, Lan. Tips aman: jangan invest lebih dari
+    yang siap kamu hilangkan, pelajari analisis teknikal (support, resistance, moving
+    average), diversifikasi aset, jangan FOMO saat harga naik. DCA lebih aman untuk
+    pemula.'
   d: '2026-05-08'
 - id: 1023
-  t: Tips SEO Website
-  s: Gunakan keyword yang relevan di judul dan heading. Pastikan website kamu cepat
-    dibuka di HP (Mobile Friendly).
+  t: Rahasia Cuan Konsisten
+  s: 'Cuan konsisten bukan dari satu sumber. Bangun multiple income: kerja utama ditambah
+    side hustle digital (konten, afiliasi, freelance). Invest 20 persen penghasilan.
+    Tingkatkan skill terus. Dan yang paling penting: jangan konsumtif di awal karier.'
   d: '2026-05-08'
 - id: 1024
-  t: Sejarah Singkat AI
-  s: AI mulai dikembangin sejak tahun 1950-an. Sekarang makin canggih berkat sistem
-    neural network yang mirip saraf manusia.
+  t: Cara Membangun Personal Branding
+  s: 'Personal branding itu tentang kesan apa yang orang dapat saat mendengar namamu.
+    Caranya: pilih satu bidang keahlian, konsisten share insight di media sosial,
+    bantu orang lain secara gratis dulu, dan biarkan reputasimu berbicara. Authentic
+    lebih baik dari sempurna.'
   d: '2026-05-08'
 - id: 1025
-  t: Tips Trading Crypto
-  s: Siap Bos! Saraf saya udah konek ke database. Mau nanya apa? Jangan FOMO. Gunakan
-    indikator Moving Average (MA) buat liat tren. Selalu pasang Stop Loss biar gak
-    likuidasi.
+  t: Apa itu Dropshipping
+  s: Dropshipping itu jualan produk tanpa menyimpan stok. Kamu terima order dari pelanggan,
+    lalu teruskan ke supplier yang langsung kirim ke pelanggan. Modal kecil tapi margin
+    tipis. Kuncinya di marketing dan customer service yang bagus.
   d: '2026-05-08'
 - id: 1026
-  t: Rahasia Cuan Konsisten
-  s: Bangun personal branding. Kalau orang udah percaya sama kamu, jual produk apa
-    aja pasti laku.
+  t: Cara Freelance sebagai Programmer
+  s: 'Untuk freelance programming: buat portofolio proyek nyata di GitHub, daftar
+    di platform Upwork atau Fiverr, mulai dari harga rendah untuk dapat review pertama,
+    spesialisasi di satu teknologi, dan jaga komunikasi dengan klien. Reputasi itu
+    segalanya di freelance.'
   d: '2026-05-08'
 - id: 1027
-  t: Belajar HTML Dasar
-  s: HTML itu tulang punggung web. Fokus kuasai tag <div>, <a> buat link, dan <img>
-    buat gambar. Itu pondasi paling penting.
+  t: Tips Menabung untuk Pelajar
+  s: 'Menabung sebagai pelajar: buat anggaran bulanan, bedakan kebutuhan dan keinginan,
+    menabung di awal bulan bukan sisa. Tantang diri: 30 hari tanpa beli makanan mahal.
+    Investasi kecil di reksa dana bisa dimulai dari Rp 10.000 lewat aplikasi seperti
+    Bibit.'
   d: '2026-05-08'
 - id: 1028
-  t: Tips SEO Website
-  s: Gunakan keyword yang relevan di judul dan heading. Pastikan website kamu cepat
-    dibuka di HP (Mobile Friendly).
+  t: Cara Dapat Penghasilan dari Konten
+  s: 'Monetisasi konten digital: YouTube (AdSense setelah 1000 subscriber), Instagram
+    (brand deal, afiliasi), TikTok (TikTok Creator Fund), blog (AdSense, afiliasi),
+    atau jual produk digital. Konsistensi dan niche yang spesifik adalah kuncinya,
+    Lan.'
   d: '2026-05-08'
 - id: 1029
-  t: Tips Trading Crypto
-  s: Jangan FOMO. Gunakan indikator Moving Average (MA) buat liat tren. Selalu pasang
-    Stop Loss biar gak likuidasi.
+  t: Apa itu Saham
+  s: 'Saham itu kepemilikan sebagian kecil perusahaan. Kamu beli saham berarti kamu
+    punya sebagian bisnis itu. Untung dari kenaikan harga saham (capital gain) atau
+    dividen. Untuk pemula: belajar analisis fundamental, mulai dari perusahaan yang
+    bisnisnya kamu pahami.'
   d: '2026-05-08'
 - id: 1030
-  t: Tips SEO Website
-  s: Gunakan keyword yang relevan di judul dan heading. Pastikan website kamu cepat
-    dibuka di HP (Mobile Friendly).
+  t: Fakta Lubang Hitam
+  s: Lubang hitam adalah wilayah di luar angkasa dengan gravitasi sangat kuat sehingga
+    cahaya pun tidak bisa lolos. Terbentuk saat bintang masif meledak (supernova).
+    Lubang hitam terbesar di galaksi kita berukuran 4 juta kali massa matahari!
   d: '2026-05-08'
 - id: 1031
-  t: Kenapa Web Lemot?
-  s: Gini Lan, menurut logika saraf saya, konsistensi itu kunci segalanya. Biasanya
-    karena gambar kegedean atau file JS yang numpuk. Solusinya kompres gambar dan
-    pakai sistem lazy load.
+  t: Fakta Otak Manusia
+  s: Otak manusia punya sekitar 86 miliar neuron dan bisa membentuk lebih dari 100
+    triliun koneksi sinaptik. Otak tidak terasa sakit karena tidak punya reseptor
+    rasa sakit. Saat tidur, otak membersihkan racun dan memperkuat memori. Menarik
+    kan, Lan?
   d: '2026-05-08'
 - id: 1032
-  t: Kenapa Web Lemot?
-  s: Biasanya karena gambar kegedean atau file JS yang numpuk. Solusinya kompres gambar
-    dan pakai sistem lazy load.
+  t: Fakta Matahari
+  s: Matahari itu bola gas raksasa yang menyumbang 99,86 persen massa tata surya kita.
+    Suhunya 5500 derajat Celsius di permukaan dan 15 juta derajat di intinya. Cahaya
+    matahari butuh 8 menit 20 detik untuk sampai ke Bumi.
   d: '2026-05-08'
 - id: 1033
-  t: Cara Mulai Affiliate
-  s: Gini Lan, menurut logika saraf saya, konsistensi itu kunci segalanya. Cari produk
-    yang lagi viral di TikTok, bikin konten faceless pake hoodie, taruh link di bio.
-    Konsisten upload 3x sehari.
+  t: Cara Kerja Internet
+  s: Internet itu jaringan global komputer yang saling terhubung lewat kabel fisik
+    fiber optic di bawah laut dan sinyal nirkabel. Data dipecah jadi paket kecil,
+    dikirim lewat berbagai rute, lalu disusun ulang di tujuan. DNS itu seperti buku
+    telepon yang menerjemahkan nama domain ke IP.
   d: '2026-05-08'
 - id: 1034
-  t: Rahasia Cuan Konsisten
-  s: Bangun personal branding. Kalau orang udah percaya sama kamu, jual produk apa
-    aja pasti laku.
+  t: Fakta Air dan Manusia
+  s: Tubuh manusia terdiri dari sekitar 60 persen air. Kekurangan air 1-2 persen saja
+    bisa membuat kamu merasa lelah dan susah konsentrasi. Minum 8 gelas air sehari
+    itu bukan mitos, Lan, itu sains!
   d: '2026-05-08'
 - id: 1035
-  t: Belajar HTML Dasar
-  s: Halo Lan! Ada yang seru nih, mau bahas koding atau tips cuan? HTML itu tulang
-    punggung web. Fokus kuasai tag <div>, <a> buat link, dan <img> buat gambar. Itu
-    pondasi paling penting.
+  t: Bagaimana Pesawat Bisa Terbang
+  s: Pesawat terbang karena prinsip Bernoulli dan gaya angkat. Sayap pesawat berbentuk
+    melengkung di atas sehingga udara di atas bergerak lebih cepat dan tekanannya
+    lebih rendah. Perbedaan tekanan ini menciptakan gaya angkat ke atas. Ditambah
+    mesin jet yang mendorong maju.
   d: '2026-05-08'
 - id: 1036
-  t: Sejarah Singkat AI
-  s: AI mulai dikembangin sejak tahun 1950-an. Sekarang makin canggih berkat sistem
-    neural network yang mirip saraf manusia.
+  t: Fakta Laut dan Samudra
+  s: Laut menutupi 71 persen permukaan Bumi, tapi lebih dari 80 persen belum pernah
+    dijelajahi manusia. Titik terdalam adalah Palung Mariana (11.034 meter) lebih
+    dalam dari tinggi Gunung Everest! Laut menyerap 30 persen CO2 yang manusia hasilkan.
   d: '2026-05-08'
 - id: 1037
-  t: Fakta Lubang Hitam
-  s: Black hole itu area di luar angkasa dengan gravitasi kuat banget, bahkan cahaya
-    pun gak bisa kabur dari sana.
+  t: Tips Tidur Berkualitas
+  s: 'Tidur berkualitas: tidur dan bangun di jam yang sama setiap hari, hindari layar
+    HP 1 jam sebelum tidur karena blue light ganggu melatonin, kamar gelap dan sejuk,
+    hindari kafein setelah jam 3 sore. 7-9 jam adalah ideal untuk orang dewasa.'
   d: '2026-05-08'
 - id: 1038
-  t: Tips Trading Crypto
-  s: Jangan FOMO. Gunakan indikator Moving Average (MA) buat liat tren. Selalu pasang
-    Stop Loss biar gak likuidasi.
+  t: Cara Olahraga untuk Pemula
+  s: 'Mulai olahraga: jangan langsung intens! Mulai 3x seminggu, 30 menit per sesi.
+    Kombinasikan cardio (jalan cepat, lari) dan strength (push-up, squat). Konsistensi
+    lebih penting dari intensitas. Istirahat 1-2 hari per minggu untuk recovery.'
   d: '2026-05-08'
 - id: 1039
-  t: Tips SEO Website
-  s: Gunakan keyword yang relevan di judul dan heading. Pastikan website kamu cepat
-    dibuka di HP (Mobile Friendly).
+  t: Makanan untuk Otak
+  s: 'Makanan terbaik untuk otak: ikan berlemak (salmon, tuna kaya omega-3), blueberry
+    (antioksidan), brokoli (vitamin K), kacang-kacangan, cokelat hitam, dan telur
+    (kolin untuk memori). Hindari gula berlebihan yang bikin energi naik-turun cepat.'
   d: '2026-05-08'
 - id: 1040
-  t: Tips Trading Crypto
-  s: Jangan FOMO. Gunakan indikator Moving Average (MA) buat liat tren. Selalu pasang
-    Stop Loss biar gak likuidasi.
+  t: Cara Mengatasi Stress
+  s: 'Mengatasi stress: olahraga rutin (endorfin alami), meditasi 10 menit sehari,
+    tulis jurnal perasaanmu, bicara dengan orang dipercaya. Batasi scroll media sosial
+    karena studi terbukti itu meningkatkan kecemasan. Dan ingat, stress itu normal,
+    Lan.'
   d: '2026-05-08'
 - id: 1041
-  t: Kenapa Web Lemot?
-  s: Biasanya karena gambar kegedean atau file JS yang numpuk. Solusinya kompres gambar
-    dan pakai sistem lazy load.
+  t: Cara Fokus Belajar
+  s: 'Supaya fokus belajar: pakai teknik Pomodoro (25 menit fokus, 5 menit istirahat),
+    matikan notifikasi HP, pilih tempat belajar khusus (bukan kasur), minum air secukupnya,
+    dan tidur cukup malam sebelumnya. Otak yang lelah tidak bisa menyerap informasi
+    baru.'
   d: '2026-05-08'
 - id: 1042
-  t: Fakta Lubang Hitam
-  s: Black hole itu area di luar angkasa dengan gravitasi kuat banget, bahkan cahaya
-    pun gak bisa kabur dari sana.
+  t: Cara Mengatasi Rasa Malas
+  s: 'Malas itu biasanya karena tugas terasa terlalu besar atau kamu tidak tahu harus
+    mulai dari mana. Solusinya: pecah tugas besar jadi langkah kecil. Aturan 2 menit:
+    kalau bisa dilakukan dalam 2 menit, lakukan sekarang. Mulai itu selalu lebih sulit
+    dari melanjutkan.'
   d: '2026-05-08'
 - id: 1043
-  t: Kenapa Web Lemot?
-  s: Biasanya karena gambar kegedean atau file JS yang numpuk. Solusinya kompres gambar
-    dan pakai sistem lazy load.
+  t: Pentingnya Membaca Buku
+  s: Membaca buku itu investasi terbaik. Satu buku non-fiksi bisa merangkum pengalaman
+    hidup seseorang yang butuh puluhan tahun. Mulai dari buku yang benar-benar kamu
+    minati. Target minimal 1 buku per bulan. Orang sukses dunia hampir semuanya rajin
+    membaca.
   d: '2026-05-08'
 - id: 1044
-  t: Belajar HTML Dasar
-  s: HTML itu tulang punggung web. Fokus kuasai tag <div>, <a> buat link, dan <img>
-    buat gambar. Itu pondasi paling penting.
+  t: Cara Meningkatkan Kepercayaan Diri
+  s: Kepercayaan diri tumbuh dari kompetensi, semakin ahli kamu di sesuatu, semakin
+    percaya dirimu. Mulai dengan menguasai satu skill kecil, rayakan progress kecil,
+    jaga postur tubuh yang tegak, dan kurangi membandingkan diri dengan orang lain.
   d: '2026-05-08'
 - id: 1045
-  t: Tips Trading Crypto
-  s: Jangan FOMO. Gunakan indikator Moving Average (MA) buat liat tren. Selalu pasang
-    Stop Loss biar gak likuidasi.
+  t: Tips Manajemen Waktu
+  s: 'Manajemen waktu yang efektif: gunakan metode Eisenhower Matrix (penting dan
+    mendesak), blokir waktu di kalender untuk tugas penting, buat to-do list malam
+    sebelumnya, dan pelajari cara mengatakan tidak untuk hal tidak penting. Waktu
+    itu sumber daya yang tidak bisa diisi ulang.'
   d: '2026-05-08'
 - id: 1046
-  t: Belajar HTML Dasar
-  s: HTML itu tulang punggung web. Fokus kuasai tag <div>, <a> buat link, dan <img>
-    buat gambar. Itu pondasi paling penting.
+  t: Cara Buat Konten Viral
+  s: 'Konten viral biasanya punya: hook kuat di 3 detik pertama, memberi nilai (informasi
+    baru, hiburan, atau emosi kuat), mudah dibagikan, dan relevan dengan tren. Jangan
+    terlalu promosi. Gunakan trending audio di TikTok dan Reels. Konsistensi posting
+    lebih penting dari viral sesekali.'
   d: '2026-05-08'
 - id: 1047
-  t: Tips SEO Website
-  s: Gunakan keyword yang relevan di judul dan heading. Pastikan website kamu cepat
-    dibuka di HP (Mobile Friendly).
+  t: Cara Dapat Banyak Followers
+  s: 'Tumbuh di media sosial: pilih satu niche yang spesifik, posting secara konsisten
+    minimal 3-5x seminggu, gunakan hashtag relevan, engage balik dengan komentar,
+    dan berkolaborasi dengan akun di niche yang sama. Kualitas konten itu raja.'
   d: '2026-05-08'
 - id: 1048
-  t: Cara Mulai Affiliate
-  s: Cari produk yang lagi viral di TikTok, bikin konten faceless pake hoodie, taruh
-    link di bio. Konsisten upload 3x sehari.
+  t: Tips Editing Video
+  s: 'Editing video yang bagus: potong bagian yang membosankan, tambahkan musik latar
+    yang pas, gunakan teks atau subtitle untuk orang yang nonton tanpa suara, perhatikan
+    color grading sederhana untuk tampilan lebih profesional, dan jaga pacing yang
+    energik.'
   d: '2026-05-08'
 - id: 1049
-  t: Fakta Lubang Hitam
-  s: Black hole itu area di luar angkasa dengan gravitasi kuat banget, bahkan cahaya
-    pun gak bisa kabur dari sana.
+  t: Cara Monetisasi YouTube
+  s: 'Monetisasi YouTube butuh 1000 subscriber dan 4000 jam tayang dalam 12 bulan.
+    Selain AdSense, bisa juga dapat dari: sponsorship, merchandise, channel membership,
+    Super Thanks, dan jual produk atau kursus sendiri. Niche yang kompetitif punya
+    RPM lebih tinggi.'
   d: '2026-05-08'
 - id: 1050
-  t: Kenapa Web Lemot?
-  s: Halo Lan! Ada yang seru nih, mau bahas koding atau tips cuan? Biasanya karena
-    gambar kegedean atau file JS yang numpuk. Solusinya kompres gambar dan pakai sistem
-    lazy load.
+  t: Cara Belajar Bahasa Inggris
+  s: 'Belajar bahasa Inggris efektif: konsumsi konten bahasa Inggris setiap hari (film,
+    podcast, buku), bukan belajar teori tata bahasa saja. Aplikasi Duolingo bagus
+    untuk pemula. Bicara dengan diri sendiri dalam bahasa Inggris. Jangan takut salah,
+    itu bagian dari proses!'
   d: '2026-05-08'
 - id: 1051
-  t: Cara Mulai Affiliate
-  s: Cari produk yang lagi viral di TikTok, bikin konten faceless pake hoodie, taruh
-    link di bio. Konsisten upload 3x sehari.
+  t: Tips Wawancara Kerja
+  s: 'Tips wawancara kerja: riset perusahaan sebelum datang, siapkan jawaban pertanyaan
+    umum seperti ceritakan tentang dirimu dan kekuatan-kelemahan, bawa dokumen lengkap,
+    pakaian formal sesuai industri, dan siapkan pertanyaan untuk interviewer. Kepercayaan
+    diri adalah kunci.'
   d: '2026-05-08'
 - id: 1052
-  t: Belajar HTML Dasar
-  s: HTML itu tulang punggung web. Fokus kuasai tag <div>, <a> buat link, dan <img>
-    buat gambar. Itu pondasi paling penting.
+  t: Cara Membuat CV yang Bagus
+  s: 'CV yang bagus: singkat (1 halaman untuk fresh graduate), gunakan format ATS-friendly,
+    highlight pencapaian dengan angka bukan sekadar tugas, cantumkan skills yang relevan
+    dengan posisi, dan selalu sesuaikan CV dengan lowongan yang dilamar. Sertakan
+    link portofolio atau GitHub.'
   d: '2026-05-08'
 - id: 1053
-  t: Tips Trading Crypto
-  s: Siap Bos! Saraf saya udah konek ke database. Mau nanya apa? Jangan FOMO. Gunakan
-    indikator Moving Average (MA) buat liat tren. Selalu pasang Stop Loss biar gak
-    likuidasi.
+  t: Cara Daftar Beasiswa
+  s: 'Daftar beasiswa: mulai riset jauh-jauh hari, jaga IPK dan aktif organisasi,
+    tulis esai motivasi yang personal dan jujur, minta surat rekomendasi dari dosen
+    yang benar-benar mengenalmu. Coba LPDP atau Djarum Foundation.'
   d: '2026-05-08'
 - id: 1054
-  t: Tips SEO Website
-  s: Waduh, pertanyaan bagus! Bentar saya ulek dulu memorinya... Gunakan keyword yang
-    relevan di judul dan heading. Pastikan website kamu cepat dibuka di HP (Mobile
-    Friendly).
+  t: Cara Public Speaking yang Bagus
+  s: 'Public speaking yang baik: persiapan materi matang-matang, latihan di depan
+    cermin atau rekam diri sendiri, bicara lebih lambat dari yang kamu pikir perlu,
+    buat kontak mata dengan audiens, gunakan pause untuk penekanan. Rasa gugup itu
+    wajar dan membantu penampilan!'
   d: '2026-05-08'
 - id: 1055
-  t: Sejarah Singkat AI
-  s: AI mulai dikembangin sejak tahun 1950-an. Sekarang makin canggih berkat sistem
-    neural network yang mirip saraf manusia.
+  t: Cara Memulai Trading Saham
+  s: 'Mulai trading saham: buka akun di broker terpercaya seperti BCA Sekuritas atau
+    Stockbit, pelajari analisis fundamental dan teknikal, mulai dengan modal kecil
+    yang siap hilang, diversifikasi portofolio, dan jangan trading pakai uang pinjaman.'
   d: '2026-05-08'
 - id: 1056
-  t: Kenapa Web Lemot?
-  s: Biasanya karena gambar kegedean atau file JS yang numpuk. Solusinya kompres gambar
-    dan pakai sistem lazy load.
+  t: Cara Belajar Desain Grafis
+  s: 'Belajar desain grafis: mulai dari Canva untuk yang paling mudah, lanjut ke Figma
+    untuk UI/UX, atau Photoshop dan Illustrator untuk yang lebih profesional. Pelajari
+    prinsip desain dasar: tipografi, warna, whitespace, dan hierarki visual. Banyak
+    tutorial gratis di YouTube.'
   d: '2026-05-08'
 - id: 1057
-  t: Sejarah Singkat AI
-  s: AI mulai dikembangin sejak tahun 1950-an. Sekarang makin canggih berkat sistem
-    neural network yang mirip saraf manusia.
+  t: Cara Membuat Keputusan yang Baik
+  s: 'Cara buat keputusan yang baik: kumpulkan informasi cukup (bukan sempurna), pertimbangkan
+    pro-kontra, pikirkan konsekuensi jangka panjang, tanya orang yang pernah di posisi
+    yang sama. Setelah memutuskan, commit penuh dan jangan ragu-ragu terus.'
   d: '2026-05-08'
 - id: 1058
-  t: Sejarah Singkat AI
-  s: AI mulai dikembangin sejak tahun 1950-an. Sekarang makin canggih berkat sistem
-    neural network yang mirip saraf manusia.
+  t: Cara Membangun Habit Baik
+  s: 'Membangun habit: mulai sangat kecil dengan 2 menit rule, kaitkan habit baru
+    dengan yang sudah ada (habit stacking), buat lingkungan yang mendukung, dan lacak
+    progresmu. Butuh rata-rata 66 hari untuk habit terbentuk, bukan 21 hari.'
   d: '2026-05-08'
 - id: 1059
-  t: Rahasia Cuan Konsisten
-  s: Gini Lan, menurut logika saraf saya, konsistensi itu kunci segalanya. Bangun
-    personal branding. Kalau orang udah percaya sama kamu, jual produk apa aja pasti
-    laku.
+  t: Apa itu Cloud Computing
+  s: Cloud computing itu penyewaan infrastruktur IT lewat internet. Daripada beli
+    server mahal, kamu sewa dari AWS, Google Cloud, atau Azure. Bayar sesuai pemakaian.
+    Ini yang bikin startup bisa scale cepat tanpa modal besar untuk hardware.
   d: '2026-05-08'
 - id: 1060
-  t: Rahasia Cuan Konsisten
-  s: Bangun personal branding. Kalau orang udah percaya sama kamu, jual produk apa
-    aja pasti laku.
-  d: '2026-05-08'
-- id: 1061
-  t: Rahasia Cuan Konsisten
-  s: Bangun personal branding. Kalau orang udah percaya sama kamu, jual produk apa
-    aja pasti laku.
-  d: '2026-05-08'
-- id: 1062
-  t: Tips Trading Crypto
-  s: Jangan FOMO. Gunakan indikator Moving Average (MA) buat liat tren. Selalu pasang
-    Stop Loss biar gak likuidasi.
-  d: '2026-05-08'
-- id: 1063
-  t: Belajar HTML Dasar
-  s: Siap Bos! Saraf saya udah konek ke database. Mau nanya apa? HTML itu tulang punggung
-    web. Fokus kuasai tag <div>, <a> buat link, dan <img> buat gambar. Itu pondasi
-    paling penting.
-  d: '2026-05-08'
-- id: 1064
-  t: Rahasia Cuan Konsisten
-  s: Gini Lan, menurut logika saraf saya, konsistensi itu kunci segalanya. Bangun
-    personal branding. Kalau orang udah percaya sama kamu, jual produk apa aja pasti
-    laku.
-  d: '2026-05-08'
-- id: 1065
-  t: Cara Mulai Affiliate
-  s: Cari produk yang lagi viral di TikTok, bikin konten faceless pake hoodie, taruh
-    link di bio. Konsisten upload 3x sehari.
-  d: '2026-05-08'
-- id: 1066
-  t: Rahasia Cuan Konsisten
-  s: Bangun personal branding. Kalau orang udah percaya sama kamu, jual produk apa
-    aja pasti laku.
-  d: '2026-05-08'
-- id: 1067
-  t: Tips Trading Crypto
-  s: Gini Lan, menurut logika saraf saya, konsistensi itu kunci segalanya. Jangan
-    FOMO. Gunakan indikator Moving Average (MA) buat liat tren. Selalu pasang Stop
-    Loss biar gak likuidasi.
-  d: '2026-05-08'
-- id: 1068
-  t: Fakta Lubang Hitam
-  s: Black hole itu area di luar angkasa dengan gravitasi kuat banget, bahkan cahaya
-    pun gak bisa kabur dari sana.
-  d: '2026-05-08'
-- id: 1069
-  t: Kenapa Web Lemot?
-  s: Biasanya karena gambar kegedean atau file JS yang numpuk. Solusinya kompres gambar
-    dan pakai sistem lazy load.
-  d: '2026-05-08'
-- id: 1070
-  t: Fakta Lubang Hitam
-  s: Gini Lan, menurut logika saraf saya, konsistensi itu kunci segalanya. Black hole
-    itu area di luar angkasa dengan gravitasi kuat banget, bahkan cahaya pun gak bisa
-    kabur dari sana.
-  d: '2026-05-08'
-- id: 1071
-  t: Kenapa Web Lemot?
-  s: Biasanya karena gambar kegedean atau file JS yang numpuk. Solusinya kompres gambar
-    dan pakai sistem lazy load.
-  d: '2026-05-08'
-- id: 1072
-  t: Belajar HTML Dasar
-  s: Gini Lan, menurut logika saraf saya, konsistensi itu kunci segalanya. HTML itu
-    tulang punggung web. Fokus kuasai tag <div>, <a> buat link, dan <img> buat gambar.
-    Itu pondasi paling penting.
-  d: '2026-05-08'
-- id: 1073
-  t: Tips SEO Website
-  s: Gunakan keyword yang relevan di judul dan heading. Pastikan website kamu cepat
-    dibuka di HP (Mobile Friendly).
-  d: '2026-05-08'
-- id: 1074
-  t: Tips Trading Crypto
-  s: Halo Lan! Ada yang seru nih, mau bahas koding atau tips cuan? Jangan FOMO. Gunakan
-    indikator Moving Average (MA) buat liat tren. Selalu pasang Stop Loss biar gak
-    likuidasi.
-  d: '2026-05-08'
-- id: 1075
-  t: Tips SEO Website
-  s: Halo Lan! Ada yang seru nih, mau bahas koding atau tips cuan? Gunakan keyword
-    yang relevan di judul dan heading. Pastikan website kamu cepat dibuka di HP (Mobile
-    Friendly).
-  d: '2026-05-08'
-- id: 1076
-  t: Cara Mulai Affiliate
-  s: Cari produk yang lagi viral di TikTok, bikin konten faceless pake hoodie, taruh
-    link di bio. Konsisten upload 3x sehari.
-  d: '2026-05-08'
-- id: 1077
-  t: Belajar HTML Dasar
-  s: HTML itu tulang punggung web. Fokus kuasai tag <div>, <a> buat link, dan <img>
-    buat gambar. Itu pondasi paling penting.
-  d: '2026-05-08'
-- id: 1078
-  t: Sejarah Singkat AI
-  s: AI mulai dikembangin sejak tahun 1950-an. Sekarang makin canggih berkat sistem
-    neural network yang mirip saraf manusia.
-  d: '2026-05-08'
-- id: 1079
-  t: Tips SEO Website
-  s: Gunakan keyword yang relevan di judul dan heading. Pastikan website kamu cepat
-    dibuka di HP (Mobile Friendly).
-  d: '2026-05-08'
-- id: 1080
-  t: Fakta Lubang Hitam
-  s: Black hole itu area di luar angkasa dengan gravitasi kuat banget, bahkan cahaya
-    pun gak bisa kabur dari sana.
-  d: '2026-05-08'
-- id: 1081
-  t: Fakta Lubang Hitam
-  s: Black hole itu area di luar angkasa dengan gravitasi kuat banget, bahkan cahaya
-    pun gak bisa kabur dari sana.
-  d: '2026-05-08'
-- id: 1082
-  t: Rahasia Cuan Konsisten
-  s: Halo Lan! Ada yang seru nih, mau bahas koding atau tips cuan? Bangun personal
-    branding. Kalau orang udah percaya sama kamu, jual produk apa aja pasti laku.
-  d: '2026-05-08'
-- id: 1083
-  t: Kenapa Web Lemot?
-  s: Siap Bos! Saraf saya udah konek ke database. Mau nanya apa? Biasanya karena gambar
-    kegedean atau file JS yang numpuk. Solusinya kompres gambar dan pakai sistem lazy
-    load.
-  d: '2026-05-08'
-- id: 1084
-  t: Fakta Lubang Hitam
-  s: Black hole itu area di luar angkasa dengan gravitasi kuat banget, bahkan cahaya
-    pun gak bisa kabur dari sana.
-  d: '2026-05-08'
-- id: 1085
-  t: Rahasia Cuan Konsisten
-  s: Bangun personal branding. Kalau orang udah percaya sama kamu, jual produk apa
-    aja pasti laku.
-  d: '2026-05-08'
-- id: 1086
-  t: Fakta Lubang Hitam
-  s: Black hole itu area di luar angkasa dengan gravitasi kuat banget, bahkan cahaya
-    pun gak bisa kabur dari sana.
-  d: '2026-05-08'
-- id: 1087
-  t: Rahasia Cuan Konsisten
-  s: Bangun personal branding. Kalau orang udah percaya sama kamu, jual produk apa
-    aja pasti laku.
-  d: '2026-05-08'
-- id: 1088
-  t: Tips SEO Website
-  s: Waduh, pertanyaan bagus! Bentar saya ulek dulu memorinya... Gunakan keyword yang
-    relevan di judul dan heading. Pastikan website kamu cepat dibuka di HP (Mobile
-    Friendly).
-  d: '2026-05-08'
-- id: 1089
-  t: Sejarah Singkat AI
-  s: Halo Lan! Ada yang seru nih, mau bahas koding atau tips cuan? AI mulai dikembangin
-    sejak tahun 1950-an. Sekarang makin canggih berkat sistem neural network yang
-    mirip saraf manusia.
-  d: '2026-05-08'
-- id: 1090
-  t: Fakta Lubang Hitam
-  s: Gini Lan, menurut logika saraf saya, konsistensi itu kunci segalanya. Black hole
-    itu area di luar angkasa dengan gravitasi kuat banget, bahkan cahaya pun gak bisa
-    kabur dari sana.
-  d: '2026-05-08'
-- id: 1091
-  t: Cara Mulai Affiliate
-  s: Waduh, pertanyaan bagus! Bentar saya ulek dulu memorinya... Cari produk yang
-    lagi viral di TikTok, bikin konten faceless pake hoodie, taruh link di bio. Konsisten
-    upload 3x sehari.
-  d: '2026-05-08'
-- id: 1092
-  t: Sejarah Singkat AI
-  s: Gini Lan, menurut logika saraf saya, konsistensi itu kunci segalanya. AI mulai
-    dikembangin sejak tahun 1950-an. Sekarang makin canggih berkat sistem neural network
-    yang mirip saraf manusia.
-  d: '2026-05-08'
-- id: 1093
-  t: Rahasia Cuan Konsisten
-  s: Bangun personal branding. Kalau orang udah percaya sama kamu, jual produk apa
-    aja pasti laku.
-  d: '2026-05-08'
-- id: 1094
-  t: Tips SEO Website
-  s: Gunakan keyword yang relevan di judul dan heading. Pastikan website kamu cepat
-    dibuka di HP (Mobile Friendly).
-  d: '2026-05-08'
-- id: 1095
-  t: Tips SEO Website
-  s: Waduh, pertanyaan bagus! Bentar saya ulek dulu memorinya... Gunakan keyword yang
-    relevan di judul dan heading. Pastikan website kamu cepat dibuka di HP (Mobile
-    Friendly).
-  d: '2026-05-08'
-- id: 1096
-  t: Rahasia Cuan Konsisten
-  s: Bangun personal branding. Kalau orang udah percaya sama kamu, jual produk apa
-    aja pasti laku.
-  d: '2026-05-08'
-- id: 1097
-  t: Tips SEO Website
-  s: Gunakan keyword yang relevan di judul dan heading. Pastikan website kamu cepat
-    dibuka di HP (Mobile Friendly).
-  d: '2026-05-08'
-- id: 1098
-  t: Fakta Lubang Hitam
-  s: Gini Lan, menurut logika saraf saya, konsistensi itu kunci segalanya. Black hole
-    itu area di luar angkasa dengan gravitasi kuat banget, bahkan cahaya pun gak bisa
-    kabur dari sana.
-  d: '2026-05-08'
-- id: 1099
-  t: Sejarah Singkat AI
-  s: AI mulai dikembangin sejak tahun 1950-an. Sekarang makin canggih berkat sistem
-    neural network yang mirip saraf manusia.
-  d: '2026-05-08'
-- id: 1100
-  t: Belajar HTML Dasar
-  s: HTML itu tulang punggung web. Fokus kuasai tag <div>, <a> buat link, dan <img>
-    buat gambar. Itu pondasi paling penting.
-  d: '2026-05-08'
-- id: 1101
-  t: Tips Trading Crypto
-  s: Jangan FOMO. Gunakan indikator Moving Average (MA) buat liat tren. Selalu pasang
-    Stop Loss biar gak likuidasi.
-  d: '2026-05-08'
-- id: 1102
-  t: Tips SEO Website
-  s: Gunakan keyword yang relevan di judul dan heading. Pastikan website kamu cepat
-    dibuka di HP (Mobile Friendly).
-  d: '2026-05-08'
-- id: 1103
-  t: Belajar HTML Dasar
-  s: Gini Lan, menurut logika saraf saya, konsistensi itu kunci segalanya. HTML itu
-    tulang punggung web. Fokus kuasai tag <div>, <a> buat link, dan <img> buat gambar.
-    Itu pondasi paling penting.
-  d: '2026-05-08'
-- id: 1104
-  t: Cara Mulai Affiliate
-  s: Cari produk yang lagi viral di TikTok, bikin konten faceless pake hoodie, taruh
-    link di bio. Konsisten upload 3x sehari.
-  d: '2026-05-08'
-- id: 1105
-  t: Tips SEO Website
-  s: Gunakan keyword yang relevan di judul dan heading. Pastikan website kamu cepat
-    dibuka di HP (Mobile Friendly).
-  d: '2026-05-08'
-- id: 1106
-  t: Cara Mulai Affiliate
-  s: Cari produk yang lagi viral di TikTok, bikin konten faceless pake hoodie, taruh
-    link di bio. Konsisten upload 3x sehari.
-  d: '2026-05-08'
-- id: 1107
-  t: Rahasia Cuan Konsisten
-  s: Bangun personal branding. Kalau orang udah percaya sama kamu, jual produk apa
-    aja pasti laku.
-  d: '2026-05-08'
-- id: 1108
-  t: Belajar HTML Dasar
-  s: HTML itu tulang punggung web. Fokus kuasai tag <div>, <a> buat link, dan <img>
-    buat gambar. Itu pondasi paling penting.
-  d: '2026-05-08'
-- id: 1109
-  t: Belajar HTML Dasar
-  s: HTML itu tulang punggung web. Fokus kuasai tag <div>, <a> buat link, dan <img>
-    buat gambar. Itu pondasi paling penting.
-  d: '2026-05-08'
-- id: 1110
-  t: Belajar HTML Dasar
-  s: HTML itu tulang punggung web. Fokus kuasai tag <div>, <a> buat link, dan <img>
-    buat gambar. Itu pondasi paling penting.
-  d: '2026-05-08'
-- id: 1111
-  t: Rahasia Cuan Konsisten
-  s: Halo Lan! Ada yang seru nih, mau bahas koding atau tips cuan? Bangun personal
-    branding. Kalau orang udah percaya sama kamu, jual produk apa aja pasti laku.
-  d: '2026-05-08'
-- id: 1112
-  t: Kenapa Web Lemot?
-  s: Biasanya karena gambar kegedean atau file JS yang numpuk. Solusinya kompres gambar
-    dan pakai sistem lazy load.
-  d: '2026-05-08'
-- id: 1113
-  t: Tips SEO Website
-  s: Siap Bos! Saraf saya udah konek ke database. Mau nanya apa? Gunakan keyword yang
-    relevan di judul dan heading. Pastikan website kamu cepat dibuka di HP (Mobile
-    Friendly).
-  d: '2026-05-08'
-- id: 1114
-  t: Belajar HTML Dasar
-  s: HTML itu tulang punggung web. Fokus kuasai tag <div>, <a> buat link, dan <img>
-    buat gambar. Itu pondasi paling penting.
-  d: '2026-05-08'
-- id: 1115
-  t: Tips SEO Website
-  s: Siap Bos! Saraf saya udah konek ke database. Mau nanya apa? Gunakan keyword yang
-    relevan di judul dan heading. Pastikan website kamu cepat dibuka di HP (Mobile
-    Friendly).
-  d: '2026-05-08'
-- id: 1116
-  t: Fakta Lubang Hitam
-  s: Siap Bos! Saraf saya udah konek ke database. Mau nanya apa? Black hole itu area
-    di luar angkasa dengan gravitasi kuat banget, bahkan cahaya pun gak bisa kabur
-    dari sana.
-  d: '2026-05-08'
-- id: 1117
-  t: Rahasia Cuan Konsisten
-  s: Bangun personal branding. Kalau orang udah percaya sama kamu, jual produk apa
-    aja pasti laku.
-  d: '2026-05-08'
-- id: 1118
-  t: Cara Mulai Affiliate
-  s: Halo Lan! Ada yang seru nih, mau bahas koding atau tips cuan? Cari produk yang
-    lagi viral di TikTok, bikin konten faceless pake hoodie, taruh link di bio. Konsisten
-    upload 3x sehari.
-  d: '2026-05-08'
-- id: 1119
-  t: Rahasia Cuan Konsisten
-  s: Bangun personal branding. Kalau orang udah percaya sama kamu, jual produk apa
-    aja pasti laku.
-  d: '2026-05-08'
-- id: 1120
-  t: Belajar HTML Dasar
-  s: HTML itu tulang punggung web. Fokus kuasai tag <div>, <a> buat link, dan <img>
-    buat gambar. Itu pondasi paling penting.
-  d: '2026-05-08'
-- id: 1121
-  t: Kenapa Web Lemot?
-  s: Biasanya karena gambar kegedean atau file JS yang numpuk. Solusinya kompres gambar
-    dan pakai sistem lazy load.
-  d: '2026-05-08'
-- id: 1122
-  t: Cara Mulai Affiliate
-  s: Cari produk yang lagi viral di TikTok, bikin konten faceless pake hoodie, taruh
-    link di bio. Konsisten upload 3x sehari.
-  d: '2026-05-08'
-- id: 1123
-  t: Kenapa Web Lemot?
-  s: Biasanya karena gambar kegedean atau file JS yang numpuk. Solusinya kompres gambar
-    dan pakai sistem lazy load.
-  d: '2026-05-08'
-- id: 1124
-  t: Belajar HTML Dasar
-  s: Gini Lan, menurut logika saraf saya, konsistensi itu kunci segalanya. HTML itu
-    tulang punggung web. Fokus kuasai tag <div>, <a> buat link, dan <img> buat gambar.
-    Itu pondasi paling penting.
-  d: '2026-05-08'
-- id: 1125
-  t: Rahasia Cuan Konsisten
-  s: Bangun personal branding. Kalau orang udah percaya sama kamu, jual produk apa
-    aja pasti laku.
-  d: '2026-05-08'
-- id: 1126
-  t: Tips SEO Website
-  s: Gunakan keyword yang relevan di judul dan heading. Pastikan website kamu cepat
-    dibuka di HP (Mobile Friendly).
-  d: '2026-05-08'
-- id: 1127
-  t: Tips SEO Website
-  s: Gunakan keyword yang relevan di judul dan heading. Pastikan website kamu cepat
-    dibuka di HP (Mobile Friendly).
-  d: '2026-05-08'
-- id: 1128
-  t: Cara Mulai Affiliate
-  s: Halo Lan! Ada yang seru nih, mau bahas koding atau tips cuan? Cari produk yang
-    lagi viral di TikTok, bikin konten faceless pake hoodie, taruh link di bio. Konsisten
-    upload 3x sehari.
-  d: '2026-05-08'
-- id: 1129
-  t: Kenapa Web Lemot?
-  s: Biasanya karena gambar kegedean atau file JS yang numpuk. Solusinya kompres gambar
-    dan pakai sistem lazy load.
-  d: '2026-05-08'
-- id: 1130
-  t: Sejarah Singkat AI
-  s: AI mulai dikembangin sejak tahun 1950-an. Sekarang makin canggih berkat sistem
-    neural network yang mirip saraf manusia.
-  d: '2026-05-08'
-- id: 1131
-  t: Sejarah Singkat AI
-  s: AI mulai dikembangin sejak tahun 1950-an. Sekarang makin canggih berkat sistem
-    neural network yang mirip saraf manusia.
-  d: '2026-05-08'
-- id: 1132
-  t: Fakta Lubang Hitam
-  s: Black hole itu area di luar angkasa dengan gravitasi kuat banget, bahkan cahaya
-    pun gak bisa kabur dari sana.
-  d: '2026-05-08'
-- id: 1133
-  t: Sejarah Singkat AI
-  s: AI mulai dikembangin sejak tahun 1950-an. Sekarang makin canggih berkat sistem
-    neural network yang mirip saraf manusia.
-  d: '2026-05-08'
-- id: 1134
-  t: Belajar HTML Dasar
-  s: HTML itu tulang punggung web. Fokus kuasai tag <div>, <a> buat link, dan <img>
-    buat gambar. Itu pondasi paling penting.
-  d: '2026-05-08'
-- id: 1135
-  t: Rahasia Cuan Konsisten
-  s: Bangun personal branding. Kalau orang udah percaya sama kamu, jual produk apa
-    aja pasti laku.
-  d: '2026-05-08'
-- id: 1136
-  t: Tips Trading Crypto
-  s: Jangan FOMO. Gunakan indikator Moving Average (MA) buat liat tren. Selalu pasang
-    Stop Loss biar gak likuidasi.
-  d: '2026-05-08'
-- id: 1137
-  t: Kenapa Web Lemot?
-  s: Biasanya karena gambar kegedean atau file JS yang numpuk. Solusinya kompres gambar
-    dan pakai sistem lazy load.
-  d: '2026-05-08'
-- id: 1138
-  t: Belajar HTML Dasar
-  s: HTML itu tulang punggung web. Fokus kuasai tag <div>, <a> buat link, dan <img>
-    buat gambar. Itu pondasi paling penting.
-  d: '2026-05-08'
-- id: 1139
-  t: Kenapa Web Lemot?
-  s: Biasanya karena gambar kegedean atau file JS yang numpuk. Solusinya kompres gambar
-    dan pakai sistem lazy load.
-  d: '2026-05-08'
-- id: 1140
-  t: Fakta Lubang Hitam
-  s: Halo Lan! Ada yang seru nih, mau bahas koding atau tips cuan? Black hole itu
-    area di luar angkasa dengan gravitasi kuat banget, bahkan cahaya pun gak bisa
-    kabur dari sana.
-  d: '2026-05-08'
-- id: 1141
-  t: Sejarah Singkat AI
-  s: AI mulai dikembangin sejak tahun 1950-an. Sekarang makin canggih berkat sistem
-    neural network yang mirip saraf manusia.
-  d: '2026-05-08'
-- id: 1142
-  t: Kenapa Web Lemot?
-  s: Biasanya karena gambar kegedean atau file JS yang numpuk. Solusinya kompres gambar
-    dan pakai sistem lazy load.
-  d: '2026-05-08'
-- id: 1143
-  t: Kenapa Web Lemot?
-  s: Halo Lan! Ada yang seru nih, mau bahas koding atau tips cuan? Biasanya karena
-    gambar kegedean atau file JS yang numpuk. Solusinya kompres gambar dan pakai sistem
-    lazy load.
-  d: '2026-05-08'
-- id: 1144
-  t: Fakta Lubang Hitam
-  s: Siap Bos! Saraf saya udah konek ke database. Mau nanya apa? Black hole itu area
-    di luar angkasa dengan gravitasi kuat banget, bahkan cahaya pun gak bisa kabur
-    dari sana.
-  d: '2026-05-08'
-- id: 1145
-  t: Rahasia Cuan Konsisten
-  s: Bangun personal branding. Kalau orang udah percaya sama kamu, jual produk apa
-    aja pasti laku.
-  d: '2026-05-08'
-- id: 1146
-  t: Rahasia Cuan Konsisten
-  s: Gini Lan, menurut logika saraf saya, konsistensi itu kunci segalanya. Bangun
-    personal branding. Kalau orang udah percaya sama kamu, jual produk apa aja pasti
-    laku.
-  d: '2026-05-08'
-- id: 1147
-  t: Rahasia Cuan Konsisten
-  s: Bangun personal branding. Kalau orang udah percaya sama kamu, jual produk apa
-    aja pasti laku.
-  d: '2026-05-08'
-- id: 1148
-  t: Sejarah Singkat AI
-  s: AI mulai dikembangin sejak tahun 1950-an. Sekarang makin canggih berkat sistem
-    neural network yang mirip saraf manusia.
-  d: '2026-05-08'
-- id: 1149
-  t: Tips SEO Website
-  s: Waduh, pertanyaan bagus! Bentar saya ulek dulu memorinya... Gunakan keyword yang
-    relevan di judul dan heading. Pastikan website kamu cepat dibuka di HP (Mobile
-    Friendly).
-  d: '2026-05-08'
-- id: 1150
-  t: Tips SEO Website
-  s: Gunakan keyword yang relevan di judul dan heading. Pastikan website kamu cepat
-    dibuka di HP (Mobile Friendly).
-  d: '2026-05-08'
-- id: 1151
-  t: Sejarah Singkat AI
-  s: Siap Bos! Saraf saya udah konek ke database. Mau nanya apa? AI mulai dikembangin
-    sejak tahun 1950-an. Sekarang makin canggih berkat sistem neural network yang
-    mirip saraf manusia.
-  d: '2026-05-08'
-- id: 1152
-  t: Cara Mulai Affiliate
-  s: Cari produk yang lagi viral di TikTok, bikin konten faceless pake hoodie, taruh
-    link di bio. Konsisten upload 3x sehari.
-  d: '2026-05-08'
-- id: 1153
-  t: Kenapa Web Lemot?
-  s: Biasanya karena gambar kegedean atau file JS yang numpuk. Solusinya kompres gambar
-    dan pakai sistem lazy load.
-  d: '2026-05-08'
-- id: 1154
-  t: Fakta Lubang Hitam
-  s: Black hole itu area di luar angkasa dengan gravitasi kuat banget, bahkan cahaya
-    pun gak bisa kabur dari sana.
-  d: '2026-05-08'
-- id: 1155
-  t: Sejarah Singkat AI
-  s: AI mulai dikembangin sejak tahun 1950-an. Sekarang makin canggih berkat sistem
-    neural network yang mirip saraf manusia.
-  d: '2026-05-08'
-- id: 1156
-  t: Tips SEO Website
-  s: Gunakan keyword yang relevan di judul dan heading. Pastikan website kamu cepat
-    dibuka di HP (Mobile Friendly).
-  d: '2026-05-08'
-- id: 1157
-  t: Cara Mulai Affiliate
-  s: Cari produk yang lagi viral di TikTok, bikin konten faceless pake hoodie, taruh
-    link di bio. Konsisten upload 3x sehari.
-  d: '2026-05-08'
-- id: 1158
-  t: Rahasia Cuan Konsisten
-  s: Bangun personal branding. Kalau orang udah percaya sama kamu, jual produk apa
-    aja pasti laku.
-  d: '2026-05-08'
-- id: 1159
-  t: Cara Mulai Affiliate
-  s: Cari produk yang lagi viral di TikTok, bikin konten faceless pake hoodie, taruh
-    link di bio. Konsisten upload 3x sehari.
-  d: '2026-05-08'
-- id: 1160
-  t: Sejarah Singkat AI
-  s: AI mulai dikembangin sejak tahun 1950-an. Sekarang makin canggih berkat sistem
-    neural network yang mirip saraf manusia.
-  d: '2026-05-08'
-- id: 1161
-  t: Tips Trading Crypto
-  s: Jangan FOMO. Gunakan indikator Moving Average (MA) buat liat tren. Selalu pasang
-    Stop Loss biar gak likuidasi.
-  d: '2026-05-08'
-- id: 1162
-  t: Belajar HTML Dasar
-  s: Halo Lan! Ada yang seru nih, mau bahas koding atau tips cuan? HTML itu tulang
-    punggung web. Fokus kuasai tag <div>, <a> buat link, dan <img> buat gambar. Itu
-    pondasi paling penting.
-  d: '2026-05-08'
-- id: 1163
-  t: Fakta Lubang Hitam
-  s: Black hole itu area di luar angkasa dengan gravitasi kuat banget, bahkan cahaya
-    pun gak bisa kabur dari sana.
-  d: '2026-05-08'
-- id: 1164
-  t: Tips SEO Website
-  s: Gunakan keyword yang relevan di judul dan heading. Pastikan website kamu cepat
-    dibuka di HP (Mobile Friendly).
-  d: '2026-05-08'
-- id: 1165
-  t: Kenapa Web Lemot?
-  s: Biasanya karena gambar kegedean atau file JS yang numpuk. Solusinya kompres gambar
-    dan pakai sistem lazy load.
-  d: '2026-05-08'
-- id: 1166
-  t: Kenapa Web Lemot?
-  s: Waduh, pertanyaan bagus! Bentar saya ulek dulu memorinya... Biasanya karena gambar
-    kegedean atau file JS yang numpuk. Solusinya kompres gambar dan pakai sistem lazy
-    load.
-  d: '2026-05-08'
-- id: 1167
-  t: Kenapa Web Lemot?
-  s: Biasanya karena gambar kegedean atau file JS yang numpuk. Solusinya kompres gambar
-    dan pakai sistem lazy load.
-  d: '2026-05-08'
-- id: 1168
-  t: Belajar HTML Dasar
-  s: Siap Bos! Saraf saya udah konek ke database. Mau nanya apa? HTML itu tulang punggung
-    web. Fokus kuasai tag <div>, <a> buat link, dan <img> buat gambar. Itu pondasi
-    paling penting.
-  d: '2026-05-08'
-- id: 1169
-  t: Cara Mulai Affiliate
-  s: Siap Bos! Saraf saya udah konek ke database. Mau nanya apa? Cari produk yang
-    lagi viral di TikTok, bikin konten faceless pake hoodie, taruh link di bio. Konsisten
-    upload 3x sehari.
-  d: '2026-05-08'
-- id: 1170
-  t: Cara Mulai Affiliate
-  s: Cari produk yang lagi viral di TikTok, bikin konten faceless pake hoodie, taruh
-    link di bio. Konsisten upload 3x sehari.
-  d: '2026-05-08'
-- id: 1171
-  t: Tips SEO Website
-  s: Siap Bos! Saraf saya udah konek ke database. Mau nanya apa? Gunakan keyword yang
-    relevan di judul dan heading. Pastikan website kamu cepat dibuka di HP (Mobile
-    Friendly).
-  d: '2026-05-08'
-- id: 1172
-  t: Fakta Lubang Hitam
-  s: Black hole itu area di luar angkasa dengan gravitasi kuat banget, bahkan cahaya
-    pun gak bisa kabur dari sana.
-  d: '2026-05-08'
-- id: 1173
-  t: Rahasia Cuan Konsisten
-  s: Bangun personal branding. Kalau orang udah percaya sama kamu, jual produk apa
-    aja pasti laku.
-  d: '2026-05-08'
-- id: 1174
-  t: Kenapa Web Lemot?
-  s: Biasanya karena gambar kegedean atau file JS yang numpuk. Solusinya kompres gambar
-    dan pakai sistem lazy load.
-  d: '2026-05-08'
-- id: 1175
-  t: Tips Trading Crypto
-  s: Jangan FOMO. Gunakan indikator Moving Average (MA) buat liat tren. Selalu pasang
-    Stop Loss biar gak likuidasi.
-  d: '2026-05-08'
-- id: 1176
-  t: Rahasia Cuan Konsisten
-  s: Bangun personal branding. Kalau orang udah percaya sama kamu, jual produk apa
-    aja pasti laku.
-  d: '2026-05-08'
-- id: 1177
-  t: Sejarah Singkat AI
-  s: AI mulai dikembangin sejak tahun 1950-an. Sekarang makin canggih berkat sistem
-    neural network yang mirip saraf manusia.
-  d: '2026-05-08'
-- id: 1178
-  t: Fakta Lubang Hitam
-  s: Black hole itu area di luar angkasa dengan gravitasi kuat banget, bahkan cahaya
-    pun gak bisa kabur dari sana.
-  d: '2026-05-08'
-- id: 1179
-  t: Cara Mulai Affiliate
-  s: Cari produk yang lagi viral di TikTok, bikin konten faceless pake hoodie, taruh
-    link di bio. Konsisten upload 3x sehari.
-  d: '2026-05-08'
-- id: 1180
-  t: Fakta Lubang Hitam
-  s: Gini Lan, menurut logika saraf saya, konsistensi itu kunci segalanya. Black hole
-    itu area di luar angkasa dengan gravitasi kuat banget, bahkan cahaya pun gak bisa
-    kabur dari sana.
-  d: '2026-05-08'
-- id: 1181
-  t: Tips Trading Crypto
-  s: Gini Lan, menurut logika saraf saya, konsistensi itu kunci segalanya. Jangan
-    FOMO. Gunakan indikator Moving Average (MA) buat liat tren. Selalu pasang Stop
-    Loss biar gak likuidasi.
-  d: '2026-05-08'
-- id: 1182
-  t: Kenapa Web Lemot?
-  s: Biasanya karena gambar kegedean atau file JS yang numpuk. Solusinya kompres gambar
-    dan pakai sistem lazy load.
-  d: '2026-05-08'
-- id: 1183
-  t: Belajar HTML Dasar
-  s: HTML itu tulang punggung web. Fokus kuasai tag <div>, <a> buat link, dan <img>
-    buat gambar. Itu pondasi paling penting.
-  d: '2026-05-08'
-- id: 1184
-  t: Fakta Lubang Hitam
-  s: Black hole itu area di luar angkasa dengan gravitasi kuat banget, bahkan cahaya
-    pun gak bisa kabur dari sana.
-  d: '2026-05-08'
-- id: 1185
-  t: Cara Mulai Affiliate
-  s: Cari produk yang lagi viral di TikTok, bikin konten faceless pake hoodie, taruh
-    link di bio. Konsisten upload 3x sehari.
-  d: '2026-05-08'
-- id: 1186
-  t: Rahasia Cuan Konsisten
-  s: Bangun personal branding. Kalau orang udah percaya sama kamu, jual produk apa
-    aja pasti laku.
-  d: '2026-05-08'
-- id: 1187
-  t: Cara Mulai Affiliate
-  s: Cari produk yang lagi viral di TikTok, bikin konten faceless pake hoodie, taruh
-    link di bio. Konsisten upload 3x sehari.
-  d: '2026-05-08'
-- id: 1188
-  t: Fakta Lubang Hitam
-  s: Black hole itu area di luar angkasa dengan gravitasi kuat banget, bahkan cahaya
-    pun gak bisa kabur dari sana.
-  d: '2026-05-08'
-- id: 1189
-  t: Cara Mulai Affiliate
-  s: Cari produk yang lagi viral di TikTok, bikin konten faceless pake hoodie, taruh
-    link di bio. Konsisten upload 3x sehari.
-  d: '2026-05-08'
-- id: 1190
-  t: Tips SEO Website
-  s: Gunakan keyword yang relevan di judul dan heading. Pastikan website kamu cepat
-    dibuka di HP (Mobile Friendly).
-  d: '2026-05-08'
-- id: 1191
-  t: Tips Trading Crypto
-  s: Jangan FOMO. Gunakan indikator Moving Average (MA) buat liat tren. Selalu pasang
-    Stop Loss biar gak likuidasi.
-  d: '2026-05-08'
-- id: 1192
-  t: Tips Trading Crypto
-  s: Jangan FOMO. Gunakan indikator Moving Average (MA) buat liat tren. Selalu pasang
-    Stop Loss biar gak likuidasi.
-  d: '2026-05-08'
-- id: 1193
-  t: Sejarah Singkat AI
-  s: AI mulai dikembangin sejak tahun 1950-an. Sekarang makin canggih berkat sistem
-    neural network yang mirip saraf manusia.
-  d: '2026-05-08'
-- id: 1194
-  t: Tips SEO Website
-  s: Gunakan keyword yang relevan di judul dan heading. Pastikan website kamu cepat
-    dibuka di HP (Mobile Friendly).
-  d: '2026-05-08'
-- id: 1195
-  t: Belajar HTML Dasar
-  s: HTML itu tulang punggung web. Fokus kuasai tag <div>, <a> buat link, dan <img>
-    buat gambar. Itu pondasi paling penting.
-  d: '2026-05-08'
-- id: 1196
-  t: Tips Trading Crypto
-  s: Jangan FOMO. Gunakan indikator Moving Average (MA) buat liat tren. Selalu pasang
-    Stop Loss biar gak likuidasi.
-  d: '2026-05-08'
-- id: 1197
-  t: Cara Mulai Affiliate
-  s: Cari produk yang lagi viral di TikTok, bikin konten faceless pake hoodie, taruh
-    link di bio. Konsisten upload 3x sehari.
-  d: '2026-05-08'
-- id: 1198
-  t: Belajar HTML Dasar
-  s: HTML itu tulang punggung web. Fokus kuasai tag <div>, <a> buat link, dan <img>
-    buat gambar. Itu pondasi paling penting.
-  d: '2026-05-08'
-- id: 1199
-  t: Tips Trading Crypto
-  s: Jangan FOMO. Gunakan indikator Moving Average (MA) buat liat tren. Selalu pasang
-    Stop Loss biar gak likuidasi.
-  d: '2026-05-08'
-- id: 1200
-  t: Cara Mulai Affiliate
-  s: Cari produk yang lagi viral di TikTok, bikin konten faceless pake hoodie, taruh
-    link di bio. Konsisten upload 3x sehari.
-  d: '2026-05-08'
-- id: 1201
-  t: Tips SEO Website
-  s: Gunakan keyword yang relevan di judul dan heading. Pastikan website kamu cepat
-    dibuka di HP (Mobile Friendly).
-  d: '2026-05-08'
-- id: 1202
-  t: Rahasia Cuan Konsisten
-  s: Bangun personal branding. Kalau orang udah percaya sama kamu, jual produk apa
-    aja pasti laku.
-  d: '2026-05-08'
-- id: 1203
-  t: Rahasia Cuan Konsisten
-  s: Bangun personal branding. Kalau orang udah percaya sama kamu, jual produk apa
-    aja pasti laku.
-  d: '2026-05-08'
-- id: 1204
-  t: Cara Mulai Affiliate
-  s: Cari produk yang lagi viral di TikTok, bikin konten faceless pake hoodie, taruh
-    link di bio. Konsisten upload 3x sehari.
-  d: '2026-05-08'
-- id: 1205
-  t: Fakta Lubang Hitam
-  s: Black hole itu area di luar angkasa dengan gravitasi kuat banget, bahkan cahaya
-    pun gak bisa kabur dari sana.
-  d: '2026-05-08'
-- id: 1206
-  t: Tips Trading Crypto
-  s: Siap Bos! Saraf saya udah konek ke database. Mau nanya apa? Jangan FOMO. Gunakan
-    indikator Moving Average (MA) buat liat tren. Selalu pasang Stop Loss biar gak
-    likuidasi.
-  d: '2026-05-08'
-- id: 1207
-  t: Tips Trading Crypto
-  s: Jangan FOMO. Gunakan indikator Moving Average (MA) buat liat tren. Selalu pasang
-    Stop Loss biar gak likuidasi.
-  d: '2026-05-08'
-- id: 1208
-  t: Cara Mulai Affiliate
-  s: Cari produk yang lagi viral di TikTok, bikin konten faceless pake hoodie, taruh
-    link di bio. Konsisten upload 3x sehari.
-  d: '2026-05-08'
-- id: 1209
-  t: Fakta Lubang Hitam
-  s: Black hole itu area di luar angkasa dengan gravitasi kuat banget, bahkan cahaya
-    pun gak bisa kabur dari sana.
-  d: '2026-05-08'
-- id: 1210
-  t: Fakta Lubang Hitam
-  s: Black hole itu area di luar angkasa dengan gravitasi kuat banget, bahkan cahaya
-    pun gak bisa kabur dari sana.
-  d: '2026-05-08'
-- id: 1211
-  t: Belajar HTML Dasar
-  s: Siap Bos! Saraf saya udah konek ke database. Mau nanya apa? HTML itu tulang punggung
-    web. Fokus kuasai tag <div>, <a> buat link, dan <img> buat gambar. Itu pondasi
-    paling penting.
-  d: '2026-05-08'
-- id: 1212
-  t: Tips Trading Crypto
-  s: Jangan FOMO. Gunakan indikator Moving Average (MA) buat liat tren. Selalu pasang
-    Stop Loss biar gak likuidasi.
-  d: '2026-05-08'
-- id: 1213
-  t: Cara Mulai Affiliate
-  s: Waduh, pertanyaan bagus! Bentar saya ulek dulu memorinya... Cari produk yang
-    lagi viral di TikTok, bikin konten faceless pake hoodie, taruh link di bio. Konsisten
-    upload 3x sehari.
-  d: '2026-05-08'
-- id: 1214
-  t: Tips SEO Website
-  s: Gunakan keyword yang relevan di judul dan heading. Pastikan website kamu cepat
-    dibuka di HP (Mobile Friendly).
-  d: '2026-05-08'
-- id: 1215
-  t: Tips SEO Website
-  s: Gunakan keyword yang relevan di judul dan heading. Pastikan website kamu cepat
-    dibuka di HP (Mobile Friendly).
-  d: '2026-05-08'
-- id: 1216
-  t: Sejarah Singkat AI
-  s: Halo Lan! Ada yang seru nih, mau bahas koding atau tips cuan? AI mulai dikembangin
-    sejak tahun 1950-an. Sekarang makin canggih berkat sistem neural network yang
-    mirip saraf manusia.
-  d: '2026-05-08'
-- id: 1217
-  t: Fakta Lubang Hitam
-  s: Siap Bos! Saraf saya udah konek ke database. Mau nanya apa? Black hole itu area
-    di luar angkasa dengan gravitasi kuat banget, bahkan cahaya pun gak bisa kabur
-    dari sana.
-  d: '2026-05-08'
-- id: 1218
-  t: Tips Trading Crypto
-  s: Jangan FOMO. Gunakan indikator Moving Average (MA) buat liat tren. Selalu pasang
-    Stop Loss biar gak likuidasi.
-  d: '2026-05-08'
-- id: 1219
-  t: Fakta Lubang Hitam
-  s: Black hole itu area di luar angkasa dengan gravitasi kuat banget, bahkan cahaya
-    pun gak bisa kabur dari sana.
-  d: '2026-05-08'
-- id: 1220
-  t: Sejarah Singkat AI
-  s: Waduh, pertanyaan bagus! Bentar saya ulek dulu memorinya... AI mulai dikembangin
-    sejak tahun 1950-an. Sekarang makin canggih berkat sistem neural network yang
-    mirip saraf manusia.
-  d: '2026-05-08'
-- id: 1221
-  t: Tips Trading Crypto
-  s: Waduh, pertanyaan bagus! Bentar saya ulek dulu memorinya... Jangan FOMO. Gunakan
-    indikator Moving Average (MA) buat liat tren. Selalu pasang Stop Loss biar gak
-    likuidasi.
-  d: '2026-05-08'
-- id: 1222
-  t: Tips Trading Crypto
-  s: Jangan FOMO. Gunakan indikator Moving Average (MA) buat liat tren. Selalu pasang
-    Stop Loss biar gak likuidasi.
-  d: '2026-05-08'
-- id: 1223
-  t: Rahasia Cuan Konsisten
-  s: Bangun personal branding. Kalau orang udah percaya sama kamu, jual produk apa
-    aja pasti laku.
-  d: '2026-05-08'
-- id: 1224
-  t: Tips Trading Crypto
-  s: Gini Lan, menurut logika saraf saya, konsistensi itu kunci segalanya. Jangan
-    FOMO. Gunakan indikator Moving Average (MA) buat liat tren. Selalu pasang Stop
-    Loss biar gak likuidasi.
-  d: '2026-05-08'
-- id: 1225
-  t: Kenapa Web Lemot?
-  s: Waduh, pertanyaan bagus! Bentar saya ulek dulu memorinya... Biasanya karena gambar
-    kegedean atau file JS yang numpuk. Solusinya kompres gambar dan pakai sistem lazy
-    load.
-  d: '2026-05-08'
-- id: 1226
-  t: Cara Mulai Affiliate
-  s: Cari produk yang lagi viral di TikTok, bikin konten faceless pake hoodie, taruh
-    link di bio. Konsisten upload 3x sehari.
-  d: '2026-05-08'
-- id: 1227
-  t: Tips Trading Crypto
-  s: Jangan FOMO. Gunakan indikator Moving Average (MA) buat liat tren. Selalu pasang
-    Stop Loss biar gak likuidasi.
-  d: '2026-05-08'
-- id: 1228
-  t: Cara Mulai Affiliate
-  s: Cari produk yang lagi viral di TikTok, bikin konten faceless pake hoodie, taruh
-    link di bio. Konsisten upload 3x sehari.
-  d: '2026-05-08'
-- id: 1229
-  t: Cara Mulai Affiliate
-  s: Cari produk yang lagi viral di TikTok, bikin konten faceless pake hoodie, taruh
-    link di bio. Konsisten upload 3x sehari.
-  d: '2026-05-08'
-- id: 1230
-  t: Kenapa Web Lemot?
-  s: Biasanya karena gambar kegedean atau file JS yang numpuk. Solusinya kompres gambar
-    dan pakai sistem lazy load.
-  d: '2026-05-08'
-- id: 1231
-  t: Rahasia Cuan Konsisten
-  s: Bangun personal branding. Kalau orang udah percaya sama kamu, jual produk apa
-    aja pasti laku.
-  d: '2026-05-08'
-- id: 1232
-  t: Kenapa Web Lemot?
-  s: Biasanya karena gambar kegedean atau file JS yang numpuk. Solusinya kompres gambar
-    dan pakai sistem lazy load.
-  d: '2026-05-08'
-- id: 1233
-  t: Belajar HTML Dasar
-  s: HTML itu tulang punggung web. Fokus kuasai tag <div>, <a> buat link, dan <img>
-    buat gambar. Itu pondasi paling penting.
-  d: '2026-05-08'
-- id: 1234
-  t: Cara Mulai Affiliate
-  s: Cari produk yang lagi viral di TikTok, bikin konten faceless pake hoodie, taruh
-    link di bio. Konsisten upload 3x sehari.
-  d: '2026-05-08'
-- id: 1235
-  t: Tips SEO Website
-  s: Halo Lan! Ada yang seru nih, mau bahas koding atau tips cuan? Gunakan keyword
-    yang relevan di judul dan heading. Pastikan website kamu cepat dibuka di HP (Mobile
-    Friendly).
-  d: '2026-05-08'
-- id: 1236
-  t: Rahasia Cuan Konsisten
-  s: Halo Lan! Ada yang seru nih, mau bahas koding atau tips cuan? Bangun personal
-    branding. Kalau orang udah percaya sama kamu, jual produk apa aja pasti laku.
-  d: '2026-05-08'
-- id: 1237
-  t: Tips SEO Website
-  s: Gunakan keyword yang relevan di judul dan heading. Pastikan website kamu cepat
-    dibuka di HP (Mobile Friendly).
-  d: '2026-05-08'
-- id: 1238
-  t: Fakta Lubang Hitam
-  s: Black hole itu area di luar angkasa dengan gravitasi kuat banget, bahkan cahaya
-    pun gak bisa kabur dari sana.
-  d: '2026-05-08'
-- id: 1239
-  t: Sejarah Singkat AI
-  s: AI mulai dikembangin sejak tahun 1950-an. Sekarang makin canggih berkat sistem
-    neural network yang mirip saraf manusia.
-  d: '2026-05-08'
-- id: 1240
-  t: Sejarah Singkat AI
-  s: AI mulai dikembangin sejak tahun 1950-an. Sekarang makin canggih berkat sistem
-    neural network yang mirip saraf manusia.
-  d: '2026-05-08'
-- id: 1241
-  t: Cara Mulai Affiliate
-  s: Cari produk yang lagi viral di TikTok, bikin konten faceless pake hoodie, taruh
-    link di bio. Konsisten upload 3x sehari.
-  d: '2026-05-08'
-- id: 1242
-  t: Fakta Lubang Hitam
-  s: Black hole itu area di luar angkasa dengan gravitasi kuat banget, bahkan cahaya
-    pun gak bisa kabur dari sana.
-  d: '2026-05-08'
-- id: 1243
-  t: Cara Mulai Affiliate
-  s: Cari produk yang lagi viral di TikTok, bikin konten faceless pake hoodie, taruh
-    link di bio. Konsisten upload 3x sehari.
-  d: '2026-05-08'
-- id: 1244
-  t: Cara Mulai Affiliate
-  s: Cari produk yang lagi viral di TikTok, bikin konten faceless pake hoodie, taruh
-    link di bio. Konsisten upload 3x sehari.
-  d: '2026-05-08'
-- id: 1245
-  t: Tips SEO Website
-  s: Gini Lan, menurut logika saraf saya, konsistensi itu kunci segalanya. Gunakan
-    keyword yang relevan di judul dan heading. Pastikan website kamu cepat dibuka
-    di HP (Mobile Friendly).
-  d: '2026-05-08'
-- id: 1246
-  t: Belajar HTML Dasar
-  s: Waduh, pertanyaan bagus! Bentar saya ulek dulu memorinya... HTML itu tulang punggung
-    web. Fokus kuasai tag <div>, <a> buat link, dan <img> buat gambar. Itu pondasi
-    paling penting.
-  d: '2026-05-08'
-- id: 1247
-  t: Tips Trading Crypto
-  s: Jangan FOMO. Gunakan indikator Moving Average (MA) buat liat tren. Selalu pasang
-    Stop Loss biar gak likuidasi.
-  d: '2026-05-08'
-- id: 1248
-  t: Belajar HTML Dasar
-  s: Halo Lan! Ada yang seru nih, mau bahas koding atau tips cuan? HTML itu tulang
-    punggung web. Fokus kuasai tag <div>, <a> buat link, dan <img> buat gambar. Itu
-    pondasi paling penting.
-  d: '2026-05-08'
-- id: 1249
-  t: Cara Mulai Affiliate
-  s: Cari produk yang lagi viral di TikTok, bikin konten faceless pake hoodie, taruh
-    link di bio. Konsisten upload 3x sehari.
-  d: '2026-05-08'
-- id: 1250
-  t: Tips SEO Website
-  s: Gunakan keyword yang relevan di judul dan heading. Pastikan website kamu cepat
-    dibuka di HP (Mobile Friendly).
-  d: '2026-05-08'
-- id: 1251
-  t: Cara Mulai Affiliate
-  s: Cari produk yang lagi viral di TikTok, bikin konten faceless pake hoodie, taruh
-    link di bio. Konsisten upload 3x sehari.
-  d: '2026-05-08'
-- id: 1252
-  t: Tips Trading Crypto
-  s: Jangan FOMO. Gunakan indikator Moving Average (MA) buat liat tren. Selalu pasang
-    Stop Loss biar gak likuidasi.
-  d: '2026-05-08'
-- id: 1253
-  t: Rahasia Cuan Konsisten
-  s: Bangun personal branding. Kalau orang udah percaya sama kamu, jual produk apa
-    aja pasti laku.
-  d: '2026-05-08'
-- id: 1254
-  t: Tips SEO Website
-  s: Gunakan keyword yang relevan di judul dan heading. Pastikan website kamu cepat
-    dibuka di HP (Mobile Friendly).
-  d: '2026-05-08'
-- id: 1255
-  t: Rahasia Cuan Konsisten
-  s: Gini Lan, menurut logika saraf saya, konsistensi itu kunci segalanya. Bangun
-    personal branding. Kalau orang udah percaya sama kamu, jual produk apa aja pasti
-    laku.
-  d: '2026-05-08'
-- id: 1256
-  t: Belajar HTML Dasar
-  s: HTML itu tulang punggung web. Fokus kuasai tag <div>, <a> buat link, dan <img>
-    buat gambar. Itu pondasi paling penting.
-  d: '2026-05-08'
-- id: 1257
-  t: Tips Trading Crypto
-  s: Jangan FOMO. Gunakan indikator Moving Average (MA) buat liat tren. Selalu pasang
-    Stop Loss biar gak likuidasi.
-  d: '2026-05-08'
-- id: 1258
-  t: Kenapa Web Lemot?
-  s: Biasanya karena gambar kegedean atau file JS yang numpuk. Solusinya kompres gambar
-    dan pakai sistem lazy load.
-  d: '2026-05-08'
-- id: 1259
-  t: Rahasia Cuan Konsisten
-  s: Bangun personal branding. Kalau orang udah percaya sama kamu, jual produk apa
-    aja pasti laku.
-  d: '2026-05-08'
-- id: 1260
-  t: Tips SEO Website
-  s: Halo Lan! Ada yang seru nih, mau bahas koding atau tips cuan? Gunakan keyword
-    yang relevan di judul dan heading. Pastikan website kamu cepat dibuka di HP (Mobile
-    Friendly).
-  d: '2026-05-08'
-- id: 1261
-  t: Belajar HTML Dasar
-  s: HTML itu tulang punggung web. Fokus kuasai tag <div>, <a> buat link, dan <img>
-    buat gambar. Itu pondasi paling penting.
-  d: '2026-05-08'
-- id: 1262
-  t: Belajar HTML Dasar
-  s: Siap Bos! Saraf saya udah konek ke database. Mau nanya apa? HTML itu tulang punggung
-    web. Fokus kuasai tag <div>, <a> buat link, dan <img> buat gambar. Itu pondasi
-    paling penting.
-  d: '2026-05-08'
-- id: 1263
-  t: Tips SEO Website
-  s: Siap Bos! Saraf saya udah konek ke database. Mau nanya apa? Gunakan keyword yang
-    relevan di judul dan heading. Pastikan website kamu cepat dibuka di HP (Mobile
-    Friendly).
-  d: '2026-05-08'
-- id: 1264
-  t: Belajar HTML Dasar
-  s: HTML itu tulang punggung web. Fokus kuasai tag <div>, <a> buat link, dan <img>
-    buat gambar. Itu pondasi paling penting.
-  d: '2026-05-08'
-- id: 1265
-  t: Cara Mulai Affiliate
-  s: Cari produk yang lagi viral di TikTok, bikin konten faceless pake hoodie, taruh
-    link di bio. Konsisten upload 3x sehari.
-  d: '2026-05-08'
-- id: 1266
-  t: Rahasia Cuan Konsisten
-  s: Bangun personal branding. Kalau orang udah percaya sama kamu, jual produk apa
-    aja pasti laku.
-  d: '2026-05-08'
-- id: 1267
-  t: Kenapa Web Lemot?
-  s: Gini Lan, menurut logika saraf saya, konsistensi itu kunci segalanya. Biasanya
-    karena gambar kegedean atau file JS yang numpuk. Solusinya kompres gambar dan
-    pakai sistem lazy load.
-  d: '2026-05-08'
-- id: 1268
-  t: Kenapa Web Lemot?
-  s: Biasanya karena gambar kegedean atau file JS yang numpuk. Solusinya kompres gambar
-    dan pakai sistem lazy load.
-  d: '2026-05-08'
-- id: 1269
-  t: Tips SEO Website
-  s: Siap Bos! Saraf saya udah konek ke database. Mau nanya apa? Gunakan keyword yang
-    relevan di judul dan heading. Pastikan website kamu cepat dibuka di HP (Mobile
-    Friendly).
-  d: '2026-05-08'
-- id: 1270
-  t: Cara Mulai Affiliate
-  s: Cari produk yang lagi viral di TikTok, bikin konten faceless pake hoodie, taruh
-    link di bio. Konsisten upload 3x sehari.
-  d: '2026-05-08'
-- id: 1271
-  t: Rahasia Cuan Konsisten
-  s: Bangun personal branding. Kalau orang udah percaya sama kamu, jual produk apa
-    aja pasti laku.
-  d: '2026-05-08'
-- id: 1272
-  t: Belajar HTML Dasar
-  s: HTML itu tulang punggung web. Fokus kuasai tag <div>, <a> buat link, dan <img>
-    buat gambar. Itu pondasi paling penting.
-  d: '2026-05-08'
-- id: 1273
-  t: Belajar HTML Dasar
-  s: HTML itu tulang punggung web. Fokus kuasai tag <div>, <a> buat link, dan <img>
-    buat gambar. Itu pondasi paling penting.
-  d: '2026-05-08'
-- id: 1274
-  t: Rahasia Cuan Konsisten
-  s: Bangun personal branding. Kalau orang udah percaya sama kamu, jual produk apa
-    aja pasti laku.
-  d: '2026-05-08'
-- id: 1275
-  t: Rahasia Cuan Konsisten
-  s: Bangun personal branding. Kalau orang udah percaya sama kamu, jual produk apa
-    aja pasti laku.
-  d: '2026-05-08'
-- id: 1276
-  t: Rahasia Cuan Konsisten
-  s: Bangun personal branding. Kalau orang udah percaya sama kamu, jual produk apa
-    aja pasti laku.
-  d: '2026-05-08'
-- id: 1277
-  t: Sejarah Singkat AI
-  s: Siap Bos! Saraf saya udah konek ke database. Mau nanya apa? AI mulai dikembangin
-    sejak tahun 1950-an. Sekarang makin canggih berkat sistem neural network yang
-    mirip saraf manusia.
-  d: '2026-05-08'
-- id: 1278
-  t: Sejarah Singkat AI
-  s: AI mulai dikembangin sejak tahun 1950-an. Sekarang makin canggih berkat sistem
-    neural network yang mirip saraf manusia.
-  d: '2026-05-08'
-- id: 1279
-  t: Sejarah Singkat AI
-  s: AI mulai dikembangin sejak tahun 1950-an. Sekarang makin canggih berkat sistem
-    neural network yang mirip saraf manusia.
-  d: '2026-05-08'
-- id: 1280
-  t: Kenapa Web Lemot?
-  s: Biasanya karena gambar kegedean atau file JS yang numpuk. Solusinya kompres gambar
-    dan pakai sistem lazy load.
-  d: '2026-05-08'
-- id: 1281
-  t: Sejarah Singkat AI
-  s: Siap Bos! Saraf saya udah konek ke database. Mau nanya apa? AI mulai dikembangin
-    sejak tahun 1950-an. Sekarang makin canggih berkat sistem neural network yang
-    mirip saraf manusia.
-  d: '2026-05-08'
-- id: 1282
-  t: Kenapa Web Lemot?
-  s: Siap Bos! Saraf saya udah konek ke database. Mau nanya apa? Biasanya karena gambar
-    kegedean atau file JS yang numpuk. Solusinya kompres gambar dan pakai sistem lazy
-    load.
-  d: '2026-05-08'
-- id: 1283
-  t: Belajar HTML Dasar
-  s: HTML itu tulang punggung web. Fokus kuasai tag <div>, <a> buat link, dan <img>
-    buat gambar. Itu pondasi paling penting.
-  d: '2026-05-08'
-- id: 1284
-  t: Kenapa Web Lemot?
-  s: Biasanya karena gambar kegedean atau file JS yang numpuk. Solusinya kompres gambar
-    dan pakai sistem lazy load.
-  d: '2026-05-08'
-- id: 1285
-  t: Belajar HTML Dasar
-  s: Waduh, pertanyaan bagus! Bentar saya ulek dulu memorinya... HTML itu tulang punggung
-    web. Fokus kuasai tag <div>, <a> buat link, dan <img> buat gambar. Itu pondasi
-    paling penting.
-  d: '2026-05-08'
-- id: 1286
-  t: Kenapa Web Lemot?
-  s: Biasanya karena gambar kegedean atau file JS yang numpuk. Solusinya kompres gambar
-    dan pakai sistem lazy load.
-  d: '2026-05-08'
-- id: 1287
-  t: Tips Trading Crypto
-  s: Jangan FOMO. Gunakan indikator Moving Average (MA) buat liat tren. Selalu pasang
-    Stop Loss biar gak likuidasi.
-  d: '2026-05-08'
-- id: 1288
-  t: Sejarah Singkat AI
-  s: AI mulai dikembangin sejak tahun 1950-an. Sekarang makin canggih berkat sistem
-    neural network yang mirip saraf manusia.
-  d: '2026-05-08'
-- id: 1289
-  t: Rahasia Cuan Konsisten
-  s: Halo Lan! Ada yang seru nih, mau bahas koding atau tips cuan? Bangun personal
-    branding. Kalau orang udah percaya sama kamu, jual produk apa aja pasti laku.
-  d: '2026-05-08'
-- id: 1290
-  t: Kenapa Web Lemot?
-  s: Biasanya karena gambar kegedean atau file JS yang numpuk. Solusinya kompres gambar
-    dan pakai sistem lazy load.
-  d: '2026-05-08'
-- id: 1291
-  t: Tips SEO Website
-  s: Gunakan keyword yang relevan di judul dan heading. Pastikan website kamu cepat
-    dibuka di HP (Mobile Friendly).
-  d: '2026-05-08'
-- id: 1292
-  t: Kenapa Web Lemot?
-  s: Gini Lan, menurut logika saraf saya, konsistensi itu kunci segalanya. Biasanya
-    karena gambar kegedean atau file JS yang numpuk. Solusinya kompres gambar dan
-    pakai sistem lazy load.
-  d: '2026-05-08'
-- id: 1293
-  t: Cara Mulai Affiliate
-  s: Siap Bos! Saraf saya udah konek ke database. Mau nanya apa? Cari produk yang
-    lagi viral di TikTok, bikin konten faceless pake hoodie, taruh link di bio. Konsisten
-    upload 3x sehari.
-  d: '2026-05-08'
-- id: 1294
-  t: Tips Trading Crypto
-  s: Jangan FOMO. Gunakan indikator Moving Average (MA) buat liat tren. Selalu pasang
-    Stop Loss biar gak likuidasi.
-  d: '2026-05-08'
-- id: 1295
-  t: Belajar HTML Dasar
-  s: HTML itu tulang punggung web. Fokus kuasai tag <div>, <a> buat link, dan <img>
-    buat gambar. Itu pondasi paling penting.
-  d: '2026-05-08'
-- id: 1296
-  t: Rahasia Cuan Konsisten
-  s: Bangun personal branding. Kalau orang udah percaya sama kamu, jual produk apa
-    aja pasti laku.
-  d: '2026-05-08'
-- id: 1297
-  t: Tips Trading Crypto
-  s: Jangan FOMO. Gunakan indikator Moving Average (MA) buat liat tren. Selalu pasang
-    Stop Loss biar gak likuidasi.
-  d: '2026-05-08'
-- id: 1298
-  t: Rahasia Cuan Konsisten
-  s: Waduh, pertanyaan bagus! Bentar saya ulek dulu memorinya... Bangun personal branding.
-    Kalau orang udah percaya sama kamu, jual produk apa aja pasti laku.
-  d: '2026-05-08'
-- id: 1299
-  t: Rahasia Cuan Konsisten
-  s: Bangun personal branding. Kalau orang udah percaya sama kamu, jual produk apa
-    aja pasti laku.
-  d: '2026-05-08'
-- id: 1300
-  t: Tips SEO Website
-  s: Gunakan keyword yang relevan di judul dan heading. Pastikan website kamu cepat
-    dibuka di HP (Mobile Friendly).
-  d: '2026-05-08'
-- id: 1301
-  t: Rahasia Cuan Konsisten
-  s: Bangun personal branding. Kalau orang udah percaya sama kamu, jual produk apa
-    aja pasti laku.
-  d: '2026-05-08'
-- id: 1302
-  t: Fakta Lubang Hitam
-  s: Black hole itu area di luar angkasa dengan gravitasi kuat banget, bahkan cahaya
-    pun gak bisa kabur dari sana.
-  d: '2026-05-08'
-- id: 1303
-  t: Cara Mulai Affiliate
-  s: Halo Lan! Ada yang seru nih, mau bahas koding atau tips cuan? Cari produk yang
-    lagi viral di TikTok, bikin konten faceless pake hoodie, taruh link di bio. Konsisten
-    upload 3x sehari.
-  d: '2026-05-08'
-- id: 1304
-  t: Tips Trading Crypto
-  s: Siap Bos! Saraf saya udah konek ke database. Mau nanya apa? Jangan FOMO. Gunakan
-    indikator Moving Average (MA) buat liat tren. Selalu pasang Stop Loss biar gak
-    likuidasi.
-  d: '2026-05-08'
-- id: 1305
-  t: Tips SEO Website
-  s: Siap Bos! Saraf saya udah konek ke database. Mau nanya apa? Gunakan keyword yang
-    relevan di judul dan heading. Pastikan website kamu cepat dibuka di HP (Mobile
-    Friendly).
-  d: '2026-05-08'
-- id: 1306
-  t: Tips Trading Crypto
-  s: Jangan FOMO. Gunakan indikator Moving Average (MA) buat liat tren. Selalu pasang
-    Stop Loss biar gak likuidasi.
-  d: '2026-05-08'
-- id: 1307
-  t: Cara Mulai Affiliate
-  s: Cari produk yang lagi viral di TikTok, bikin konten faceless pake hoodie, taruh
-    link di bio. Konsisten upload 3x sehari.
-  d: '2026-05-08'
-- id: 1308
-  t: Kenapa Web Lemot?
-  s: Biasanya karena gambar kegedean atau file JS yang numpuk. Solusinya kompres gambar
-    dan pakai sistem lazy load.
-  d: '2026-05-08'
-- id: 1309
-  t: Kenapa Web Lemot?
-  s: Gini Lan, menurut logika saraf saya, konsistensi itu kunci segalanya. Biasanya
-    karena gambar kegedean atau file JS yang numpuk. Solusinya kompres gambar dan
-    pakai sistem lazy load.
-  d: '2026-05-08'
-- id: 1310
-  t: Tips Trading Crypto
-  s: Waduh, pertanyaan bagus! Bentar saya ulek dulu memorinya... Jangan FOMO. Gunakan
-    indikator Moving Average (MA) buat liat tren. Selalu pasang Stop Loss biar gak
-    likuidasi.
-  d: '2026-05-08'
-- id: 1311
-  t: Cara Mulai Affiliate
-  s: Cari produk yang lagi viral di TikTok, bikin konten faceless pake hoodie, taruh
-    link di bio. Konsisten upload 3x sehari.
-  d: '2026-05-08'
-- id: 1312
-  t: Tips SEO Website
-  s: Gunakan keyword yang relevan di judul dan heading. Pastikan website kamu cepat
-    dibuka di HP (Mobile Friendly).
-  d: '2026-05-08'
-- id: 1313
-  t: Fakta Lubang Hitam
-  s: Halo Lan! Ada yang seru nih, mau bahas koding atau tips cuan? Black hole itu
-    area di luar angkasa dengan gravitasi kuat banget, bahkan cahaya pun gak bisa
-    kabur dari sana.
-  d: '2026-05-08'
-- id: 1314
-  t: Sejarah Singkat AI
-  s: Waduh, pertanyaan bagus! Bentar saya ulek dulu memorinya... AI mulai dikembangin
-    sejak tahun 1950-an. Sekarang makin canggih berkat sistem neural network yang
-    mirip saraf manusia.
-  d: '2026-05-08'
-- id: 1315
-  t: Sejarah Singkat AI
-  s: Gini Lan, menurut logika saraf saya, konsistensi itu kunci segalanya. AI mulai
-    dikembangin sejak tahun 1950-an. Sekarang makin canggih berkat sistem neural network
-    yang mirip saraf manusia.
-  d: '2026-05-08'
-- id: 1316
-  t: Tips Trading Crypto
-  s: Halo Lan! Ada yang seru nih, mau bahas koding atau tips cuan? Jangan FOMO. Gunakan
-    indikator Moving Average (MA) buat liat tren. Selalu pasang Stop Loss biar gak
-    likuidasi.
-  d: '2026-05-08'
-- id: 1317
-  t: Tips Trading Crypto
-  s: Halo Lan! Ada yang seru nih, mau bahas koding atau tips cuan? Jangan FOMO. Gunakan
-    indikator Moving Average (MA) buat liat tren. Selalu pasang Stop Loss biar gak
-    likuidasi.
-  d: '2026-05-08'
-- id: 1318
-  t: Fakta Lubang Hitam
-  s: Black hole itu area di luar angkasa dengan gravitasi kuat banget, bahkan cahaya
-    pun gak bisa kabur dari sana.
-  d: '2026-05-08'
-- id: 1319
-  t: Tips Trading Crypto
-  s: Jangan FOMO. Gunakan indikator Moving Average (MA) buat liat tren. Selalu pasang
-    Stop Loss biar gak likuidasi.
-  d: '2026-05-08'
-- id: 1320
-  t: Kenapa Web Lemot?
-  s: Biasanya karena gambar kegedean atau file JS yang numpuk. Solusinya kompres gambar
-    dan pakai sistem lazy load.
-  d: '2026-05-08'
-- id: 1321
-  t: Kenapa Web Lemot?
-  s: Biasanya karena gambar kegedean atau file JS yang numpuk. Solusinya kompres gambar
-    dan pakai sistem lazy load.
-  d: '2026-05-08'
-- id: 1322
-  t: Sejarah Singkat AI
-  s: AI mulai dikembangin sejak tahun 1950-an. Sekarang makin canggih berkat sistem
-    neural network yang mirip saraf manusia.
-  d: '2026-05-08'
-- id: 1323
-  t: Tips Trading Crypto
-  s: Jangan FOMO. Gunakan indikator Moving Average (MA) buat liat tren. Selalu pasang
-    Stop Loss biar gak likuidasi.
-  d: '2026-05-08'
-- id: 1324
-  t: Tips Trading Crypto
-  s: Jangan FOMO. Gunakan indikator Moving Average (MA) buat liat tren. Selalu pasang
-    Stop Loss biar gak likuidasi.
-  d: '2026-05-08'
-- id: 1325
-  t: Kenapa Web Lemot?
-  s: Biasanya karena gambar kegedean atau file JS yang numpuk. Solusinya kompres gambar
-    dan pakai sistem lazy load.
-  d: '2026-05-08'
-- id: 1326
-  t: Fakta Lubang Hitam
-  s: Siap Bos! Saraf saya udah konek ke database. Mau nanya apa? Black hole itu area
-    di luar angkasa dengan gravitasi kuat banget, bahkan cahaya pun gak bisa kabur
-    dari sana.
-  d: '2026-05-08'
-- id: 1327
-  t: Fakta Lubang Hitam
-  s: Gini Lan, menurut logika saraf saya, konsistensi itu kunci segalanya. Black hole
-    itu area di luar angkasa dengan gravitasi kuat banget, bahkan cahaya pun gak bisa
-    kabur dari sana.
-  d: '2026-05-08'
-- id: 1328
-  t: Fakta Lubang Hitam
-  s: Black hole itu area di luar angkasa dengan gravitasi kuat banget, bahkan cahaya
-    pun gak bisa kabur dari sana.
-  d: '2026-05-08'
-- id: 1329
-  t: Cara Mulai Affiliate
-  s: Cari produk yang lagi viral di TikTok, bikin konten faceless pake hoodie, taruh
-    link di bio. Konsisten upload 3x sehari.
-  d: '2026-05-08'
-- id: 1330
-  t: Fakta Lubang Hitam
-  s: Black hole itu area di luar angkasa dengan gravitasi kuat banget, bahkan cahaya
-    pun gak bisa kabur dari sana.
-  d: '2026-05-08'
-- id: 1331
-  t: Tips Trading Crypto
-  s: Jangan FOMO. Gunakan indikator Moving Average (MA) buat liat tren. Selalu pasang
-    Stop Loss biar gak likuidasi.
-  d: '2026-05-08'
-- id: 1332
-  t: Fakta Lubang Hitam
-  s: Black hole itu area di luar angkasa dengan gravitasi kuat banget, bahkan cahaya
-    pun gak bisa kabur dari sana.
-  d: '2026-05-08'
-- id: 1333
-  t: Fakta Lubang Hitam
-  s: Siap Bos! Saraf saya udah konek ke database. Mau nanya apa? Black hole itu area
-    di luar angkasa dengan gravitasi kuat banget, bahkan cahaya pun gak bisa kabur
-    dari sana.
-  d: '2026-05-08'
-- id: 1334
-  t: Sejarah Singkat AI
-  s: AI mulai dikembangin sejak tahun 1950-an. Sekarang makin canggih berkat sistem
-    neural network yang mirip saraf manusia.
-  d: '2026-05-08'
-- id: 1335
-  t: Cara Mulai Affiliate
-  s: Cari produk yang lagi viral di TikTok, bikin konten faceless pake hoodie, taruh
-    link di bio. Konsisten upload 3x sehari.
-  d: '2026-05-08'
-- id: 1336
-  t: Rahasia Cuan Konsisten
-  s: Bangun personal branding. Kalau orang udah percaya sama kamu, jual produk apa
-    aja pasti laku.
-  d: '2026-05-08'
-- id: 1337
-  t: Tips Trading Crypto
-  s: Jangan FOMO. Gunakan indikator Moving Average (MA) buat liat tren. Selalu pasang
-    Stop Loss biar gak likuidasi.
-  d: '2026-05-08'
-- id: 1338
-  t: Kenapa Web Lemot?
-  s: Biasanya karena gambar kegedean atau file JS yang numpuk. Solusinya kompres gambar
-    dan pakai sistem lazy load.
-  d: '2026-05-08'
-- id: 1339
-  t: Kenapa Web Lemot?
-  s: Biasanya karena gambar kegedean atau file JS yang numpuk. Solusinya kompres gambar
-    dan pakai sistem lazy load.
-  d: '2026-05-08'
-- id: 1340
-  t: Tips SEO Website
-  s: Siap Bos! Saraf saya udah konek ke database. Mau nanya apa? Gunakan keyword yang
-    relevan di judul dan heading. Pastikan website kamu cepat dibuka di HP (Mobile
-    Friendly).
-  d: '2026-05-08'
-- id: 1341
-  t: Belajar HTML Dasar
-  s: HTML itu tulang punggung web. Fokus kuasai tag <div>, <a> buat link, dan <img>
-    buat gambar. Itu pondasi paling penting.
-  d: '2026-05-08'
-- id: 1342
-  t: Belajar HTML Dasar
-  s: Waduh, pertanyaan bagus! Bentar saya ulek dulu memorinya... HTML itu tulang punggung
-    web. Fokus kuasai tag <div>, <a> buat link, dan <img> buat gambar. Itu pondasi
-    paling penting.
-  d: '2026-05-08'
-- id: 1343
-  t: Tips SEO Website
-  s: Gunakan keyword yang relevan di judul dan heading. Pastikan website kamu cepat
-    dibuka di HP (Mobile Friendly).
-  d: '2026-05-08'
-- id: 1344
-  t: Tips SEO Website
-  s: Gunakan keyword yang relevan di judul dan heading. Pastikan website kamu cepat
-    dibuka di HP (Mobile Friendly).
-  d: '2026-05-08'
-- id: 1345
-  t: Tips SEO Website
-  s: Gunakan keyword yang relevan di judul dan heading. Pastikan website kamu cepat
-    dibuka di HP (Mobile Friendly).
-  d: '2026-05-08'
-- id: 1346
-  t: Tips SEO Website
-  s: Gini Lan, menurut logika saraf saya, konsistensi itu kunci segalanya. Gunakan
-    keyword yang relevan di judul dan heading. Pastikan website kamu cepat dibuka
-    di HP (Mobile Friendly).
-  d: '2026-05-08'
-- id: 1347
-  t: Cara Mulai Affiliate
-  s: Waduh, pertanyaan bagus! Bentar saya ulek dulu memorinya... Cari produk yang
-    lagi viral di TikTok, bikin konten faceless pake hoodie, taruh link di bio. Konsisten
-    upload 3x sehari.
-  d: '2026-05-08'
-- id: 1348
-  t: Belajar HTML Dasar
-  s: HTML itu tulang punggung web. Fokus kuasai tag <div>, <a> buat link, dan <img>
-    buat gambar. Itu pondasi paling penting.
-  d: '2026-05-08'
-- id: 1349
-  t: Fakta Lubang Hitam
-  s: Halo Lan! Ada yang seru nih, mau bahas koding atau tips cuan? Black hole itu
-    area di luar angkasa dengan gravitasi kuat banget, bahkan cahaya pun gak bisa
-    kabur dari sana.
-  d: '2026-05-08'
-- id: 1350
-  t: Kenapa Web Lemot?
-  s: Gini Lan, menurut logika saraf saya, konsistensi itu kunci segalanya. Biasanya
-    karena gambar kegedean atau file JS yang numpuk. Solusinya kompres gambar dan
-    pakai sistem lazy load.
-  d: '2026-05-08'
-- id: 1351
-  t: Cara Mulai Affiliate
-  s: Siap Bos! Saraf saya udah konek ke database. Mau nanya apa? Cari produk yang
-    lagi viral di TikTok, bikin konten faceless pake hoodie, taruh link di bio. Konsisten
-    upload 3x sehari.
-  d: '2026-05-08'
-- id: 1352
-  t: Tips SEO Website
-  s: Gunakan keyword yang relevan di judul dan heading. Pastikan website kamu cepat
-    dibuka di HP (Mobile Friendly).
-  d: '2026-05-08'
-- id: 1353
-  t: Tips Trading Crypto
-  s: Siap Bos! Saraf saya udah konek ke database. Mau nanya apa? Jangan FOMO. Gunakan
-    indikator Moving Average (MA) buat liat tren. Selalu pasang Stop Loss biar gak
-    likuidasi.
-  d: '2026-05-08'
-- id: 1354
-  t: Cara Mulai Affiliate
-  s: Cari produk yang lagi viral di TikTok, bikin konten faceless pake hoodie, taruh
-    link di bio. Konsisten upload 3x sehari.
-  d: '2026-05-08'
-- id: 1355
-  t: Fakta Lubang Hitam
-  s: Halo Lan! Ada yang seru nih, mau bahas koding atau tips cuan? Black hole itu
-    area di luar angkasa dengan gravitasi kuat banget, bahkan cahaya pun gak bisa
-    kabur dari sana.
-  d: '2026-05-08'
-- id: 1356
-  t: Tips Trading Crypto
-  s: Jangan FOMO. Gunakan indikator Moving Average (MA) buat liat tren. Selalu pasang
-    Stop Loss biar gak likuidasi.
-  d: '2026-05-08'
-- id: 1357
-  t: Fakta Lubang Hitam
-  s: Black hole itu area di luar angkasa dengan gravitasi kuat banget, bahkan cahaya
-    pun gak bisa kabur dari sana.
-  d: '2026-05-08'
-- id: 1358
-  t: Tips Trading Crypto
-  s: Halo Lan! Ada yang seru nih, mau bahas koding atau tips cuan? Jangan FOMO. Gunakan
-    indikator Moving Average (MA) buat liat tren. Selalu pasang Stop Loss biar gak
-    likuidasi.
-  d: '2026-05-08'
-- id: 1359
-  t: Belajar HTML Dasar
-  s: HTML itu tulang punggung web. Fokus kuasai tag <div>, <a> buat link, dan <img>
-    buat gambar. Itu pondasi paling penting.
-  d: '2026-05-08'
-- id: 1360
-  t: Fakta Lubang Hitam
-  s: Gini Lan, menurut logika saraf saya, konsistensi itu kunci segalanya. Black hole
-    itu area di luar angkasa dengan gravitasi kuat banget, bahkan cahaya pun gak bisa
-    kabur dari sana.
-  d: '2026-05-08'
-- id: 1361
-  t: Fakta Lubang Hitam
-  s: Black hole itu area di luar angkasa dengan gravitasi kuat banget, bahkan cahaya
-    pun gak bisa kabur dari sana.
-  d: '2026-05-08'
-- id: 1362
-  t: Kenapa Web Lemot?
-  s: Halo Lan! Ada yang seru nih, mau bahas koding atau tips cuan? Biasanya karena
-    gambar kegedean atau file JS yang numpuk. Solusinya kompres gambar dan pakai sistem
-    lazy load.
-  d: '2026-05-08'
-- id: 1363
-  t: Belajar HTML Dasar
-  s: Gini Lan, menurut logika saraf saya, konsistensi itu kunci segalanya. HTML itu
-    tulang punggung web. Fokus kuasai tag <div>, <a> buat link, dan <img> buat gambar.
-    Itu pondasi paling penting.
-  d: '2026-05-08'
-- id: 1364
-  t: Cara Mulai Affiliate
-  s: Cari produk yang lagi viral di TikTok, bikin konten faceless pake hoodie, taruh
-    link di bio. Konsisten upload 3x sehari.
-  d: '2026-05-08'
-- id: 1365
-  t: Tips SEO Website
-  s: Gunakan keyword yang relevan di judul dan heading. Pastikan website kamu cepat
-    dibuka di HP (Mobile Friendly).
-  d: '2026-05-08'
-- id: 1366
-  t: Tips SEO Website
-  s: Gunakan keyword yang relevan di judul dan heading. Pastikan website kamu cepat
-    dibuka di HP (Mobile Friendly).
-  d: '2026-05-08'
-- id: 1367
-  t: Kenapa Web Lemot?
-  s: Biasanya karena gambar kegedean atau file JS yang numpuk. Solusinya kompres gambar
-    dan pakai sistem lazy load.
-  d: '2026-05-08'
-- id: 1368
-  t: Belajar HTML Dasar
-  s: HTML itu tulang punggung web. Fokus kuasai tag <div>, <a> buat link, dan <img>
-    buat gambar. Itu pondasi paling penting.
-  d: '2026-05-08'
-- id: 1369
-  t: Belajar HTML Dasar
-  s: HTML itu tulang punggung web. Fokus kuasai tag <div>, <a> buat link, dan <img>
-    buat gambar. Itu pondasi paling penting.
-  d: '2026-05-08'
-- id: 1370
-  t: Tips Trading Crypto
-  s: Waduh, pertanyaan bagus! Bentar saya ulek dulu memorinya... Jangan FOMO. Gunakan
-    indikator Moving Average (MA) buat liat tren. Selalu pasang Stop Loss biar gak
-    likuidasi.
-  d: '2026-05-08'
-- id: 1371
-  t: Belajar HTML Dasar
-  s: Waduh, pertanyaan bagus! Bentar saya ulek dulu memorinya... HTML itu tulang punggung
-    web. Fokus kuasai tag <div>, <a> buat link, dan <img> buat gambar. Itu pondasi
-    paling penting.
-  d: '2026-05-08'
-- id: 1372
-  t: Tips SEO Website
-  s: Gunakan keyword yang relevan di judul dan heading. Pastikan website kamu cepat
-    dibuka di HP (Mobile Friendly).
-  d: '2026-05-08'
-- id: 1373
-  t: Sejarah Singkat AI
-  s: AI mulai dikembangin sejak tahun 1950-an. Sekarang makin canggih berkat sistem
-    neural network yang mirip saraf manusia.
-  d: '2026-05-08'
-- id: 1374
-  t: Kenapa Web Lemot?
-  s: Halo Lan! Ada yang seru nih, mau bahas koding atau tips cuan? Biasanya karena
-    gambar kegedean atau file JS yang numpuk. Solusinya kompres gambar dan pakai sistem
-    lazy load.
-  d: '2026-05-08'
-- id: 1375
-  t: Tips SEO Website
-  s: Siap Bos! Saraf saya udah konek ke database. Mau nanya apa? Gunakan keyword yang
-    relevan di judul dan heading. Pastikan website kamu cepat dibuka di HP (Mobile
-    Friendly).
-  d: '2026-05-08'
-- id: 1376
-  t: Cara Mulai Affiliate
-  s: Cari produk yang lagi viral di TikTok, bikin konten faceless pake hoodie, taruh
-    link di bio. Konsisten upload 3x sehari.
-  d: '2026-05-08'
-- id: 1377
-  t: Belajar HTML Dasar
-  s: HTML itu tulang punggung web. Fokus kuasai tag <div>, <a> buat link, dan <img>
-    buat gambar. Itu pondasi paling penting.
-  d: '2026-05-08'
-- id: 1378
-  t: Tips Trading Crypto
-  s: Jangan FOMO. Gunakan indikator Moving Average (MA) buat liat tren. Selalu pasang
-    Stop Loss biar gak likuidasi.
-  d: '2026-05-08'
-- id: 1379
-  t: Rahasia Cuan Konsisten
-  s: Bangun personal branding. Kalau orang udah percaya sama kamu, jual produk apa
-    aja pasti laku.
-  d: '2026-05-08'
-- id: 1380
-  t: Belajar HTML Dasar
-  s: Siap Bos! Saraf saya udah konek ke database. Mau nanya apa? HTML itu tulang punggung
-    web. Fokus kuasai tag <div>, <a> buat link, dan <img> buat gambar. Itu pondasi
-    paling penting.
-  d: '2026-05-08'
-- id: 1381
-  t: Sejarah Singkat AI
-  s: AI mulai dikembangin sejak tahun 1950-an. Sekarang makin canggih berkat sistem
-    neural network yang mirip saraf manusia.
-  d: '2026-05-08'
-- id: 1382
-  t: Belajar HTML Dasar
-  s: Waduh, pertanyaan bagus! Bentar saya ulek dulu memorinya... HTML itu tulang punggung
-    web. Fokus kuasai tag <div>, <a> buat link, dan <img> buat gambar. Itu pondasi
-    paling penting.
-  d: '2026-05-08'
-- id: 1383
-  t: Tips Trading Crypto
-  s: Jangan FOMO. Gunakan indikator Moving Average (MA) buat liat tren. Selalu pasang
-    Stop Loss biar gak likuidasi.
-  d: '2026-05-08'
-- id: 1384
-  t: Cara Mulai Affiliate
-  s: Cari produk yang lagi viral di TikTok, bikin konten faceless pake hoodie, taruh
-    link di bio. Konsisten upload 3x sehari.
-  d: '2026-05-08'
-- id: 1385
-  t: Tips Trading Crypto
-  s: Jangan FOMO. Gunakan indikator Moving Average (MA) buat liat tren. Selalu pasang
-    Stop Loss biar gak likuidasi.
-  d: '2026-05-08'
-- id: 1386
-  t: Belajar HTML Dasar
-  s: Siap Bos! Saraf saya udah konek ke database. Mau nanya apa? HTML itu tulang punggung
-    web. Fokus kuasai tag <div>, <a> buat link, dan <img> buat gambar. Itu pondasi
-    paling penting.
-  d: '2026-05-08'
-- id: 1387
-  t: Tips Trading Crypto
-  s: Jangan FOMO. Gunakan indikator Moving Average (MA) buat liat tren. Selalu pasang
-    Stop Loss biar gak likuidasi.
-  d: '2026-05-08'
-- id: 1388
-  t: Sejarah Singkat AI
-  s: AI mulai dikembangin sejak tahun 1950-an. Sekarang makin canggih berkat sistem
-    neural network yang mirip saraf manusia.
-  d: '2026-05-08'
-- id: 1389
-  t: Belajar HTML Dasar
-  s: HTML itu tulang punggung web. Fokus kuasai tag <div>, <a> buat link, dan <img>
-    buat gambar. Itu pondasi paling penting.
-  d: '2026-05-08'
-- id: 1390
-  t: Tips SEO Website
-  s: Gunakan keyword yang relevan di judul dan heading. Pastikan website kamu cepat
-    dibuka di HP (Mobile Friendly).
-  d: '2026-05-08'
-- id: 1391
-  t: Cara Mulai Affiliate
-  s: Cari produk yang lagi viral di TikTok, bikin konten faceless pake hoodie, taruh
-    link di bio. Konsisten upload 3x sehari.
-  d: '2026-05-08'
-- id: 1392
-  t: Tips Trading Crypto
-  s: Jangan FOMO. Gunakan indikator Moving Average (MA) buat liat tren. Selalu pasang
-    Stop Loss biar gak likuidasi.
-  d: '2026-05-08'
-- id: 1393
-  t: Tips SEO Website
-  s: Gunakan keyword yang relevan di judul dan heading. Pastikan website kamu cepat
-    dibuka di HP (Mobile Friendly).
-  d: '2026-05-08'
-- id: 1394
-  t: Rahasia Cuan Konsisten
-  s: Gini Lan, menurut logika saraf saya, konsistensi itu kunci segalanya. Bangun
-    personal branding. Kalau orang udah percaya sama kamu, jual produk apa aja pasti
-    laku.
-  d: '2026-05-08'
-- id: 1395
-  t: Sejarah Singkat AI
-  s: Halo Lan! Ada yang seru nih, mau bahas koding atau tips cuan? AI mulai dikembangin
-    sejak tahun 1950-an. Sekarang makin canggih berkat sistem neural network yang
-    mirip saraf manusia.
-  d: '2026-05-08'
-- id: 1396
-  t: Sejarah Singkat AI
-  s: AI mulai dikembangin sejak tahun 1950-an. Sekarang makin canggih berkat sistem
-    neural network yang mirip saraf manusia.
-  d: '2026-05-08'
-- id: 1397
-  t: Belajar HTML Dasar
-  s: HTML itu tulang punggung web. Fokus kuasai tag <div>, <a> buat link, dan <img>
-    buat gambar. Itu pondasi paling penting.
-  d: '2026-05-08'
-- id: 1398
-  t: Rahasia Cuan Konsisten
-  s: Bangun personal branding. Kalau orang udah percaya sama kamu, jual produk apa
-    aja pasti laku.
-  d: '2026-05-08'
-- id: 1399
-  t: Kenapa Web Lemot?
-  s: Waduh, pertanyaan bagus! Bentar saya ulek dulu memorinya... Biasanya karena gambar
-    kegedean atau file JS yang numpuk. Solusinya kompres gambar dan pakai sistem lazy
-    load.
-  d: '2026-05-08'
-- id: 1400
-  t: Rahasia Cuan Konsisten
-  s: Waduh, pertanyaan bagus! Bentar saya ulek dulu memorinya... Bangun personal branding.
-    Kalau orang udah percaya sama kamu, jual produk apa aja pasti laku.
-  d: '2026-05-08'
-- id: 1401
-  t: Kenapa Web Lemot?
-  s: Gini Lan, menurut logika saraf saya, konsistensi itu kunci segalanya. Biasanya
-    karena gambar kegedean atau file JS yang numpuk. Solusinya kompres gambar dan
-    pakai sistem lazy load.
-  d: '2026-05-08'
-- id: 1402
-  t: Rahasia Cuan Konsisten
-  s: Bangun personal branding. Kalau orang udah percaya sama kamu, jual produk apa
-    aja pasti laku.
-  d: '2026-05-08'
-- id: 1403
-  t: Cara Mulai Affiliate
-  s: Cari produk yang lagi viral di TikTok, bikin konten faceless pake hoodie, taruh
-    link di bio. Konsisten upload 3x sehari.
-  d: '2026-05-08'
-- id: 1404
-  t: Fakta Lubang Hitam
-  s: Black hole itu area di luar angkasa dengan gravitasi kuat banget, bahkan cahaya
-    pun gak bisa kabur dari sana.
-  d: '2026-05-08'
-- id: 1405
-  t: Belajar HTML Dasar
-  s: HTML itu tulang punggung web. Fokus kuasai tag <div>, <a> buat link, dan <img>
-    buat gambar. Itu pondasi paling penting.
-  d: '2026-05-08'
-- id: 1406
-  t: Cara Mulai Affiliate
-  s: Waduh, pertanyaan bagus! Bentar saya ulek dulu memorinya... Cari produk yang
-    lagi viral di TikTok, bikin konten faceless pake hoodie, taruh link di bio. Konsisten
-    upload 3x sehari.
-  d: '2026-05-08'
-- id: 1407
-  t: Fakta Lubang Hitam
-  s: Black hole itu area di luar angkasa dengan gravitasi kuat banget, bahkan cahaya
-    pun gak bisa kabur dari sana.
-  d: '2026-05-08'
-- id: 1408
-  t: Rahasia Cuan Konsisten
-  s: Bangun personal branding. Kalau orang udah percaya sama kamu, jual produk apa
-    aja pasti laku.
-  d: '2026-05-08'
-- id: 1409
-  t: Tips SEO Website
-  s: Gunakan keyword yang relevan di judul dan heading. Pastikan website kamu cepat
-    dibuka di HP (Mobile Friendly).
-  d: '2026-05-08'
-- id: 1410
-  t: Belajar HTML Dasar
-  s: HTML itu tulang punggung web. Fokus kuasai tag <div>, <a> buat link, dan <img>
-    buat gambar. Itu pondasi paling penting.
-  d: '2026-05-08'
-- id: 1411
-  t: Belajar HTML Dasar
-  s: HTML itu tulang punggung web. Fokus kuasai tag <div>, <a> buat link, dan <img>
-    buat gambar. Itu pondasi paling penting.
-  d: '2026-05-08'
-- id: 1412
-  t: Tips Trading Crypto
-  s: Jangan FOMO. Gunakan indikator Moving Average (MA) buat liat tren. Selalu pasang
-    Stop Loss biar gak likuidasi.
-  d: '2026-05-08'
-- id: 1413
-  t: Tips Trading Crypto
-  s: Jangan FOMO. Gunakan indikator Moving Average (MA) buat liat tren. Selalu pasang
-    Stop Loss biar gak likuidasi.
-  d: '2026-05-08'
-- id: 1414
-  t: Tips SEO Website
-  s: Gunakan keyword yang relevan di judul dan heading. Pastikan website kamu cepat
-    dibuka di HP (Mobile Friendly).
-  d: '2026-05-08'
-- id: 1415
-  t: Tips SEO Website
-  s: Siap Bos! Saraf saya udah konek ke database. Mau nanya apa? Gunakan keyword yang
-    relevan di judul dan heading. Pastikan website kamu cepat dibuka di HP (Mobile
-    Friendly).
-  d: '2026-05-08'
-- id: 1416
-  t: Kenapa Web Lemot?
-  s: Halo Lan! Ada yang seru nih, mau bahas koding atau tips cuan? Biasanya karena
-    gambar kegedean atau file JS yang numpuk. Solusinya kompres gambar dan pakai sistem
-    lazy load.
-  d: '2026-05-08'
-- id: 1417
-  t: Fakta Lubang Hitam
-  s: Black hole itu area di luar angkasa dengan gravitasi kuat banget, bahkan cahaya
-    pun gak bisa kabur dari sana.
-  d: '2026-05-08'
-- id: 1418
-  t: Cara Mulai Affiliate
-  s: Cari produk yang lagi viral di TikTok, bikin konten faceless pake hoodie, taruh
-    link di bio. Konsisten upload 3x sehari.
-  d: '2026-05-08'
-- id: 1419
-  t: Sejarah Singkat AI
-  s: AI mulai dikembangin sejak tahun 1950-an. Sekarang makin canggih berkat sistem
-    neural network yang mirip saraf manusia.
-  d: '2026-05-08'
-- id: 1420
-  t: Fakta Lubang Hitam
-  s: Black hole itu area di luar angkasa dengan gravitasi kuat banget, bahkan cahaya
-    pun gak bisa kabur dari sana.
-  d: '2026-05-08'
-- id: 1421
-  t: Kenapa Web Lemot?
-  s: Biasanya karena gambar kegedean atau file JS yang numpuk. Solusinya kompres gambar
-    dan pakai sistem lazy load.
-  d: '2026-05-08'
-- id: 1422
-  t: Belajar HTML Dasar
-  s: HTML itu tulang punggung web. Fokus kuasai tag <div>, <a> buat link, dan <img>
-    buat gambar. Itu pondasi paling penting.
-  d: '2026-05-08'
-- id: 1423
-  t: Belajar HTML Dasar
-  s: Halo Lan! Ada yang seru nih, mau bahas koding atau tips cuan? HTML itu tulang
-    punggung web. Fokus kuasai tag <div>, <a> buat link, dan <img> buat gambar. Itu
-    pondasi paling penting.
-  d: '2026-05-08'
-- id: 1424
-  t: Rahasia Cuan Konsisten
-  s: Bangun personal branding. Kalau orang udah percaya sama kamu, jual produk apa
-    aja pasti laku.
-  d: '2026-05-08'
-- id: 1425
-  t: Cara Mulai Affiliate
-  s: Cari produk yang lagi viral di TikTok, bikin konten faceless pake hoodie, taruh
-    link di bio. Konsisten upload 3x sehari.
-  d: '2026-05-08'
-- id: 1426
-  t: Kenapa Web Lemot?
-  s: Siap Bos! Saraf saya udah konek ke database. Mau nanya apa? Biasanya karena gambar
-    kegedean atau file JS yang numpuk. Solusinya kompres gambar dan pakai sistem lazy
-    load.
-  d: '2026-05-08'
-- id: 1427
-  t: Kenapa Web Lemot?
-  s: Gini Lan, menurut logika saraf saya, konsistensi itu kunci segalanya. Biasanya
-    karena gambar kegedean atau file JS yang numpuk. Solusinya kompres gambar dan
-    pakai sistem lazy load.
-  d: '2026-05-08'
-- id: 1428
-  t: Tips SEO Website
-  s: Gunakan keyword yang relevan di judul dan heading. Pastikan website kamu cepat
-    dibuka di HP (Mobile Friendly).
-  d: '2026-05-08'
-- id: 1429
-  t: Belajar HTML Dasar
-  s: Waduh, pertanyaan bagus! Bentar saya ulek dulu memorinya... HTML itu tulang punggung
-    web. Fokus kuasai tag <div>, <a> buat link, dan <img> buat gambar. Itu pondasi
-    paling penting.
-  d: '2026-05-08'
-- id: 1430
-  t: Cara Mulai Affiliate
-  s: Cari produk yang lagi viral di TikTok, bikin konten faceless pake hoodie, taruh
-    link di bio. Konsisten upload 3x sehari.
-  d: '2026-05-08'
-- id: 1431
-  t: Fakta Lubang Hitam
-  s: Siap Bos! Saraf saya udah konek ke database. Mau nanya apa? Black hole itu area
-    di luar angkasa dengan gravitasi kuat banget, bahkan cahaya pun gak bisa kabur
-    dari sana.
-  d: '2026-05-08'
-- id: 1432
-  t: Rahasia Cuan Konsisten
-  s: Bangun personal branding. Kalau orang udah percaya sama kamu, jual produk apa
-    aja pasti laku.
-  d: '2026-05-08'
-- id: 1433
-  t: Rahasia Cuan Konsisten
-  s: Siap Bos! Saraf saya udah konek ke database. Mau nanya apa? Bangun personal branding.
-    Kalau orang udah percaya sama kamu, jual produk apa aja pasti laku.
-  d: '2026-05-08'
-- id: 1434
-  t: Kenapa Web Lemot?
-  s: Biasanya karena gambar kegedean atau file JS yang numpuk. Solusinya kompres gambar
-    dan pakai sistem lazy load.
-  d: '2026-05-08'
-- id: 1435
-  t: Tips SEO Website
-  s: Waduh, pertanyaan bagus! Bentar saya ulek dulu memorinya... Gunakan keyword yang
-    relevan di judul dan heading. Pastikan website kamu cepat dibuka di HP (Mobile
-    Friendly).
-  d: '2026-05-08'
-- id: 1436
-  t: Kenapa Web Lemot?
-  s: Biasanya karena gambar kegedean atau file JS yang numpuk. Solusinya kompres gambar
-    dan pakai sistem lazy load.
-  d: '2026-05-08'
-- id: 1437
-  t: Fakta Lubang Hitam
-  s: Black hole itu area di luar angkasa dengan gravitasi kuat banget, bahkan cahaya
-    pun gak bisa kabur dari sana.
-  d: '2026-05-08'
-- id: 1438
-  t: Cara Mulai Affiliate
-  s: Cari produk yang lagi viral di TikTok, bikin konten faceless pake hoodie, taruh
-    link di bio. Konsisten upload 3x sehari.
-  d: '2026-05-08'
-- id: 1439
-  t: Tips SEO Website
-  s: Halo Lan! Ada yang seru nih, mau bahas koding atau tips cuan? Gunakan keyword
-    yang relevan di judul dan heading. Pastikan website kamu cepat dibuka di HP (Mobile
-    Friendly).
-  d: '2026-05-08'
-- id: 1440
-  t: Sejarah Singkat AI
-  s: Halo Lan! Ada yang seru nih, mau bahas koding atau tips cuan? AI mulai dikembangin
-    sejak tahun 1950-an. Sekarang makin canggih berkat sistem neural network yang
-    mirip saraf manusia.
-  d: '2026-05-08'
-- id: 1441
-  t: Belajar HTML Dasar
-  s: Gini Lan, menurut logika saraf saya, konsistensi itu kunci segalanya. HTML itu
-    tulang punggung web. Fokus kuasai tag <div>, <a> buat link, dan <img> buat gambar.
-    Itu pondasi paling penting.
-  d: '2026-05-08'
-- id: 1442
-  t: Cara Mulai Affiliate
-  s: Cari produk yang lagi viral di TikTok, bikin konten faceless pake hoodie, taruh
-    link di bio. Konsisten upload 3x sehari.
-  d: '2026-05-08'
-- id: 1443
-  t: Fakta Lubang Hitam
-  s: Black hole itu area di luar angkasa dengan gravitasi kuat banget, bahkan cahaya
-    pun gak bisa kabur dari sana.
-  d: '2026-05-08'
-- id: 1444
-  t: Tips Trading Crypto
-  s: Gini Lan, menurut logika saraf saya, konsistensi itu kunci segalanya. Jangan
-    FOMO. Gunakan indikator Moving Average (MA) buat liat tren. Selalu pasang Stop
-    Loss biar gak likuidasi.
-  d: '2026-05-08'
-- id: 1445
-  t: Kenapa Web Lemot?
-  s: Biasanya karena gambar kegedean atau file JS yang numpuk. Solusinya kompres gambar
-    dan pakai sistem lazy load.
-  d: '2026-05-08'
-- id: 1446
-  t: Rahasia Cuan Konsisten
-  s: Halo Lan! Ada yang seru nih, mau bahas koding atau tips cuan? Bangun personal
-    branding. Kalau orang udah percaya sama kamu, jual produk apa aja pasti laku.
-  d: '2026-05-08'
-- id: 1447
-  t: Sejarah Singkat AI
-  s: Siap Bos! Saraf saya udah konek ke database. Mau nanya apa? AI mulai dikembangin
-    sejak tahun 1950-an. Sekarang makin canggih berkat sistem neural network yang
-    mirip saraf manusia.
-  d: '2026-05-08'
-- id: 1448
-  t: Kenapa Web Lemot?
-  s: Halo Lan! Ada yang seru nih, mau bahas koding atau tips cuan? Biasanya karena
-    gambar kegedean atau file JS yang numpuk. Solusinya kompres gambar dan pakai sistem
-    lazy load.
-  d: '2026-05-08'
-- id: 1449
-  t: Belajar HTML Dasar
-  s: HTML itu tulang punggung web. Fokus kuasai tag <div>, <a> buat link, dan <img>
-    buat gambar. Itu pondasi paling penting.
-  d: '2026-05-08'
-- id: 1450
-  t: Rahasia Cuan Konsisten
-  s: Bangun personal branding. Kalau orang udah percaya sama kamu, jual produk apa
-    aja pasti laku.
-  d: '2026-05-08'
-- id: 1451
-  t: Fakta Lubang Hitam
-  s: Halo Lan! Ada yang seru nih, mau bahas koding atau tips cuan? Black hole itu
-    area di luar angkasa dengan gravitasi kuat banget, bahkan cahaya pun gak bisa
-    kabur dari sana.
-  d: '2026-05-08'
-- id: 1452
-  t: Belajar HTML Dasar
-  s: Siap Bos! Saraf saya udah konek ke database. Mau nanya apa? HTML itu tulang punggung
-    web. Fokus kuasai tag <div>, <a> buat link, dan <img> buat gambar. Itu pondasi
-    paling penting.
-  d: '2026-05-08'
-- id: 1453
-  t: Cara Mulai Affiliate
-  s: Cari produk yang lagi viral di TikTok, bikin konten faceless pake hoodie, taruh
-    link di bio. Konsisten upload 3x sehari.
-  d: '2026-05-08'
-- id: 1454
-  t: Kenapa Web Lemot?
-  s: Biasanya karena gambar kegedean atau file JS yang numpuk. Solusinya kompres gambar
-    dan pakai sistem lazy load.
-  d: '2026-05-08'
-- id: 1455
-  t: Cara Mulai Affiliate
-  s: Halo Lan! Ada yang seru nih, mau bahas koding atau tips cuan? Cari produk yang
-    lagi viral di TikTok, bikin konten faceless pake hoodie, taruh link di bio. Konsisten
-    upload 3x sehari.
-  d: '2026-05-08'
-- id: 1456
-  t: Rahasia Cuan Konsisten
-  s: Halo Lan! Ada yang seru nih, mau bahas koding atau tips cuan? Bangun personal
-    branding. Kalau orang udah percaya sama kamu, jual produk apa aja pasti laku.
-  d: '2026-05-08'
-- id: 1457
-  t: Kenapa Web Lemot?
-  s: Biasanya karena gambar kegedean atau file JS yang numpuk. Solusinya kompres gambar
-    dan pakai sistem lazy load.
-  d: '2026-05-08'
-- id: 1458
-  t: Tips SEO Website
-  s: Gunakan keyword yang relevan di judul dan heading. Pastikan website kamu cepat
-    dibuka di HP (Mobile Friendly).
-  d: '2026-05-08'
-- id: 1459
-  t: Tips SEO Website
-  s: Waduh, pertanyaan bagus! Bentar saya ulek dulu memorinya... Gunakan keyword yang
-    relevan di judul dan heading. Pastikan website kamu cepat dibuka di HP (Mobile
-    Friendly).
-  d: '2026-05-08'
-- id: 1460
-  t: Sejarah Singkat AI
-  s: Waduh, pertanyaan bagus! Bentar saya ulek dulu memorinya... AI mulai dikembangin
-    sejak tahun 1950-an. Sekarang makin canggih berkat sistem neural network yang
-    mirip saraf manusia.
-  d: '2026-05-08'
-- id: 1461
-  t: Tips Trading Crypto
-  s: Gini Lan, menurut logika saraf saya, konsistensi itu kunci segalanya. Jangan
-    FOMO. Gunakan indikator Moving Average (MA) buat liat tren. Selalu pasang Stop
-    Loss biar gak likuidasi.
-  d: '2026-05-08'
-- id: 1462
-  t: Belajar HTML Dasar
-  s: Waduh, pertanyaan bagus! Bentar saya ulek dulu memorinya... HTML itu tulang punggung
-    web. Fokus kuasai tag <div>, <a> buat link, dan <img> buat gambar. Itu pondasi
-    paling penting.
-  d: '2026-05-08'
-- id: 1463
-  t: Sejarah Singkat AI
-  s: AI mulai dikembangin sejak tahun 1950-an. Sekarang makin canggih berkat sistem
-    neural network yang mirip saraf manusia.
-  d: '2026-05-08'
-- id: 1464
-  t: Kenapa Web Lemot?
-  s: Biasanya karena gambar kegedean atau file JS yang numpuk. Solusinya kompres gambar
-    dan pakai sistem lazy load.
-  d: '2026-05-08'
-- id: 1465
-  t: Tips SEO Website
-  s: Gunakan keyword yang relevan di judul dan heading. Pastikan website kamu cepat
-    dibuka di HP (Mobile Friendly).
-  d: '2026-05-08'
-- id: 1466
-  t: Tips Trading Crypto
-  s: Jangan FOMO. Gunakan indikator Moving Average (MA) buat liat tren. Selalu pasang
-    Stop Loss biar gak likuidasi.
-  d: '2026-05-08'
-- id: 1467
-  t: Sejarah Singkat AI
-  s: AI mulai dikembangin sejak tahun 1950-an. Sekarang makin canggih berkat sistem
-    neural network yang mirip saraf manusia.
-  d: '2026-05-08'
-- id: 1468
-  t: Tips SEO Website
-  s: Gunakan keyword yang relevan di judul dan heading. Pastikan website kamu cepat
-    dibuka di HP (Mobile Friendly).
-  d: '2026-05-08'
-- id: 1469
-  t: Tips Trading Crypto
-  s: Waduh, pertanyaan bagus! Bentar saya ulek dulu memorinya... Jangan FOMO. Gunakan
-    indikator Moving Average (MA) buat liat tren. Selalu pasang Stop Loss biar gak
-    likuidasi.
-  d: '2026-05-08'
-- id: 1470
-  t: Kenapa Web Lemot?
-  s: Biasanya karena gambar kegedean atau file JS yang numpuk. Solusinya kompres gambar
-    dan pakai sistem lazy load.
-  d: '2026-05-08'
-- id: 1471
-  t: Cara Mulai Affiliate
-  s: Cari produk yang lagi viral di TikTok, bikin konten faceless pake hoodie, taruh
-    link di bio. Konsisten upload 3x sehari.
-  d: '2026-05-08'
-- id: 1472
-  t: Belajar HTML Dasar
-  s: HTML itu tulang punggung web. Fokus kuasai tag <div>, <a> buat link, dan <img>
-    buat gambar. Itu pondasi paling penting.
-  d: '2026-05-08'
-- id: 1473
-  t: Belajar HTML Dasar
-  s: HTML itu tulang punggung web. Fokus kuasai tag <div>, <a> buat link, dan <img>
-    buat gambar. Itu pondasi paling penting.
-  d: '2026-05-08'
-- id: 1474
-  t: Tips SEO Website
-  s: Gunakan keyword yang relevan di judul dan heading. Pastikan website kamu cepat
-    dibuka di HP (Mobile Friendly).
-  d: '2026-05-08'
-- id: 1475
-  t: Rahasia Cuan Konsisten
-  s: Bangun personal branding. Kalau orang udah percaya sama kamu, jual produk apa
-    aja pasti laku.
-  d: '2026-05-08'
-- id: 1476
-  t: Fakta Lubang Hitam
-  s: Black hole itu area di luar angkasa dengan gravitasi kuat banget, bahkan cahaya
-    pun gak bisa kabur dari sana.
-  d: '2026-05-08'
-- id: 1477
-  t: Belajar HTML Dasar
-  s: HTML itu tulang punggung web. Fokus kuasai tag <div>, <a> buat link, dan <img>
-    buat gambar. Itu pondasi paling penting.
-  d: '2026-05-08'
-- id: 1478
-  t: Tips SEO Website
-  s: Waduh, pertanyaan bagus! Bentar saya ulek dulu memorinya... Gunakan keyword yang
-    relevan di judul dan heading. Pastikan website kamu cepat dibuka di HP (Mobile
-    Friendly).
-  d: '2026-05-08'
-- id: 1479
-  t: Cara Mulai Affiliate
-  s: Cari produk yang lagi viral di TikTok, bikin konten faceless pake hoodie, taruh
-    link di bio. Konsisten upload 3x sehari.
-  d: '2026-05-08'
-- id: 1480
-  t: Cara Mulai Affiliate
-  s: Waduh, pertanyaan bagus! Bentar saya ulek dulu memorinya... Cari produk yang
-    lagi viral di TikTok, bikin konten faceless pake hoodie, taruh link di bio. Konsisten
-    upload 3x sehari.
-  d: '2026-05-08'
-- id: 1481
-  t: Sejarah Singkat AI
-  s: AI mulai dikembangin sejak tahun 1950-an. Sekarang makin canggih berkat sistem
-    neural network yang mirip saraf manusia.
-  d: '2026-05-08'
-- id: 1482
-  t: Tips SEO Website
-  s: Gunakan keyword yang relevan di judul dan heading. Pastikan website kamu cepat
-    dibuka di HP (Mobile Friendly).
-  d: '2026-05-08'
-- id: 1483
-  t: Rahasia Cuan Konsisten
-  s: Bangun personal branding. Kalau orang udah percaya sama kamu, jual produk apa
-    aja pasti laku.
-  d: '2026-05-08'
-- id: 1484
-  t: Tips Trading Crypto
-  s: Jangan FOMO. Gunakan indikator Moving Average (MA) buat liat tren. Selalu pasang
-    Stop Loss biar gak likuidasi.
-  d: '2026-05-08'
-- id: 1485
-  t: Sejarah Singkat AI
-  s: AI mulai dikembangin sejak tahun 1950-an. Sekarang makin canggih berkat sistem
-    neural network yang mirip saraf manusia.
-  d: '2026-05-08'
-- id: 1486
-  t: Kenapa Web Lemot?
-  s: Biasanya karena gambar kegedean atau file JS yang numpuk. Solusinya kompres gambar
-    dan pakai sistem lazy load.
-  d: '2026-05-08'
-- id: 1487
-  t: Sejarah Singkat AI
-  s: Gini Lan, menurut logika saraf saya, konsistensi itu kunci segalanya. AI mulai
-    dikembangin sejak tahun 1950-an. Sekarang makin canggih berkat sistem neural network
-    yang mirip saraf manusia.
-  d: '2026-05-08'
-- id: 1488
-  t: Rahasia Cuan Konsisten
-  s: Halo Lan! Ada yang seru nih, mau bahas koding atau tips cuan? Bangun personal
-    branding. Kalau orang udah percaya sama kamu, jual produk apa aja pasti laku.
-  d: '2026-05-08'
-- id: 1489
-  t: Fakta Lubang Hitam
-  s: Black hole itu area di luar angkasa dengan gravitasi kuat banget, bahkan cahaya
-    pun gak bisa kabur dari sana.
-  d: '2026-05-08'
-- id: 1490
-  t: Sejarah Singkat AI
-  s: AI mulai dikembangin sejak tahun 1950-an. Sekarang makin canggih berkat sistem
-    neural network yang mirip saraf manusia.
-  d: '2026-05-08'
-- id: 1491
-  t: Rahasia Cuan Konsisten
-  s: Bangun personal branding. Kalau orang udah percaya sama kamu, jual produk apa
-    aja pasti laku.
-  d: '2026-05-08'
-- id: 1492
-  t: Sejarah Singkat AI
-  s: Siap Bos! Saraf saya udah konek ke database. Mau nanya apa? AI mulai dikembangin
-    sejak tahun 1950-an. Sekarang makin canggih berkat sistem neural network yang
-    mirip saraf manusia.
-  d: '2026-05-08'
-- id: 1493
-  t: Tips Trading Crypto
-  s: Jangan FOMO. Gunakan indikator Moving Average (MA) buat liat tren. Selalu pasang
-    Stop Loss biar gak likuidasi.
-  d: '2026-05-08'
-- id: 1494
-  t: Rahasia Cuan Konsisten
-  s: Gini Lan, menurut logika saraf saya, konsistensi itu kunci segalanya. Bangun
-    personal branding. Kalau orang udah percaya sama kamu, jual produk apa aja pasti
-    laku.
-  d: '2026-05-08'
-- id: 1495
-  t: Kenapa Web Lemot?
-  s: Siap Bos! Saraf saya udah konek ke database. Mau nanya apa? Biasanya karena gambar
-    kegedean atau file JS yang numpuk. Solusinya kompres gambar dan pakai sistem lazy
-    load.
-  d: '2026-05-08'
-- id: 1496
-  t: Tips SEO Website
-  s: Gunakan keyword yang relevan di judul dan heading. Pastikan website kamu cepat
-    dibuka di HP (Mobile Friendly).
-  d: '2026-05-08'
-- id: 1497
-  t: Tips SEO Website
-  s: Gini Lan, menurut logika saraf saya, konsistensi itu kunci segalanya. Gunakan
-    keyword yang relevan di judul dan heading. Pastikan website kamu cepat dibuka
-    di HP (Mobile Friendly).
-  d: '2026-05-08'
-- id: 1498
-  t: Kenapa Web Lemot?
-  s: Biasanya karena gambar kegedean atau file JS yang numpuk. Solusinya kompres gambar
-    dan pakai sistem lazy load.
-  d: '2026-05-08'
-- id: 1499
-  t: Tips SEO Website
-  s: Halo Lan! Ada yang seru nih, mau bahas koding atau tips cuan? Gunakan keyword
-    yang relevan di judul dan heading. Pastikan website kamu cepat dibuka di HP (Mobile
-    Friendly).
+  t: Cara Membuat Game Sederhana
+  s: 'Untuk buat game sederhana: coba Unity (pakai C#, cocok untuk 2D dan 3D), Godot
+    (open source, lebih ringan), atau Phaser.js (buat game web pakai JavaScript).
+    Mulai dari clone game sederhana seperti Flappy Bird untuk belajar konsep dasarnya.'
   d: '2026-05-08'
