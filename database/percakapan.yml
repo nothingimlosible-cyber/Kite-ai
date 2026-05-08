@@ -387,3 +387,273 @@
     (open source, lebih ringan), atau Phaser.js (buat game web pakai JavaScript).
     Mulai dari clone game sederhana seperti Flappy Bird untuk belajar konsep dasarnya.'
   d: '2026-05-08'
+- id: 1100
+  t: Apa itu Blockchain
+  s: Blockchain itu buku catatan digital yang tidak bisa diubah, tersebar di banyak
+    komputer sekaligus. Setiap transaksi dicatat dalam blok yang saling terhubung.
+    Makanya disebut blockchain. Teknologi ini jadi dasar Bitcoin dan cryptocurrency
+    lainnya.
+  d: '2026-05-08'
+- id: 1101
+  t: Cara Kerja WiFi
+  s: WiFi mengirim data lewat gelombang radio, mirip radio FM tapi frekuensinya lebih
+    tinggi. Router mengubah data dari kabel internet jadi sinyal radio, HP atau laptopmu
+    menangkap sinyal itu dan mengubahnya kembali jadi data. Jaraknya biasanya sampai
+    30-50 meter.
+  d: '2026-05-08'
+- id: 1102
+  t: Apa itu Metaverse
+  s: Metaverse itu dunia virtual 3D di mana orang bisa bekerja, bermain, dan bersosialisasi
+    menggunakan avatar digital. Bayangkan internet yang bisa kamu masuki. Perusahaan
+    besar seperti Meta dan Microsoft sedang berlomba-lomba membangunnya.
+  d: '2026-05-08'
+- id: 1103
+  t: Fakta DNA Manusia
+  s: DNA manusia kalau direntangkan panjangnya sekitar 2 meter per sel. Karena tubuhmu
+    punya 37 triliun sel, total DNA-mu bisa direntang dari Bumi ke Pluto dan balik
+    lagi. Dan 99,9 persen DNA semua manusia di dunia itu sama persis, Lan!
+  d: '2026-05-08'
+- id: 1104
+  t: Apa itu Machine Learning
+  s: Machine Learning itu teknik di mana komputer belajar dari data tanpa diprogram
+    secara eksplisit. Ibaratnya seperti anak kecil yang belajar mengenal kucing dari
+    ribuan foto kucing. Semakin banyak data, semakin pintar modelnya.
+  d: '2026-05-08'
+- id: 1105
+  t: Cara Kerja Listrik
+  s: Listrik itu aliran elektron melalui konduktor seperti kabel tembaga. Pembangkit
+    listrik menggunakan energi (air, uap, angin, surya) untuk mendorong elektron bergerak.
+    Arus listrik diukur dalam ampere, tegangannya dalam volt, dayanya dalam watt.
+  d: '2026-05-08'
+- id: 1106
+  t: Fakta Galaksi Bima Sakti
+  s: Galaksi Bima Sakti punya sekitar 100-400 miliar bintang. Diameternya sekitar
+    100.000 tahun cahaya. Matahari kita butuh 230 juta tahun untuk mengelilingi pusat
+    galaksi sekali. Dan galaksi kita sedang bergerak menuju galaksi Andromeda dengan
+    kecepatan 110 km per detik!
+  d: '2026-05-08'
+- id: 1107
+  t: Apa itu Cybersecurity
+  s: Cybersecurity itu ilmu melindungi sistem komputer dari serangan hacker. Termasuk
+    firewall, enkripsi data, autentikasi dua faktor, dan security awareness. Profesi
+    ini sangat dicari sekarang karena serangan siber makin meningkat setiap tahun.
+  d: '2026-05-08'
+- id: 1108
+  t: Cara Menghasilkan Uang dari HP
+  s: 'Cara halal menghasilkan uang dari HP: jadi content creator di TikTok atau YouTube,
+    freelance desain atau menulis, dropshipping, jual foto di Shutterstock, jadi reseller,
+    ikut program afiliasi, atau bikin kursus online. Kunci utamanya: konsistensi dan
+    skill yang terus diasah.'
+  d: '2026-05-08'
+- id: 1109
+  t: Fakta Hujan
+  s: Satu tetes air hujan bisa mengandung jutaan bakteri. Hujan sebenarnya tidak berbentuk
+    tetes air mata melainkan lebih mirip roti burger kecil karena tekanan udara. Bau
+    tanah setelah hujan disebut petrichor yang berasal dari senyawa geosmin di tanah.
+  d: '2026-05-08'
+- id: 1110
+  t: Apa itu Startup
+  s: 'Startup itu perusahaan rintisan yang biasanya berbasis teknologi dan punya potensi
+    tumbuh sangat cepat. Bedanya dengan bisnis biasa: startup didesain untuk scale
+    besar. Tahapannya: ideation, MVP, seed funding, growth, sampai IPO atau akuisisi.'
+  d: '2026-05-08'
+- id: 1111
+  t: Cara Kerja GPS
+  s: GPS bekerja dengan 24 satelit yang mengorbit Bumi. HP-mu menerima sinyal dari
+    minimal 4 satelit sekaligus. Dari perbedaan waktu sinyal sampai, GPS bisa menghitung
+    posisimu dengan akurasi sekitar 3-5 meter. Teknologi ini awalnya dibuat untuk
+    militer AS.
+  d: '2026-05-08'
+- id: 1112
+  t: Fakta Gunung Berapi Indonesia
+  s: Indonesia punya 127 gunung berapi aktif, terbanyak di dunia. Itu karena Indonesia
+    berada di Cincin Api Pasifik. Letusan Krakatau tahun 1883 terdengar sampai 4.800
+    km jauhnya. Gunung Tambora tahun 1815 menyebabkan tahun tanpa musim panas di seluruh
+    dunia.
+  d: '2026-05-08'
+- id: 1113
+  t: Apa itu Freelancing
+  s: 'Freelancing itu bekerja secara mandiri tanpa terikat satu perusahaan. Kamu dibayar
+    per proyek atau per jam. Bidang populer: web development, desain grafis, penulisan
+    konten, video editing, dan terjemahan. Platform populer: Upwork, Fiverr, Sribulancer.'
+  d: '2026-05-08'
+- id: 1114
+  t: Cara Bikin Aplikasi Tanpa Coding
+  s: 'Sekarang bisa bikin aplikasi tanpa coding pakai no-code tools. Contohnya: Bubble
+    untuk web app, Adalo atau FlutterFlow untuk mobile app, Glide untuk app dari spreadsheet.
+    Cocok buat validasi ide bisnis cepat sebelum investasi besar di development.'
+  d: '2026-05-08'
+- id: 1115
+  t: Fakta Tidur Manusia
+  s: Manusia menghabiskan sepertiga hidupnya untuk tidur. Saat tidur REM, otakmu sama
+    aktifnya seperti saat bangun. Mimpi rata-rata berlangsung 5-20 menit tapi kamu
+    melupakan 95 persennya dalam 10 menit setelah bangun. Kurang tidur kronis bisa
+    setara efeknya dengan mabuk alkohol.
+  d: '2026-05-08'
+- id: 1116
+  t: Apa itu NFT
+  s: NFT atau Non-Fungible Token itu sertifikat kepemilikan digital yang unik dan
+    tidak bisa ditukar satu sama lain. Biasanya dipakai untuk karya seni digital,
+    musik, atau item game. Pernah sangat hype tahun 2021-2022 tapi sekarang pasarnya
+    sudah menurun drastis.
+  d: '2026-05-08'
+- id: 1117
+  t: Cara Presentasi yang Menarik
+  s: 'Presentasi menarik: mulai dengan hook kuat (pertanyaan atau fakta mengejutkan),
+    gunakan visual lebih banyak dari teks, ceritakan kisah bukan cuma data, batasi
+    satu ide per slide, praktik bicara sebelum presentasi, dan akhiri dengan call
+    to action yang jelas.'
+  d: '2026-05-08'
+- id: 1118
+  t: Fakta Samudra
+  s: Samudra mengandung sekitar 20 juta ton emas yang terlarut. Lebih dari 80 persen
+    samudra belum dipetakan atau dijelajahi. Titik terdalam bisa menampung seluruh
+    Gunung Everest dan masih tersisa 2 km. Tekanan di dasar laut setara dengan 50
+    jumbo jet menumpuk di atasmu.
+  d: '2026-05-08'
+- id: 1119
+  t: Apa itu UI dan UX
+  s: UI (User Interface) itu tampilan visual yang dilihat pengguna, termasuk tombol,
+    warna, font, dan layout. UX (User Experience) itu keseluruhan pengalaman pengguna
+    saat menggunakan produk, apakah mudah, menyenangkan, dan efisien. UI itu kulit,
+    UX itu tulangnya.
+  d: '2026-05-08'
+- id: 1120
+  t: Cara Menulis Artikel Blog
+  s: 'Menulis artikel blog yang bagus: riset keyword dulu, buat outline sebelum menulis,
+    gunakan judul yang menarik perhatian, tulis pembuka yang memancing rasa ingin
+    tahu, paragraf pendek (3-4 kalimat), tambahkan gambar atau visual, dan akhiri
+    dengan kesimpulan atau ajakan.'
+  d: '2026-05-08'
+- id: 1121
+  t: Fakta Kopi
+  s: Kopi adalah minuman paling populer kedua di dunia setelah air. Kafein mulai bekerja
+    dalam 10 menit setelah diminum dan efeknya bertahan 3-5 jam. Ethiopia dianggap
+    tempat asal kopi ditemukan sekitar abad ke-9. Finlandia adalah negara dengan konsumsi
+    kopi tertinggi per kapita.
+  d: '2026-05-08'
+- id: 1122
+  t: Apa itu Artificial Intelligence
+  s: 'Artificial Intelligence atau kecerdasan buatan itu kemampuan mesin untuk meniru
+    kecerdasan manusia. Termasuk belajar dari pengalaman, mengenali pola, membuat
+    keputusan, dan memahami bahasa. AI ada di mana-mana sekarang: dari rekomendasi
+    YouTube sampai mobil self-driving.'
+  d: '2026-05-08'
+- id: 1123
+  t: Cara Mengelola Keuangan Pribadi
+  s: 'Kelola keuangan pribadi: catat semua pemasukan dan pengeluaran, ikuti aturan
+    50-30-20 (kebutuhan-keinginan-tabungan), bangun dana darurat 3-6 bulan pengeluaran,
+    hindari utang konsumtif, dan mulai investasi sedini mungkin meski nominal kecil.'
+  d: '2026-05-08'
+- id: 1124
+  t: Fakta Bahasa Indonesia
+  s: 'Bahasa Indonesia adalah bahasa Melayu yang dipilih sebagai bahasa persatuan
+    dalam Sumpah Pemuda 1928. Meski bukan bahasa ibu mayoritas, bahasa Indonesia mempersatukan
+    700 lebih bahasa daerah. Fakta unik: bahasa Indonesia tidak punya konjugasi kata
+    kerja berdasarkan waktu.'
+  d: '2026-05-08'
+- id: 1125
+  t: Apa itu Podcast
+  s: 'Podcast itu konten audio digital yang bisa didengarkan kapan saja. Seperti radio
+    on-demand. Untuk memulai podcast: pilih niche, beli mikrofon USB (tidak perlu
+    mahal), rekam pakai Audacity (gratis), upload ke Anchor atau Spotify for Podcasters.
+    Modal utamanya adalah konsistensi dan topik yang menarik.'
+  d: '2026-05-08'
+- id: 1126
+  t: Cara Belajar Matematika
+  s: 'Belajar matematika efektif: pahami konsep dulu bukan hafal rumus, kerjakan banyak
+    soal latihan (repetisi adalah kunci), jangan skip materi dasar karena matematika
+    itu bertingkat, gunakan visualisasi untuk konsep abstrak, dan jangan malu bertanya
+    kalau stuck.'
+  d: '2026-05-08'
+- id: 1127
+  t: Fakta Dinosaurus
+  s: Dinosaurus menguasai Bumi selama 165 juta tahun sementara manusia modern baru
+    ada sekitar 300 ribu tahun. T-Rex hidup lebih dekat waktunya dengan kita daripada
+    dengan Stegosaurus. Asteroid yang memusnahkan dinosaurus 66 juta tahun lalu berukuran
+    10 km dan meninggalkan kawah 180 km.
+  d: '2026-05-08'
+- id: 1128
+  t: Apa itu E-commerce
+  s: 'E-commerce itu jual beli online lewat platform digital. Di Indonesia ada Tokopedia,
+    Shopee, Bukalapak, Lazada. Untuk mulai jualan online: pilih produk yang punya
+    permintaan, foto produk yang bagus, tulis deskripsi yang jelas dan jujur, respons
+    cepat ke pembeli, dan jaga rating toko.'
+  d: '2026-05-08'
+- id: 1129
+  t: Cara Kerja Smartphone
+  s: Smartphone itu komputer mini dengan prosesor, RAM, storage, baterai, dan berbagai
+    sensor (GPS, accelerometer, gyroscope, proximity). Layar sentuh bekerja dengan
+    mendeteksi perubahan medan listrik saat jari menyentuh permukaan. Semua komponen
+    ini dikendalikan oleh sistem operasi seperti Android atau iOS.
+  d: '2026-05-08'
+- id: 1130
+  t: Fakta Lebah
+  s: Lebah madu harus mengunjungi 2 juta bunga dan terbang 88.000 km untuk menghasilkan
+    500 gram madu. Mereka berkomunikasi dengan menari. Lebah bisa mengenali wajah
+    manusia. Tanpa lebah sebagai penyerbuk, sepertiga makanan yang kita konsumsi akan
+    hilang.
+  d: '2026-05-08'
+- id: 1131
+  t: Apa itu Domain dan Hosting
+  s: Domain itu alamat website kamu di internet, contohnya google.com. Hosting itu
+    tempat menyimpan file-file website supaya bisa diakses online. Ibaratnya domain
+    itu alamat rumah, hosting itu tanahnya. Domain bisa dibeli di Niagahoster, Namecheap,
+    atau GoDaddy.
+  d: '2026-05-08'
+- id: 1132
+  t: Cara Meningkatkan Produktivitas
+  s: 'Tingkatkan produktivitas: identifikasi waktu paling produktifmu (pagi atau malam),
+    kerjakan tugas terberat saat energi tertinggi, batasi multitasking (otak tidak
+    benar-benar bisa), gunakan time blocking di kalender, dan ambil istirahat teratur
+    dengan teknik Pomodoro.'
+  d: '2026-05-08'
+- id: 1133
+  t: Fakta Luar Angkasa
+  s: Di luar angkasa tidak ada suara karena tidak ada medium untuk merambat. Astronaut
+    di ISS melihat matahari terbit dan terbenam 16 kali sehari. Jejak kaki di bulan
+    bisa bertahan jutaan tahun karena tidak ada angin atau hujan. Satu hari di Venus
+    lebih lama dari satu tahunnya.
+  d: '2026-05-08'
+- id: 1134
+  t: Apa itu Fintech
+  s: 'Fintech atau Financial Technology itu inovasi teknologi di bidang keuangan.
+    Contohnya: dompet digital (GoPay, OVO, Dana), pinjaman online (P2P lending), investasi
+    online (Bibit, Ajaib), insurtech, dan pembayaran digital. Fintech membuat layanan
+    keuangan lebih mudah diakses oleh semua orang.'
+  d: '2026-05-08'
+- id: 1135
+  t: Cara Menghafal Cepat
+  s: 'Teknik menghafal cepat: gunakan metode Loci (asosiasikan informasi dengan tempat
+    yang kamu kenal), buat akronim atau singkatan, ulangi dengan spaced repetition
+    (hari 1, 3, 7, 14, 30), ajarkan ke orang lain (metode Feynman), dan hubungkan
+    informasi baru dengan yang sudah kamu tahu.'
+  d: '2026-05-08'
+- id: 1136
+  t: Fakta Hewan Terpintar
+  s: Lumba-lumba bisa mengenali dirinya di cermin dan punya nama unik yang mereka
+    gunakan untuk memanggil satu sama lain. Gagak bisa membuat dan menggunakan alat.
+    Gurita bisa membuka toples dari dalam. Gajah bisa bersedih dan mengingat lokasi
+    selama puluhan tahun.
+  d: '2026-05-08'
+- id: 1137
+  t: Apa itu Networking
+  s: 'Networking itu membangun dan merawat hubungan profesional. Tips networking efektif:
+    hadir di event industri, aktif di LinkedIn, berikan value dulu sebelum minta bantuan,
+    follow up setelah pertemuan, dan jaga hubungan secara konsisten bukan hanya saat
+    butuh.'
+  d: '2026-05-08'
+- id: 1138
+  t: Cara Membuat Logo Sendiri
+  s: 'Buat logo sendiri tanpa desainer: pakai Canva (banyak template gratis), pilih
+    font yang sesuai brand, gunakan maksimal 2-3 warna, pastikan terbaca di ukuran
+    kecil, hindari terlalu banyak detail. Logo yang bagus itu simpel, memorable, dan
+    timeless.'
+  d: '2026-05-08'
+- id: 1139
+  t: Fakta Musik dan Otak
+  s: Musik mengaktifkan hampir seluruh bagian otak sekaligus. Mendengarkan musik favorit
+    melepaskan dopamin (hormon kebahagiaan). Belajar memainkan alat musik meningkatkan
+    memori dan kemampuan bahasa. Musik dengan 60-80 BPM (seperti lo-fi) terbukti membantu
+    fokus belajar.
+  d: '2026-05-08'
