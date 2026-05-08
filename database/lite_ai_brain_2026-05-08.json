@@ -1,0 +1,115 @@
+[
+  {
+    "id": "umum_001",
+    "category": "umum",
+    "keys": [
+      "indonesia",
+      "presiden",
+      "soekarno",
+      "hatta",
+      "proklamasi",
+      "kemerdekaan"
+    ],
+    "answer": "Presiden pertama Indonesia adalah Ir. Soekarno. Beliau memproklamasikan kemerdekaan Indonesia bersama Mohammad Hatta pada tanggal 17 Agustus 1945. Soekarno menjabat sebagai presiden dari 1945 hingga 1967."
+  },
+  {
+    "id": "umum_002",
+    "category": "umum",
+    "keys": [
+      "ibu kota",
+      "jakarta",
+      "nusantara",
+      "kalimantan"
+    ],
+    "answer": "Ibu kota Indonesia saat ini adalah Jakarta. Namun pemerintah sedang memindahkan ibu kota ke Nusantara di Kalimantan Timur."
+  },
+  {
+    "id": "umum_003",
+    "category": "umum",
+    "keys": [
+      "pancasila",
+      "dasar",
+      "negara",
+      "sila"
+    ],
+    "answer": "Pancasila adalah dasar negara Indonesia yang terdiri dari 5 sila: Ketuhanan Yang Maha Esa, Kemanusiaan yang Adil dan Beradab, Persatuan Indonesia, Kerakyatan yang Dipimpin oleh Hikmat Kebijaksanaan, Keadilan Sosial bagi Seluruh Rakyat Indonesia."
+  },
+  {
+    "id": "tek_001",
+    "category": "teknologi",
+    "keys": [
+      "ai",
+      "kecerdasan buatan",
+      "artificial intelligence"
+    ],
+    "answer": "Kecerdasan Buatan (AI) adalah teknologi yang memungkinkan komputer meniru kemampuan berpikir manusia seperti belajar, memahami bahasa, mengenali gambar, dan mengambil keputusan."
+  },
+  {
+    "id": "tek_002",
+    "category": "teknologi",
+    "keys": [
+      "android",
+      "ios",
+      "smartphone",
+      "hp",
+      "sistem operasi"
+    ],
+    "answer": "Android dan iOS adalah dua sistem operasi smartphone terpopuler. Android dibuat Google, dipakai Samsung, Xiaomi, Oppo. iOS dibuat Apple, hanya untuk iPhone."
+  },
+  {
+    "id": "tek_003",
+    "category": "teknologi",
+    "keys": [
+      "internet",
+      "jaringan",
+      "global"
+    ],
+    "answer": "Internet adalah jaringan global yang menghubungkan miliaran perangkat di seluruh dunia. Lahir dari ARPANET milik militer Amerika pada 1969."
+  },
+  {
+    "id": "kes_001",
+    "category": "kesehatan",
+    "keys": [
+      "olahraga",
+      "manfaat",
+      "kesehatan",
+      "tubuh"
+    ],
+    "answer": "Olahraga rutin memberikan banyak manfaat: memperkuat jantung dan paru-paru, menjaga berat badan, meningkatkan mood, memperkuat tulang, serta mengurangi risiko penyakit kronis. Cukup 30 menit per hari, 5 kali seminggu."
+  },
+  {
+    "id": "kes_002",
+    "category": "kesehatan",
+    "keys": [
+      "tidur",
+      "jam",
+      "cukup",
+      "manfaat"
+    ],
+    "answer": "Orang dewasa membutuhkan tidur 7-9 jam per malam. Kurang tidur menyebabkan gangguan konsentrasi, sistem imun lemah, mudah stres, dan risiko penyakit jantung."
+  },
+  {
+    "id": "pend_001",
+    "category": "pendidikan",
+    "keys": [
+      "beasiswa",
+      "kuliah",
+      "lpdp",
+      "gratis",
+      "daftar"
+    ],
+    "answer": "Beasiswa populer di Indonesia: LPDP (untuk S2/S3), KIP Kuliah (untuk mahasiswa tidak mampu), Bidikmisi, Djarum Foundation. Cek lpdp.kemenkeu.go.id untuk LPDP."
+  },
+  {
+    "id": "pend_002",
+    "category": "pendidikan",
+    "keys": [
+      "belajar",
+      "efektif",
+      "cara",
+      "tips",
+      "ingat"
+    ],
+    "answer": "Cara belajar efektif: teknik Pomodoro (25 menit belajar, 5 menit istirahat), ajarkan materi ke orang lain (metode Feynman), buat mind map, latihan soal lebih efektif dari membaca ulang."
+  }
+]
