@@ -13,6 +13,8 @@
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
         .bot-bubble { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.05); }
         .user-bubble { background: #10b981; color: white; border-radius: 20px 20px 4px 20px; }
+        .typing-cursor::after { content: '|'; animation: blink 0.7s infinite; color: #10b981; }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
     </style>
 </head>
 <body class="flex flex-col h-screen">
@@ -53,83 +55,203 @@
         const chatBox = document.getElementById('chatBox');
         const input = document.getElementById('userInput');
 
-        input.addEventListener("keypress", (e) => { if(e.key === "Enter") prosesChat(); });
+        // Memori konteks — ingat 5 percakapan terakhir
+        const riwayat = [];
 
+        // Kata-kata yang diabaikan saat pencarian (stopwords Indonesia)
+        const STOPWORDS = new Set([
+            'apa','siapa','bagaimana','kenapa','mengapa','kapan','dimana','berapa',
+            'yang','dan','di','ke','dari','untuk','dengan','ini','itu','ada',
+            'ya','yah','dong','sih','nih','kak','mas','mbak','bisa','boleh',
+            'tolong','jelasin','kasih','tau','tahu','tentang','gimana','gitu',
+            'lah','deh','kan','aja','banget','juga','kalau','kalo','atau'
+        ]);
+
+        // Variasi pembuka respons agar terasa manusiawi
+        const INTRO_VARIANTS = [
+            "Nah, soal itu — ",
+            "Oke Lan, jadi gini — ",
+            "Boleh saya jelaskan ya — ",
+            "Hm, yang saya tahu — ",
+            "Sip, ini dia — ",
+            "Oke, dengerin ya — ",
+            "",
+            "Jadi gini Lan — ",
+            "Baik, perlu kamu tahu — ",
+        ];
+
+        // Variasi respons saat tidak tahu
+        const TIDAK_TAHU = [
+            "Hmm, jujur saya belum punya data soal itu, Lan. Mau aku tambahin ke database dulu?",
+            "Wah, yang ini saya belum tahu, Lan. Coba suntik data baru ke otak saya dulu ya!",
+            "Maaf Lan, kayaknya saraf saya belum sampai ke sana. Data-nya belum ada nih.",
+            "Itu di luar jangkauan saya sekarang, Lan. Tapi kalau kamu masukkan datanya, saya pasti bisa jawab!",
+            "Belum ada info soal itu di memori saya. Mau kita update dulu database-nya?",
+        ];
+
+        // Deteksi sapaan sederhana
+        const SAPAAN = {
+            patterns: [/^(halo|hai|hi|hey|hello|hei|assalamu|salam)\b/i],
+            replies: [
+                "Halo Lan! Ada yang bisa saya bantu hari ini?",
+                "Hai Lan! Siap bantu. Mau tanya apa nih?",
+                "Hey! Saya di sini Lan, silakan tanya apa saja.",
+                "Halo! Sistem saya aktif penuh. Ada yang mau kamu cari tahu?"
+            ]
+        };
+
+        // Deteksi terima kasih
+        const TERIMAKASIH = {
+            patterns: [/^(terima kasih|makasih|thanks|thx|tq)\b/i],
+            replies: [
+                "Sama-sama Lan! Kalau ada yang lain, tinggal tanya.",
+                "Senang bisa bantu! Ada lagi yang perlu kamu ketahui?",
+                "No problem Lan! Saya selalu siap.",
+                "Siap Lan! Jangan sungkan kalau mau tanya lagi ya."
+            ]
+        };
+
+        input.addEventListener("keypress", (e) => { if (e.key === "Enter") prosesChat(); });
+
+        // ── FUNGSI UTAMA ──────────────────────────────────────────────
         async function prosesChat() {
             const pesan = input.value.trim();
-            if(!pesan) return;
+            if (!pesan) return;
 
             addMsg("user", pesan);
             input.value = "";
+            riwayat.push({ role: "user", text: pesan });
+            if (riwayat.length > 10) riwayat.shift();
+
             const loadId = addThinking();
+
+            // Cek sapaan dulu sebelum fetch data
+            const jawabanCepat = cekJawabanCepat(pesan);
+            if (jawabanCepat) {
+                await delay(600 + Math.random() * 400);
+                document.getElementById(loadId).remove();
+                await addMsgTyping("bot", jawabanCepat);
+                return;
+            }
 
             try {
                 // 1. Ambil Index
                 const resIndex = await fetch('brain_index.json');
                 const indexGlobal = await resIndex.json();
 
-                // 2. Scan File Relevan
-                let targetFile = "";
-                const kueri = pesan.toLowerCase().split(/\s+/);
-                
-                for (let entry of indexGlobal) {
-                    if (kueri.some(k => k.length > 2 && entry.keys.includes(k))) {
-                        targetFile = entry.file;
-                        break;
-                    }
-                }
+                // 2. Scan File Relevan — pakai sistem skor, bukan cuma first match
+                const kueri = tokenize(pesan);
+                const skorFile = hitungSkorFile(kueri, indexGlobal);
 
-                let jawaban = "Waduh Lan, saraf saya belum nyampe ke sana. Coba suntik data baru lagi!";
+                let jawaban = acak(TIDAK_TAHU);
 
-                // 3. Deep Vacuum Scraper (Sedot Data Sampai Tuntas)
-                if (targetFile) {
-                    const resData = await fetch(targetFile);
+                if (skorFile.length > 0) {
+                    // Ambil file dengan skor tertinggi
+                    const fileTerbaik = skorFile[0].file;
+                    const resData = await fetch(fileTerbaik);
                     const dataTxt = await resData.text();
-                    const lines = dataTxt.split('\n');
-                    
-                    let teksFull = "";
-                    let ditemukan = false;
 
-                    for(let i=0; i < lines.length; i++){
-                        // Cari baris t:
-                        if(lines[i].toLowerCase().includes(kueri[0])){
-                            // Scan ke bawah mencari baris s:
-                            for(let j=i+1; j < i+10; j++){
-                                if(lines[j] && lines[j].trim().startsWith('s:')){
-                                    // Mulai sedot baris pertama s:
-                                    teksFull = lines[j].split(/s:\s*/)[1] || "";
-                                    
-                                    // LANJUT SEDOT baris di bawahnya sampai ketemu item baru (- id: atau t:)
-                                    for(let k=j+1; k < lines.length; k++){
-                                        const cleanLine = lines[k].trim();
-                                        // Berhenti jika ketemu penanda data selanjutnya
-                                        if(cleanLine.startsWith('- id:') || cleanLine.startsWith('t:') || cleanLine.startsWith('d:')){
-                                            break;
-                                        }
-                                        // Tambahkan teks baris selanjutnya
-                                        teksFull += " " + cleanLine;
-                                    }
-                                    ditemukan = true;
-                                    break;
-                                }
-                            }
-                        }
-                        if(ditemukan) break;
-                    }
-                    if(ditemukan) jawaban = teksFull.replace(/^["']|["']$/g, '').trim();
+                    // 3. Cari jawaban terbaik di dalam file
+                    jawaban = cariJawabanTerbaik(dataTxt, kueri) || jawaban;
                 }
-                
-                setTimeout(() => {
-                    document.getElementById(loadId).remove();
-                    addMsg("bot", jawaban);
-                }, 500);
+
+                await delay(400 + Math.random() * 600);
+                document.getElementById(loadId).remove();
+                await addMsgTyping("bot", jawaban);
+                riwayat.push({ role: "bot", text: jawaban });
 
             } catch (err) {
-                if(document.getElementById(loadId)) document.getElementById(loadId).remove();
-                addMsg("bot", "Saraf terputus! Pastikan robot sudah running dan file brain_index.json ada.");
+                if (document.getElementById(loadId)) document.getElementById(loadId).remove();
+                await addMsgTyping("bot", "Saraf terputus Lan! Pastikan file brain_index.json ada dan server sudah berjalan.");
             }
         }
 
+        // ── TOKENISASI — buang stopwords, ambil kata bermakna ──────────
+        function tokenize(teks) {
+            return teks.toLowerCase()
+                .replace(/[^a-z0-9\s]/g, ' ')
+                .split(/\s+/)
+                .filter(k => k.length > 1 && !STOPWORDS.has(k));
+        }
+
+        // ── HITUNG SKOR setiap file berdasarkan jumlah kata yang cocok ─
+        function hitungSkorFile(kueri, indexGlobal) {
+            const hasil = [];
+
+            for (const entry of indexGlobal) {
+                let skor = 0;
+                for (const k of kueri) {
+                    for (const key of entry.keys) {
+                        if (key === k) skor += 3;               // exact match
+                        else if (key.includes(k)) skor += 1;    // partial match
+                        else if (k.includes(key) && key.length > 2) skor += 1;
+                    }
+                }
+                if (skor > 0) hasil.push({ file: entry.file, skor });
+            }
+
+            // Urutkan dari skor tertinggi
+            return hasil.sort((a, b) => b.skor - a.skor);
+        }
+
+        // ── CARI JAWABAN TERBAIK di dalam file data ───────────────────
+        function cariJawabanTerbaik(dataTxt, kueri) {
+            const lines = dataTxt.split('\n');
+            let jawabanTerbaik = null;
+            let skorTerbaik = -1;
+
+            for (let i = 0; i < lines.length; i++) {
+                const barisBawah = lines[i].toLowerCase();
+
+                // Hitung berapa banyak kata kueri cocok di baris ini
+                let skor = 0;
+                for (const k of kueri) {
+                    if (barisBawah.includes(k)) skor++;
+                }
+
+                if (skor > 0 && skor >= skorTerbaik) {
+                    // Scan ke bawah cari baris s:
+                    for (let j = i + 1; j < Math.min(i + 10, lines.length); j++) {
+                        if (lines[j] && lines[j].trim().startsWith('s:')) {
+                            let teksFull = lines[j].split(/s:\s*/)[1] || "";
+
+                            // Sedot baris lanjutan
+                            for (let k = j + 1; k < lines.length; k++) {
+                                const cl = lines[k].trim();
+                                if (cl.startsWith('- id:') || cl.startsWith('t:') || cl.startsWith('d:')) break;
+                                teksFull += " " + cl;
+                            }
+
+                            const teksRapi = teksFull.replace(/^["']|["']$/g, '').trim();
+                            if (teksRapi && skor >= skorTerbaik) {
+                                skorTerbaik = skor;
+                                jawabanTerbaik = teksRapi;
+                            }
+                            break;
+                        }
+                    }
+                }
+            }
+
+            if (!jawabanTerbaik) return null;
+
+            // Tambahkan variasi pembuka agar terasa manusiawi
+            const intro = acak(INTRO_VARIANTS);
+            return intro + jawabanTerbaik;
+        }
+
+        // ── CEK JAWABAN CEPAT (sapaan, terima kasih, dll) ─────────────
+        function cekJawabanCepat(pesan) {
+            for (const p of SAPAAN.patterns) {
+                if (p.test(pesan)) return acak(SAPAAN.replies);
+            }
+            for (const p of TERIMAKASIH.patterns) {
+                if (p.test(pesan)) return acak(TERIMAKASIH.replies);
+            }
+            return null;
+        }
+
+        // ── TAMBAH PESAN ke UI ─────────────────────────────────────────
         function addMsg(role, text) {
             const isBot = role === "bot";
             const div = document.createElement('div');
@@ -137,22 +259,52 @@
             div.innerHTML = `
                 <div class="${isBot ? 'bot-bubble text-gray-300' : 'user-bubble shadow-lg'} p-4 px-6 max-w-[85%] text-sm leading-relaxed shadow-xl">
                     ${isBot ? '<span class="text-emerald-500 font-black text-[9px] uppercase block mb-2 tracking-[0.2em] text-left">LITE AI Core</span>' : ''}
-                    ${text}
+                    <span class="msg-text">${text}</span>
                 </div>`;
             chatBox.appendChild(div);
             chatBox.scrollTop = chatBox.scrollHeight;
+            return div;
         }
 
+        // ── TYPING EFFECT — teks muncul karakter demi karakter ─────────
+        async function addMsgTyping(role, text) {
+            const isBot = role === "bot";
+            const div = document.createElement('div');
+            div.className = `flex ${isBot ? 'justify-start' : 'justify-end'} fade-in mb-6`;
+            div.innerHTML = `
+                <div class="${isBot ? 'bot-bubble text-gray-300' : 'user-bubble shadow-lg'} p-4 px-6 max-w-[85%] text-sm leading-relaxed shadow-xl">
+                    ${isBot ? '<span class="text-emerald-500 font-black text-[9px] uppercase block mb-2 tracking-[0.2em] text-left">LITE AI Core</span>' : ''}
+                    <span class="msg-text typing-cursor"></span>
+                </div>`;
+            chatBox.appendChild(div);
+            chatBox.scrollTop = chatBox.scrollHeight;
+
+            const span = div.querySelector('.msg-text');
+            const kecepatan = text.length > 200 ? 12 : text.length > 100 ? 18 : 25;
+
+            for (let i = 0; i <= text.length; i++) {
+                span.textContent = text.slice(0, i);
+                chatBox.scrollTop = chatBox.scrollHeight;
+                await delay(kecepatan + Math.random() * 10);
+            }
+            span.classList.remove('typing-cursor');
+        }
+
+        // ── INDIKATOR BERPIKIR ─────────────────────────────────────────
         function addThinking() {
             const id = "t-" + Date.now();
             const div = document.createElement('div');
             div.id = id;
             div.className = "flex justify-start animate-pulse mb-6";
-            div.innerHTML = `<div class="bg-white/5 text-gray-500 p-2 px-4 rounded-xl text-[9px] font-bold tracking-widest uppercase">Deep Scanning Neural Data...</div>`;
+            div.innerHTML = `<div class="bg-white/5 text-gray-500 p-2 px-4 rounded-xl text-[9px] font-bold tracking-widest uppercase">Memindai memori saraf...</div>`;
             chatBox.appendChild(div);
             chatBox.scrollTop = chatBox.scrollHeight;
             return id;
         }
+
+        // ── UTILITAS ───────────────────────────────────────────────────
+        function acak(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+        function delay(ms) { return new Promise(r => setTimeout(r, ms)); }
     </script>
 </body>
 </html>
