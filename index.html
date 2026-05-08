@@ -3,35 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LITE AI</title>
+    <title>LITE AI - Neural Core v5</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
         body { background: #050505; color: #d1d1d1; font-family: 'Inter', sans-serif; }
         .hide-scroll::-webkit-scrollbar { display: none; }
-        .fade-in { animation: fadeInUp 0.4s ease-out; }
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .fade-in { animation: fadeInUp 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+        .bot-bubble { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.05); }
     </style>
 </head>
 <body class="flex flex-col h-screen">
 
-    <header class="p-5 border-b border-white/5 flex justify-between bg-[#050505]/80 backdrop-blur-md sticky top-0 z-20">
-        <span class="text-emerald-500 font-black tracking-tighter text-2xl">LITE AI</span>
+    <header class="p-5 border-b border-white/5 flex justify-between items-center bg-[#050505]/90 backdrop-blur-xl sticky top-0 z-20">
+        <div class="flex items-center gap-2">
+            <div class="w-3 h-3 bg-emerald-500 rounded-full shadow-[0_0_10px_#10b981]"></div>
+            <span class="text-white font-extrabold tracking-tighter text-2xl">LITE AI</span>
+        </div>
         <div class="flex flex-col items-end">
-            <span class="text-[9px] text-gray-500 uppercase font-bold tracking-widest">Neural Link v5</span>
-            <div id="status" class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse mt-1"></div>
+            <span class="text-[9px] text-gray-500 uppercase font-black tracking-[0.2em]">Neural Engine v5.0</span>
+            <span class="text-[10px] text-emerald-500/70 font-mono" id="brain-status">SYSTEM ONLINE</span>
         </div>
     </header>
 
-    <main id="chatBox" class="flex-1 overflow-y-auto p-4 md:px-64 space-y-8 hide-scroll pb-24"></main>
+    <main id="chatBox" class="flex-1 overflow-y-auto p-4 md:px-64 space-y-8 hide-scroll pb-32">
+        <div class="flex justify-start fade-in">
+            <div class="bot-bubble text-gray-300 p-4 px-6 rounded-2xl max-w-[90%] text-sm leading-relaxed shadow-2xl">
+                <span class="text-emerald-500 font-black text-[9px] uppercase block mb-2 tracking-widest">System Boot</span>
+                Halo Lan. Semua database dan saraf index sudah terhubung. Ada yang mau kita bedah hari ini?
+            </div>
+        </div>
+    </main>
 
-    <footer class="p-6 bg-gradient-to-t from-[#050505] to-transparent fixed bottom-0 w-full md:px-64">
+    <footer class="p-6 fixed bottom-0 w-full md:px-64 bg-gradient-to-t from-[#050505] via-[#050505] to-transparent">
         <div class="relative flex items-center max-w-4xl mx-auto group">
             <input type="text" id="userInput" placeholder="Tanya sesuatu ke AI-mu..." 
-                   class="w-full bg-[#111] border border-white/10 p-4 pr-16 rounded-2xl focus:outline-none focus:border-emerald-600 text-sm transition-all shadow-2xl">
-            <button onclick="prosesChat()" class="absolute right-4 text-emerald-500 hover:scale-110 active:scale-90 transition-all">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"><path d="M3.478 2.405a.75.75 0 00-.926.94l2.432 7.905H13.5a.75.75 0 010 1.5H4.984l-2.432 7.905a.75.75 0 00.926.94 60.519 60.519 0 0018.445-8.986.75.75 0 000-1.218A60.517 60.517 0 003.478 2.405z" /></svg>
+                   class="w-full bg-[#121212] border border-white/10 p-4 pr-16 rounded-2xl focus:outline-none focus:border-emerald-600/50 text-sm transition-all shadow-[0_0_30px_rgba(0,0,0,0.5)] placeholder:text-gray-600">
+            <button onclick="prosesChat()" class="absolute right-4 text-emerald-500 hover:text-white transition-colors duration-300">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                    <path d="M3.478 2.405a.75.75 0 00-.926.94l2.432 7.905H13.5a.75.75 0 010 1.5H4.984l-2.432 7.905a.75.75 0 00.926.94 60.519 60.519 0 0018.445-8.986.75.75 0 000-1.218A60.517 60.517 0 003.478 2.405z" />
+                </svg>
             </button>
         </div>
+        <p class="text-[9px] text-gray-600 text-center mt-3 tracking-widest uppercase">Memory-Based Artificial Intelligence</p>
     </footer>
 
     <script>
@@ -53,38 +68,52 @@
                 const resIndex = await fetch('brain_index.json');
                 const indexGlobal = await resIndex.json();
 
-                // 2. Scan Kecocokan
+                // 2. Scan Kecocokan File
                 let targetFile = "";
-                const kueri = pesan.toLowerCase().split(" ");
+                const kueri = pesan.toLowerCase().split(/\s+/);
                 
                 for (let entry of indexGlobal) {
-                    if (kueri.some(k => k.length > 3 && entry.keys.includes(k))) {
+                    if (kueri.some(k => k.length > 2 && entry.keys.includes(k))) {
                         targetFile = entry.file;
                         break;
                     }
                 }
 
-                // 3. Ambil Data Spesifik
-                let jawaban = "Maaf Lan, data itu belum terpetakan di memori saraf saya. Coba suntik di Colab!";
+                let jawaban = "Waduh Lan, sepertinya saya belum punya data soal itu di memori saraf saya. Coba suntik topiknya lewat Colab!";
+
+                // 3. Ekstraksi Data Utuh (Neural Retrieval)
                 if (targetFile) {
                     const resData = await fetch(targetFile);
                     const dataTxt = await resData.text();
-                    // Pencarian string sederhana di file YAML
+                    
+                    // Regex Saraf: Mencari blok t: yang cocok dan mengambil s: di bawahnya secara utuh
                     const lines = dataTxt.split('\n');
-                    for(let i=0; i<lines.length; i++){
-                        if(lines[i].toLowerCase().includes(kueri[0]) && lines[i+1]?.includes('s:')){
-                            jawaban = lines[i+1].split('s:')[1].trim();
-                            break;
+                    for(let i=0; i < lines.length; i++){
+                        if(lines[i].toLowerCase().includes(kueri[0])){
+                            // Scan area sekitar baris t: untuk menemukan s:
+                            for(let j=i; j < i+10; j++){
+                                if(lines[j] && lines[j].trim().startsWith('s:')){
+                                    // Ambil teks setelah s: sampai akhir baris
+                                    let rawText = lines[j].split(/s:\s*/)[1];
+                                    if(rawText) {
+                                        jawaban = rawText.replace(/^["']|["']$/g, '').trim();
+                                        break;
+                                    }
+                                }
+                            }
+                            if(jawaban !== "Waduh Lan...") break;
                         }
                     }
                 }
                 
-                document.getElementById(loadId).remove();
-                addMsg("bot", jawaban);
+                setTimeout(() => {
+                    document.getElementById(loadId).remove();
+                    addMsg("bot", jawaban);
+                }, 600);
 
             } catch (err) {
-                document.getElementById(loadId).remove();
-                addMsg("bot", "Saraf terputus. Pastikan robot sudah jalan pertama kali.");
+                if(document.getElementById(loadId)) document.getElementById(loadId).remove();
+                addMsg("bot", "Koneksi saraf terputus. Pastikan file brain_index.json sudah di-generate oleh robot.");
             }
         }
 
@@ -92,8 +121,11 @@
             const isBot = role === "bot";
             const div = document.createElement('div');
             div.className = `flex ${isBot ? 'justify-start' : 'justify-end'} fade-in mb-6`;
-            div.innerHTML = `<div class="${isBot ? 'text-gray-300' : 'bg-emerald-600 text-white rounded-2xl'} p-3 px-5 max-w-[85%] text-sm leading-relaxed shadow-xl">
-                ${isBot ? '<span class="text-emerald-500 font-black text-[9px] uppercase block mb-1">LITE AI Core</span>' : ''} ${text}</div>`;
+            div.innerHTML = `
+                <div class="${isBot ? 'bot-bubble text-gray-300' : 'bg-emerald-600 text-white font-medium rounded-2xl'} p-4 px-6 max-w-[85%] text-sm leading-relaxed shadow-xl">
+                    ${isBot ? '<span class="text-emerald-500 font-black text-[9px] uppercase block mb-2 tracking-[0.2em]">LITE AI Core</span>' : ''}
+                    ${text}
+                </div>`;
             chatBox.appendChild(div);
             chatBox.scrollTop = chatBox.scrollHeight;
         }
@@ -102,9 +134,10 @@
             const id = "t-" + Date.now();
             const div = document.createElement('div');
             div.id = id;
-            div.className = "flex justify-start animate-pulse";
-            div.innerHTML = `<div class="bg-white/5 text-gray-500 p-2 px-4 rounded-xl text-[10px]">AI sedang memproses saraf...</div>`;
+            div.className = "flex justify-start animate-pulse mb-6";
+            div.innerHTML = `<div class="bg-white/5 text-gray-500 p-2 px-4 rounded-xl text-[10px] tracking-widest font-bold">RETRIEVING NEURAL DATA...</div>`;
             chatBox.appendChild(div);
+            chatBox.scrollTop = chatBox.scrollHeight;
             return id;
         }
     </script>
