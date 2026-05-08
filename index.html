@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LITE AI - Neural Core v7</title>
+    <title>LITE AI - Neural Core v8</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
@@ -11,11 +11,16 @@
         .hide-scroll::-webkit-scrollbar { display: none; }
         .fade-in { animation: fadeInUp 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
-        .bot-bubble { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.05); }
+        .bot-bubble { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 18px; }
         .user-bubble { background: #10b981; color: white; border-radius: 20px 20px 4px 20px; }
         .typing-cursor::after { content: '|'; animation: blink 0.7s infinite; color: #10b981; }
         @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
         .llm-badge { font-size: 8px; color: #6ee7b7; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 900; margin-left: 6px; opacity: 0.7; }
+        .img-badge { font-size: 8px; color: #f472b6; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 900; margin-left: 6px; opacity: 0.8; }
+        .gen-img { border-radius: 12px; max-width: 100%; margin-top: 10px; border: 1px solid rgba(255,255,255,0.08); }
+        .attach-preview { max-height: 80px; border-radius: 8px; border: 1px solid #10b981; margin-bottom: 6px; }
+        .icon-btn { background: none; border: none; cursor: pointer; color: #6b7280; transition: all 0.15s; }
+        .icon-btn:hover { color: #10b981; transform: scale(1.15); }
     </style>
 </head>
 <body class="flex flex-col h-screen">
@@ -26,301 +31,180 @@
             <span class="text-white font-extrabold tracking-tighter text-2xl">LITE AI</span>
         </div>
         <div class="flex flex-col items-end">
-            <span class="text-[9px] text-gray-500 uppercase font-black tracking-[0.2em]">Neural Engine v7.0</span>
-            <span class="text-[10px] text-emerald-500/70 font-mono">LLM + RETRIEVAL</span>
+            <span class="text-[9px] text-gray-500 uppercase font-black tracking-[0.2em]">Neural Engine v8.0</span>
+            <span class="text-[10px] text-emerald-500/70 font-mono">LLM + IMAGEN + VISION</span>
         </div>
     </header>
 
     <main id="chatBox" class="flex-1 overflow-y-auto p-4 md:px-64 space-y-8 hide-scroll pb-32">
         <div class="flex justify-start fade-in">
-            <div class="bot-bubble text-gray-300 p-4 px-6 rounded-2xl max-w-[90%] text-sm leading-relaxed shadow-2xl">
+            <div class="bot-bubble text-gray-300 p-4 px-6 max-w-[90%] text-sm leading-relaxed shadow-2xl">
                 <span class="text-emerald-500 font-black text-[9px] uppercase block mb-2 tracking-widest text-left">System</span>
-                Sistem aktif. Otak saya sekarang terkoneksi ke LLM — bisa jawab hampir apapun, Lan!
+                Sistem aktif. Sekarang aku bisa ngobrol, bikin gambar, dan lihat gambar yang kamu kirim, Lan!<br>
+                <span class="text-gray-500 text-xs mt-2 block">Coba: "buatkan gambar ..." atau kirim gambar pakai tombol clip.</span>
             </div>
         </div>
     </main>
 
+    <input type="file" id="fileInput" accept="image/*" class="hidden">
+
     <footer class="p-6 fixed bottom-0 w-full md:px-64 bg-gradient-to-t from-[#050505] via-[#050505] to-transparent">
-        <div class="relative flex items-center max-w-4xl mx-auto group">
-            <input type="text" id="userInput" placeholder="Tanya sesuatu..." 
-                   class="w-full bg-[#121212] border border-white/10 p-4 pr-16 rounded-2xl focus:outline-none focus:border-emerald-600/50 text-sm transition-all shadow-2xl">
-            <button onclick="prosesChat()" class="absolute right-4 text-emerald-500 hover:scale-110 active:scale-90 transition-all">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
-                    <path d="M3.478 2.405a.75.75 0 00-.926.94l2.432 7.905H13.5a.75.75 0 010 1.5H4.984l-2.432 7.905a.75.75 0 00.926.94 60.519 60.519 0 0018.445-8.986.75.75 0 000-1.218A60.517 60.517 0 003.478 2.405z" />
-                </svg>
+        <div id="attachPreview" class="max-w-4xl mx-auto mb-2 hidden">
+            <div class="flex items-center gap-2 bg-[#121212] rounded-xl p-2 px-3 border border-emerald-800/40">
+                <img id="previewImg" class="attach-preview">
+                <span class="text-[10px] text-gray-400 flex-1">Gambar terlampir</span>
+                <button onclick="clearAttach()" class="text-red-400 text-xs hover:text-red-300">Hapus</button>
+            </div>
+        </div>
+        <div class="relative flex items-center max-w-4xl mx-auto group gap-2">
+            <button onclick="document.getElementById('fileInput').click()" class="icon-btn p-2" title="Lampirkan gambar">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l8.57-8.57A4 4 0 1 1 18 8.84l-8.59 8.57a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>
             </button>
+            <div class="relative flex-1">
+                <input type="text" id="userInput" placeholder="Tanya sesuatu atau 'buatkan gambar ...'"
+                       class="w-full bg-[#121212] border border-white/10 p-4 pr-16 rounded-2xl focus:outline-none focus:border-emerald-600/50 text-sm transition-all shadow-2xl">
+                <button onclick="prosesChat()" class="absolute right-4 top-1/2 -translate-y-1/2 text-emerald-500 hover:scale-110 active:scale-90 transition-all">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                        <path d="M3.478 2.405a.75.75 0 00-.926.94l2.432 7.905H13.5a.75.75 0 010 1.5H4.984l-2.432 7.905a.75.75 0 00.926.94 60.519 60.519 0 0018.445-8.986.75.75 0 000-1.218A60.517 60.517 0 003.478 2.405z" />
+                    </svg>
+                </button>
+            </div>
         </div>
     </footer>
 
     <script>
         const chatBox = document.getElementById('chatBox');
         const input = document.getElementById('userInput');
+        const fileInput = document.getElementById('fileInput');
 
-        // URL CodeWords LLM Proxy
         const LLM_URL = 'https://runtime.codewords.ai/run/kite_ai_llm_proxy_a414ffc0/';
-
-        // Memori konteks — ingat 10 pesan terakhir
         const riwayat = [];
+        let attachedImageUrl = null;
 
-        // Kata-kata yang diabaikan saat pencarian (stopwords Indonesia)
-        const STOPWORDS = new Set([
-            'apa','siapa','bagaimana','kenapa','mengapa','kapan','dimana','berapa',
-            'yang','dan','di','ke','dari','untuk','dengan','ini','itu','ada',
-            'ya','yah','dong','sih','nih','kak','mas','mbak','bisa','boleh',
-            'tolong','jelasin','kasih','tau','tahu','tentang','gimana','gitu',
-            'lah','deh','kan','aja','banget','juga','kalau','kalo','atau'
-        ]);
-
-        // Variasi pembuka respons agar terasa manusiawi
-        const INTRO_VARIANTS = [
-            "Nah, soal itu — ",
-            "Oke Lan, jadi gini — ",
-            "Boleh saya jelaskan ya — ",
-            "Hm, yang saya tahu — ",
-            "Sip, ini dia — ",
-            "Oke, dengerin ya — ",
-            "",
-            "Jadi gini Lan — ",
-            "Baik, perlu kamu tahu — ",
-        ];
-
-        // Deteksi sapaan sederhana
-        const SAPAAN = {
-            patterns: [/^(halo|hai|hi|hey|hello|hei|assalamu|salam)/i],
-            replies: [
-                "Halo Lan! Ada yang bisa saya bantu hari ini?",
-                "Hai Lan! Siap bantu. Mau tanya apa nih?",
-                "Hey! Saya di sini Lan, silakan tanya apa saja.",
-                "Halo! Sistem saya aktif penuh. Ada yang mau kamu cari tahu?"
-            ]
-        };
-
-        // Deteksi terima kasih
-        const TERIMAKASIH = {
-            patterns: [/^(terima kasih|makasih|thanks|thx|tq)/i],
-            replies: [
-                "Sama-sama Lan! Kalau ada yang lain, tinggal tanya.",
-                "Senang bisa bantu! Ada lagi yang perlu kamu ketahui?",
-                "No problem Lan! Saya selalu siap.",
-                "Siap Lan! Jangan sungkan kalau mau tanya lagi ya."
-            ]
-        };
+        const STOPWORDS = new Set(['apa','siapa','bagaimana','kenapa','mengapa','kapan','dimana','berapa','yang','dan','di','ke','dari','untuk','dengan','ini','itu','ada','ya','yah','dong','sih','nih','kak','mas','mbak','bisa','boleh','tolong','jelasin','kasih','tau','tahu','tentang','gimana','gitu','lah','deh','kan','aja','banget','juga','kalau','kalo','atau']);
+        const INTRO = ["Nah, soal itu — ","Oke Lan, jadi gini — ","Hm, yang saya tahu — ","Sip, ini dia — ","","Jadi gini Lan — ","Baik, perlu kamu tahu — "];
+        const SAPAAN = { p: [/^(halo|hai|hi|hey|hello|hei|assalamu|salam)\b/i], r: ["Halo Lan! Ada yang bisa saya bantu?","Hai Lan! Siap bantu. Mau tanya apa?","Hey! Saya di sini, silakan tanya apa saja."] };
+        const THX = { p: [/^(terima kasih|makasih|thanks|thx|tq)\b/i], r: ["Sama-sama Lan!","Senang bisa bantu!","Siap Lan! Tanya lagi kapan saja."] };
 
         input.addEventListener("keypress", (e) => { if (e.key === "Enter") prosesChat(); });
 
-        // ── TANYA KE LLM PROXY ──────────────────────────────────────
-        async function tanyaLLM(pesan) {
-            const history = riwayat.slice(-10).map(h => ({
-                role: h.role === 'bot' ? 'assistant' : 'user',
-                content: h.text
-            }));
+        // File attachment
+        fileInput.addEventListener("change", (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = (ev) => {
+                attachedImageUrl = ev.target.result; // data URI
+                document.getElementById('previewImg').src = attachedImageUrl;
+                document.getElementById('attachPreview').classList.remove('hidden');
+            };
+            reader.readAsDataURL(file);
+        });
 
-            const res = await fetch(LLM_URL, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ message: pesan, history })
-            });
-
-            if (!res.ok) throw new Error('LLM proxy error: ' + res.status);
-            const data = await res.json();
-            return data.reply;
+        function clearAttach() {
+            attachedImageUrl = null;
+            fileInput.value = '';
+            document.getElementById('attachPreview').classList.add('hidden');
         }
 
-        // ── FUNGSI UTAMA ──────────────────────────────────────────────
+        // LLM proxy call
+        async function tanyaLLM(pesan, imageUrl) {
+            const history = riwayat.slice(-10).map(h => ({ role: h.role === 'bot' ? 'assistant' : 'user', content: h.text }));
+            const body = { message: pesan, history };
+            if (imageUrl) body.image_url = imageUrl;
+
+            const res = await fetch(LLM_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+            if (!res.ok) throw new Error('LLM error: ' + res.status);
+            return await res.json();
+        }
+
         async function prosesChat() {
             const pesan = input.value.trim();
-            if (!pesan) return;
+            if (!pesan && !attachedImageUrl) return;
 
-            addMsg("user", pesan);
+            const sentImage = attachedImageUrl;
+            addMsg("user", pesan, sentImage);
             input.value = "";
+            clearAttach();
             riwayat.push({ role: "user", text: pesan });
             if (riwayat.length > 20) riwayat.shift();
 
             const loadId = addThinking();
 
-            // Cek sapaan dulu sebelum fetch data
-            const jawabanCepat = cekJawabanCepat(pesan);
-            if (jawabanCepat) {
-                await delay(600 + Math.random() * 400);
-                document.getElementById(loadId).remove();
-                await addMsgTyping("bot", jawabanCepat, false);
-                return;
+            // Quick replies (greeting/thanks)
+            const quick = cekCepat(pesan);
+            if (quick && !sentImage) { await delay(500); removeEl(loadId); await addMsgTyping("bot", quick); return; }
+
+            // Try YAML first (only for text, not images)
+            if (!sentImage) {
+                try {
+                    const idx = await (await fetch('brain_index.json')).json();
+                    const kueri = tokenize(pesan);
+                    const skor = hitungSkor(kueri, idx);
+                    if (skor.length > 0) {
+                        const data = await (await fetch(skor[0].file)).text();
+                        const yamlAns = cariJawaban(data, kueri);
+                        if (yamlAns) { await delay(300); removeEl(loadId); await addMsgTyping("bot", yamlAns); riwayat.push({role:"bot",text:yamlAns}); return; }
+                    }
+                } catch(e) { /* YAML fail, fallback to LLM */ }
             }
 
+            // LLM
             try {
-                // 1. Ambil Index
-                const resIndex = await fetch('brain_index.json');
-                const indexGlobal = await resIndex.json();
+                updateThinking(loadId, sentImage ? 'Menganalisis gambar...' : (pesan.toLowerCase().match(/^(buatkan|generate|buat|bikin|\/gambar)/) ? 'Generating gambar...' : 'Berpikir dengan LLM...'));
+                const resp = await tanyaLLM(pesan || "Apa yang kamu lihat di gambar ini?", sentImage);
+                removeEl(loadId);
 
-                // 2. Scan File Relevan — pakai sistem skor
-                const kueri = tokenize(pesan);
-                const skorFile = hitungSkorFile(kueri, indexGlobal);
-
-                let jawaban = null;
-                let isLLM = false;
-
-                if (skorFile.length > 0) {
-                    // Ambil file dengan skor tertinggi
-                    const fileTerbaik = skorFile[0].file;
-                    const resData = await fetch(fileTerbaik);
-                    const dataTxt = await resData.text();
-
-                    // 3. Cari jawaban terbaik di dalam file
-                    jawaban = cariJawabanTerbaik(dataTxt, kueri);
-                }
-
-                // 4. Kalau YAML tidak punya jawaban → tanya LLM
-                if (!jawaban) {
-                    isLLM = true;
-                    updateThinking(loadId, 'Berpikir dalam dengan LLM...');
-                    jawaban = await tanyaLLM(pesan);
-                }
-
-                await delay(200 + Math.random() * 300);
-                document.getElementById(loadId).remove();
-                await addMsgTyping("bot", jawaban, isLLM);
-                riwayat.push({ role: "bot", text: jawaban });
-
-            } catch (err) {
+                const badge = resp.image_url ? 'img' : 'llm';
+                await addMsgTyping("bot", resp.reply, badge, resp.image_url);
+                riwayat.push({role:"bot",text:resp.reply});
+            } catch(err) {
                 console.error(err);
-                if (document.getElementById(loadId)) document.getElementById(loadId).remove();
-                await addMsgTyping("bot", "Saraf terputus Lan! Coba lagi sebentar ya.", false);
+                removeEl(loadId);
+                await addMsgTyping("bot", "Saraf terputus Lan! Coba lagi sebentar ya.");
             }
         }
 
-        // ── TOKENISASI — buang stopwords, ambil kata bermakna ──────────
-        function tokenize(teks) {
-            return teks.toLowerCase()
-                .replace(/[^a-z0-9\s]/g, ' ')
-                .split(/\s+/)
-                .filter(k => k.length > 1 && !STOPWORDS.has(k));
+        function tokenize(t) { return t.toLowerCase().replace(/[^a-z0-9\s]/g,' ').split(/\s+/).filter(k=>k.length>1&&!STOPWORDS.has(k)); }
+        function hitungSkor(q,idx) { const r=[]; for(const e of idx){let s=0;for(const k of q)for(const key of e.keys){if(key===k)s+=3;else if(key.includes(k))s+=1;else if(k.includes(key)&&key.length>2)s+=1;}if(s>0)r.push({file:e.file,skor:s});}return r.sort((a,b)=>b.skor-a.skor); }
+        function cariJawaban(d,q) { const l=d.split('\n');let best=null,bs=-1;for(let i=0;i<l.length;i++){let s=0;const lo=l[i].toLowerCase();for(const k of q)if(lo.includes(k))s++;if(s>0&&s>=bs)for(let j=i+1;j<Math.min(i+10,l.length);j++){if(l[j]&&l[j].trim().startsWith('s:')){let t=l[j].split(/s:\s*/)[1]||"";for(let k=j+1;k<l.length;k++){const c=l[k].trim();if(c.startsWith('- id:')||c.startsWith('t:')||c.startsWith('d:'))break;t+=" "+c;}const r=t.replace(/^["']|["']$/g,'').trim();if(r&&s>=bs){bs=s;best=r;}break;}}}if(!best)return null;return acak(INTRO)+best; }
+        function cekCepat(p) { for(const x of SAPAAN.p)if(x.test(p))return acak(SAPAAN.r);for(const x of THX.p)if(x.test(p))return acak(THX.r);return null; }
+
+        function addMsg(role, text, imageUrl) {
+            const isBot = role==="bot"; const div=document.createElement('div');
+            div.className=`flex ${isBot?'justify-start':'justify-end'} fade-in mb-6`;
+            div.innerHTML=`<div class="${isBot?'bot-bubble text-gray-300':'user-bubble shadow-lg'} p-4 px-6 max-w-[85%] text-sm leading-relaxed shadow-xl">
+                ${isBot?'<span class="text-emerald-500 font-black text-[9px] uppercase block mb-2 tracking-[0.2em] text-left">LITE AI Core</span>':''}
+                ${imageUrl && !isBot ? `<img src="${imageUrl}" class="gen-img mb-2" style="max-height:120px">` : ''}
+                <span class="msg-text">${text}</span></div>`;
+            chatBox.appendChild(div);chatBox.scrollTop=chatBox.scrollHeight;
         }
 
-        // ── HITUNG SKOR setiap file berdasarkan jumlah kata yang cocok ─
-        function hitungSkorFile(kueri, indexGlobal) {
-            const hasil = [];
-            for (const entry of indexGlobal) {
-                let skor = 0;
-                for (const k of kueri) {
-                    for (const key of entry.keys) {
-                        if (key === k) skor += 3;
-                        else if (key.includes(k)) skor += 1;
-                        else if (k.includes(key) && key.length > 2) skor += 1;
-                    }
-                }
-                if (skor > 0) hasil.push({ file: entry.file, skor });
-            }
-            return hasil.sort((a, b) => b.skor - a.skor);
-        }
-
-        // ── CARI JAWABAN TERBAIK di dalam file data ───────────────────
-        function cariJawabanTerbaik(dataTxt, kueri) {
-            const lines = dataTxt.split('\n');
-            let jawabanTerbaik = null;
-            let skorTerbaik = -1;
-
-            for (let i = 0; i < lines.length; i++) {
-                const barisBawah = lines[i].toLowerCase();
-                let skor = 0;
-                for (const k of kueri) {
-                    if (barisBawah.includes(k)) skor++;
-                }
-
-                if (skor > 0 && skor >= skorTerbaik) {
-                    for (let j = i + 1; j < Math.min(i + 10, lines.length); j++) {
-                        if (lines[j] && lines[j].trim().startsWith('s:')) {
-                            let teksFull = lines[j].split(/s:\s*/)[1] || "";
-                            for (let k = j + 1; k < lines.length; k++) {
-                                const cl = lines[k].trim();
-                                if (cl.startsWith('- id:') || cl.startsWith('t:') || cl.startsWith('d:')) break;
-                                teksFull += " " + cl;
-                            }
-                            const teksRapi = teksFull.replace(/^["']|["']$/g, '').trim();
-                            if (teksRapi && skor >= skorTerbaik) {
-                                skorTerbaik = skor;
-                                jawabanTerbaik = teksRapi;
-                            }
-                            break;
-                        }
-                    }
-                }
-            }
-
-            if (!jawabanTerbaik) return null;
-            const intro = acak(INTRO_VARIANTS);
-            return intro + jawabanTerbaik;
-        }
-
-        // ── CEK JAWABAN CEPAT (sapaan, terima kasih, dll) ─────────────
-        function cekJawabanCepat(pesan) {
-            for (const p of SAPAAN.patterns) {
-                if (p.test(pesan)) return acak(SAPAAN.replies);
-            }
-            for (const p of TERIMAKASIH.patterns) {
-                if (p.test(pesan)) return acak(TERIMAKASIH.replies);
-            }
-            return null;
-        }
-
-        // ── TAMBAH PESAN ke UI ─────────────────────────────────────────
-        function addMsg(role, text) {
-            const isBot = role === "bot";
-            const div = document.createElement('div');
-            div.className = `flex ${isBot ? 'justify-start' : 'justify-end'} fade-in mb-6`;
-            div.innerHTML = `
-                <div class="${isBot ? 'bot-bubble text-gray-300' : 'user-bubble shadow-lg'} p-4 px-6 max-w-[85%] text-sm leading-relaxed shadow-xl">
-                    ${isBot ? '<span class="text-emerald-500 font-black text-[9px] uppercase block mb-2 tracking-[0.2em] text-left">LITE AI Core</span>' : ''}
-                    <span class="msg-text">${text}</span>
+        async function addMsgTyping(role, text, badge, imageUrl) {
+            const isBot=role==="bot";const div=document.createElement('div');
+            div.className=`flex ${isBot?'justify-start':'justify-end'} fade-in mb-6`;
+            let badgeHtml='';
+            if(badge==='llm')badgeHtml='<span class="llm-badge">LLM</span>';
+            else if(badge==='img')badgeHtml='<span class="img-badge">IMAGEN</span>';
+            div.innerHTML=`<div class="${isBot?'bot-bubble text-gray-300':'user-bubble shadow-lg'} p-4 px-6 max-w-[85%] text-sm leading-relaxed shadow-xl">
+                ${isBot?`<span class="text-emerald-500 font-black text-[9px] uppercase block mb-2 tracking-[0.2em] text-left">LITE AI Core${badgeHtml}</span>`:''}
+                <span class="msg-text typing-cursor"></span>
+                ${imageUrl?`<img src="${imageUrl}" class="gen-img" style="display:none">`:''}
                 </div>`;
-            chatBox.appendChild(div);
-            chatBox.scrollTop = chatBox.scrollHeight;
-            return div;
-        }
+            chatBox.appendChild(div);chatBox.scrollTop=chatBox.scrollHeight;
 
-        // ── TYPING EFFECT — teks muncul karakter demi karakter ─────────
-        async function addMsgTyping(role, text, isLLM = false) {
-            const isBot = role === "bot";
-            const div = document.createElement('div');
-            div.className = `flex ${isBot ? 'justify-start' : 'justify-end'} fade-in mb-6`;
-            div.innerHTML = `
-                <div class="${isBot ? 'bot-bubble text-gray-300' : 'user-bubble shadow-lg'} p-4 px-6 max-w-[85%] text-sm leading-relaxed shadow-xl">
-                    ${isBot ? `<span class="text-emerald-500 font-black text-[9px] uppercase block mb-2 tracking-[0.2em] text-left">LITE AI Core${isLLM ? '<span class="llm-badge">LLM</span>' : ''}</span>` : ''}
-                    <span class="msg-text typing-cursor"></span>
-                </div>`;
-            chatBox.appendChild(div);
-            chatBox.scrollTop = chatBox.scrollHeight;
-
-            const span = div.querySelector('.msg-text');
-            const kecepatan = text.length > 200 ? 10 : text.length > 100 ? 15 : 22;
-
-            for (let i = 0; i <= text.length; i++) {
-                span.textContent = text.slice(0, i);
-                chatBox.scrollTop = chatBox.scrollHeight;
-                await delay(kecepatan + Math.random() * 8);
-            }
+            const span=div.querySelector('.msg-text');const spd=text.length>200?8:text.length>100?14:20;
+            for(let i=0;i<=text.length;i++){span.textContent=text.slice(0,i);chatBox.scrollTop=chatBox.scrollHeight;await delay(spd+Math.random()*6);}
             span.classList.remove('typing-cursor');
+
+            if(imageUrl){const img=div.querySelector('.gen-img');if(img){img.style.display='block';chatBox.scrollTop=chatBox.scrollHeight;}}
         }
 
-        // ── INDIKATOR BERPIKIR ─────────────────────────────────────────
-        function addThinking() {
-            const id = "t-" + Date.now();
-            const div = document.createElement('div');
-            div.id = id;
-            div.className = "flex justify-start animate-pulse mb-6";
-            div.innerHTML = `<div class="bg-white/5 text-gray-500 p-2 px-4 rounded-xl text-[9px] font-bold tracking-widest uppercase">Memindai memori saraf...</div>`;
-            chatBox.appendChild(div);
-            chatBox.scrollTop = chatBox.scrollHeight;
-            return id;
-        }
-
-        function updateThinking(id, text) {
-            const el = document.getElementById(id);
-            if (el) el.querySelector('div').textContent = text;
-        }
-
-        // ── UTILITAS ───────────────────────────────────────────────────
-        function acak(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
-        function delay(ms) { return new Promise(r => setTimeout(r, ms)); }
+        function addThinking() { const id="t-"+Date.now();const d=document.createElement('div');d.id=id;d.className="flex justify-start animate-pulse mb-6";d.innerHTML=`<div class="bg-white/5 text-gray-500 p-2 px-4 rounded-xl text-[9px] font-bold tracking-widest uppercase">Memindai memori saraf...</div>`;chatBox.appendChild(d);chatBox.scrollTop=chatBox.scrollHeight;return id; }
+        function updateThinking(id,t) { const e=document.getElementById(id);if(e)e.querySelector('div').textContent=t; }
+        function removeEl(id) { const e=document.getElementById(id);if(e)e.remove(); }
+        function acak(a) { return a[Math.floor(Math.random()*a.length)]; }
+        function delay(ms) { return new Promise(r=>setTimeout(r,ms)); }
     </script>
 </body>
 </html>
