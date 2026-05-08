@@ -1,0 +1,50 @@
+name: Neural Indexing - Robot Kuli
+
+on:
+  push:
+    paths:
+      - 'database/**'
+  workflow_dispatch:
+
+jobs:
+  build_index:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Generate Neural Index
+        run: |
+          python << 'EOF'
+          import os, json, yaml
+
+          index_data = []
+          db_folder = 'database'
+
+          for filename in os.listdir(db_folder):
+              if filename.endswith('.yml'):
+                  path = os.path.join(db_folder, filename)
+                  with open(path, 'r') as f:
+                      try:
+                          content = yaml.safe_load(f)
+                          # Ambil semua kata kunci unik dari file ini
+                          keys = set()
+                          for item in content:
+                              text = str(item.get('t', '')) + " " + str(item.get('s', ''))
+                              keys.update([w.lower() for w in text.split() if len(w) > 3])
+                          
+                          index_data.append({
+                              "file": path,
+                              "keys": list(keys)[:50] # Simpan 50 kata kunci utama per file
+                          })
+                      except: continue
+
+          with open('brain_index.json', 'w') as f:
+              json.dump(index_data, f, indent=2)
+          EOF
+
+      - name: Commit & Push Index
+        run: |
+          git config --local user.name "Robot Neural"
+          git config --local user.email "neural@smartai.alan"
+          git add brain_index.json
+          git commit -m "Update Neural Index" || echo "No changes"
+          git push
