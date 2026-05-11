@@ -10,56 +10,22 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Fira+Code&family=Inter:wght@300;400;600;800&display=swap');
-        
-        body { 
-            background: #0a0c10; 
-            color: #c9d1d9; 
-            font-family: 'Inter', sans-serif; 
-            overflow: hidden; 
-            margin: 0;
-        }
-
+        body { background: #0a0c10; color: #c9d1d9; font-family: 'Inter', sans-serif; overflow: hidden; margin: 0; }
         .chat-container::-webkit-scrollbar { width: 4px; }
         .chat-container::-webkit-scrollbar-thumb { background: #30363d; border-radius: 10px; }
-
-        /* PERBAIKAN TYPOGRAPHY */
-        .prose {
-            max-width: 100% !important;
-            color: #e6edf3 !important;
-            line-height: 1.6;
-            font-size: 0.9rem;
-        }
-
-        /* Memaksa teks biasa untuk pindah baris, bukan scroll */
-        .prose p, .prose li, .prose div {
-            word-wrap: break-word !important;
-            overflow-wrap: break-word !important;
-            white-space: normal !important;
-            margin-bottom: 0.8rem;
-        }
-
-        /* BLOK KODE - Tetap di dalam kotak tapi gak ngerusak teks luar */
-        .prose pre { 
-            background: #0d1117 !important; 
-            border: 1px solid #30363d; 
-            padding: 1rem; 
-            border-radius: 12px; 
-            overflow-x: auto !important; 
-            margin: 15px 0;
-        }
-
-        .prose code { 
-            font-family: 'Fira Code', monospace !important;
-            color: #79c0ff !important; 
-        }
-
-        .prose pre code { background: transparent !important; padding: 0 !important; white-space: pre !important; }
-
+        .prose { max-width: 100% !important; color: #e6edf3 !important; line-height: 1.6; font-size: 0.9rem; }
+        .prose p, .prose li { word-wrap: break-word !important; overflow-wrap: break-word !important; white-space: normal !important; margin-bottom: 0.8rem; }
+        .prose pre { background: #0d1117 !important; border: 1px solid #30363d; padding: 1rem; border-radius: 12px; overflow-x: auto !important; margin: 15px 0; }
+        .prose code { font-family: 'Fira Code', monospace !important; color: #79c0ff !important; }
         .bubble-bot { background: #161b22; border: 1px solid #30363d; }
         .bubble-user { background: #238636; border: 1px solid #2ea043; }
-
         .fade-in { animation: fadeInUp 0.3s ease; }
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        /* Thinking Style */
+        .think-step { font-size: 10px; font-family: 'Fira Code', monospace; color: #8b949e; border-left: 2px solid #30363d; padding-left: 10px; margin-bottom: 5px; }
+        .loading-dot::after { content: '.'; animation: dots 1.5s steps(5, end) infinite; }
+        @keyframes dots { 0%, 20% { content: '.'; } 40% { content: '..'; } 60% { content: '...'; } 80%, 100% { content: ''; } }
     </style>
 </head>
 <body class="h-screen flex flex-col">
@@ -67,23 +33,23 @@
     <header class="p-4 border-b border-[#30363d] bg-[#0d1117] flex justify-between items-center z-10 shadow-xl">
         <div class="flex items-center gap-3">
             <div class="w-2.5 h-2.5 bg-blue-500 rounded-full shadow-[0_0_10px_#3b82f6]"></div>
-            <h1 class="font-bold tracking-tighter text-white uppercase text-xs">Kite AI <span class="text-blue-500 text-[10px]">PRO_CODER_V2</span></h1>
+            <h1 class="font-bold tracking-tighter text-white uppercase text-xs">Kite AI <span class="text-blue-500 text-[10px]">CODER_V2</span></h1>
         </div>
-        <div id="status" class="text-[8px] text-emerald-500 font-mono font-bold tracking-widest px-2 py-1 bg-emerald-500/10 rounded">ONLINE</div>
+        <div id="status" class="text-[8px] text-emerald-500 font-mono font-bold tracking-widest px-2 py-1 bg-emerald-500/10 rounded">CORE_ACTIVE</div>
     </header>
 
     <main id="chatBox" class="flex-1 overflow-y-auto p-4 md:px-64 space-y-6 chat-container pb-32">
         <div class="flex justify-start fade-in">
             <div class="bubble-bot p-4 px-5 rounded-2xl max-w-[92%] md:max-w-[85%] shadow-md">
                 <span class="text-blue-400 font-bold text-[9px] uppercase tracking-widest block mb-2 opacity-70">Kite Engine</span>
-                <div class="prose prose-invert">Halo Lan! Gue udah benerin sistemnya. Sekarang teksnya gak bakal nyangkut di dalem kotak hitam lagi. Coba tanya hal baru! 🚀</div>
+                <div class="prose prose-invert">Sistem berpikir diaktifkan. Gue siap kerja kayak AI profesional, Lan! 🚀</div>
             </div>
         </div>
     </main>
 
     <footer class="p-6 fixed bottom-0 w-full md:px-64 bg-gradient-to-t from-[#0a0c10] via-[#0a0c10] to-transparent">
         <div class="relative flex items-center max-w-4xl mx-auto">
-            <input type="text" id="userInput" autocomplete="off" placeholder="Tanya koding..." 
+            <input type="text" id="userInput" autocomplete="off" placeholder="Apa yang mau kita bangun hari ini?" 
                 class="w-full bg-[#161b22] border border-[#30363d] p-4 pr-16 rounded-2xl focus:outline-none focus:border-blue-500/50 text-sm text-white shadow-2xl">
             <button onclick="handleChat()" class="absolute right-4 text-blue-500 p-2 hover:scale-110 transition-transform">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"><path d="M3.478 2.405a.75.75 0 00-.926.94l2.432 7.905H13.5a.75.75 0 010 1.5H4.984l-2.432 7.905a.75.75 0 00.926.94 60.519 60.519 0 0018.445-8.986.75.75 0 000-1.218A60.517 60.517 0 003.478 2.405z" /></svg>
@@ -95,8 +61,11 @@
         const chatBox = document.getElementById('chatBox');
         const input = document.getElementById('userInput');
         const CORES = [
-            'brain/frontend.yml', 'brain/backend.yml', 'brain/mobile_dev.yml', 
-            'brain/data_science.yml', 'brain/devops_security.yml', 'brain/personality.yml'
+            {id: 'Frontend', path: 'brain/frontend.yml'},
+            {id: 'Backend', path: 'brain/backend.yml'},
+            {id: 'Mobile', path: 'brain/mobile_dev.yml'},
+            {id: 'Data Science', path: 'brain/data_science.yml'},
+            {id: 'SecOps', path: 'brain/devops_security.yml'}
         ];
 
         input.addEventListener("keypress", (e) => { if (e.key === "Enter") handleChat(); });
@@ -104,53 +73,69 @@
         async function handleChat() {
             const val = input.value.trim(); if(!val) return;
             renderMsg(val, true); input.value = "";
-            const loadingId = renderLoading();
             
+            const loadId = 'load-' + Date.now();
+            const thinkDiv = document.createElement('div');
+            thinkDiv.id = loadId;
+            thinkDiv.className = "flex flex-col gap-1 mb-4 fade-in";
+            chatBox.appendChild(thinkDiv);
+
+            const updateThink = (text) => {
+                thinkDiv.innerHTML = `<div class="think-step loading-dot">${text}</div>`;
+                chatBox.scrollTop = chatBox.scrollHeight;
+            };
+
             try {
                 let jawaban = null;
-                const lowVal = val.toLowerCase();
+                const kueri = val.toLowerCase().replace(/[^a-z0-9\s]/g,' ').split(/\s+/).filter(k => k.length > 2);
 
-                // Logic pencarian cerdas
-                const kueri = lowVal.replace(/[^a-z0-9\s]/g,' ').split(/\s+/).filter(k => k.length > 2);
+                updateThink("🔍 Memulai pencarian neural...");
+                await new Promise(r => setTimeout(r, 600));
+
                 for (const core of CORES) {
+                    updateThink(`📖 Membaca database: ${core.id}`);
                     try {
-                        const res = await fetch(core);
+                        const res = await fetch(core.path);
                         if (!res.ok) continue;
-                        const data = await res.text();
-                        const found = cariSolusi(data, kueri);
-                        if (found) { jawaban = found; break; }
+                        const textData = await res.text();
+                        
+                        updateThink(`⚙️ Memproses logika ${core.id}...`);
+                        const found = cariSolusi(textData, kueri);
+                        
+                        if (found) {
+                            updateThink(`✅ Menemukan korelasi di ${core.id}!`);
+                            await new Promise(r => setTimeout(r, 400));
+                            jawaban = found;
+                            break;
+                        }
                     } catch (e) {}
+                    await new Promise(r => setTimeout(r, 300));
                 }
 
-                await new Promise(r => setTimeout(r, 400));
-                removeEl(loadingId);
-                renderMsg(jawaban || "Wah, belum ada di otak gue nih, Lan. Coba kata kunci lain!", false);
+                updateThink("🧠 Merangkum jawaban terbaik...");
+                await new Promise(r => setTimeout(r, 500));
+                
+                thinkDiv.remove();
+                renderMsg(jawaban || "Maaf Lan, gue udah nyisir semua file brain tapi belum nemu kodenya. Coba update robot miner lu!", false);
             } catch (err) {
-                removeEl(loadingId);
-                renderMsg("⚠️ Sistem gangguan, coba lagi.", false);
+                thinkDiv.remove();
+                renderMsg("⚠️ Gangguan pada neural path.", false);
             }
         }
 
         function cariSolusi(data, kueri) {
             const blocks = data.split(/\n-\s/);
             let best = null, maxScore = -1;
-
             for (let block of blocks) {
                 let score = 0;
                 const lowBlock = block.toLowerCase();
                 kueri.forEach(k => { if (lowBlock.includes(k)) score += 10; });
-
                 if (score > 0 && score >= maxScore) {
                     const match = block.match(/s:\s*([\s\S]*?)\s*(?=d:|t:|$)/);
                     if (match && match[1]) {
                         maxScore = score;
-                        // BERSIHKAN DATA AGAR KELUAR DARI KOTAK KODE
-                        let text = match[1].trim();
-                        text = text.replace(/^['"]|['"]$/g, '') // Hapus petik luar
-                                   .replace(/\\n/g, '\n')      // Ubah \n jadi enter
-                                   .split('\n')
-                                   .map(line => line.trim())    // HAPUS SPASI DI DEPAN BARIS (Kunci biar gak masuk pre)
-                                   .join('\n');
+                        let text = match[1].trim().replace(/^['"]|['"]$/g, '').replace(/\\n/g, '\n')
+                                   .split('\n').map(line => line.trim()).join('\n');
                         best = text;
                     }
                 }
@@ -161,31 +146,16 @@
         function renderMsg(text, isUser) {
             const div = document.createElement('div');
             div.className = `flex ${isUser ? 'justify-end' : 'justify-start'} mb-4 fade-in`;
-            
-            // Render Markdown
             const content = isUser ? text : marked.parse(text);
-
             div.innerHTML = `
-                <div class="${isUser ? 'bubble-user text-white' : 'bubble-bot text-gray-200'} p-4 px-5 rounded-2xl max-w-[92%] md:max-w-[85%] text-sm shadow-lg">
+                <div class="${isUser ? 'bubble-user text-white' : 'bubble-bot text-gray-200'} p-4 px-5 rounded-2xl max-w-[92%] md:max-w-[85%] text-sm shadow-lg border border-white/5">
                     ${!isUser ? '<span class="text-blue-400 font-bold text-[9px] uppercase tracking-widest block mb-2 opacity-70">Kite Engine</span>' : ''}
                     <div class="prose prose-invert">${content}</div>
                 </div>`;
-
             chatBox.appendChild(div);
             chatBox.scrollTop = chatBox.scrollHeight;
             if (!isUser) { document.querySelectorAll('pre code').forEach((el) => { hljs.highlightElement(el); }); }
         }
-
-        function renderLoading() {
-            const id = 'load-' + Date.now();
-            const div = document.createElement('div');
-            div.id = id; div.className = "flex justify-start mb-4 animate-pulse";
-            div.innerHTML = `<div class="bg-[#161b22] border border-blue-500/20 text-blue-500 text-[8px] px-3 py-1 rounded-full font-bold uppercase tracking-widest">Thinking...</div>`;
-            chatBox.appendChild(div);
-            return id;
-        }
-
-        function removeEl(id) { const e = document.getElementById(id); if(e) e.remove(); }
     </script>
 </body>
 </html>
