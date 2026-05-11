@@ -1,13 +1,12 @@
-```yaml
 name: KITE-AI-MULTI-MINER
 
 on:
   schedule:
-    - cron: '0 */12 * * *'
+    - cron: '0 */12 * * *' # Jalan otomatis tiap 12 jam
   push:
     paths:
       - 'brain/**'
-  workflow_dispatch:
+  workflow_dispatch: # Tombol manual di tab Actions
 
 permissions:
   contents: write
@@ -23,7 +22,7 @@ jobs:
           python-version: '3.10'
       - name: Install Libs
         run: pip install pyyaml wikipedia
-      - name: Run Miner
+      - name: Jalankan Robot Penambang
         run: |
           python << 'EOF'
           import os, yaml, wikipedia, random
@@ -33,29 +32,58 @@ jobs:
           db_folder = 'brain'
           if not os.path.exists(db_folder): os.makedirs(db_folder)
 
+          # Daftar kategori koding agar AI makin jago
           categories = {
-              "javascript.yml": ["JavaScript", "React.js", "Node.js", "TypeScript"],
-              "python.yml": ["Bahasa Pemrograman Python", "Django", "FastAPI"],
-              "web_design.yml": ["Tailwind CSS", "HTML5", "CSS3 Animation"],
-              "database.yml": ["SQL", "MongoDB Database", "PostgreSQL"]
+              "javascript.yml": ["JavaScript", "React.js", "Node.js", "TypeScript", "Next.js"],
+              "python.yml": ["Bahasa Pemrograman Python", "Django", "FastAPI", "Flask Python"],
+              "web_design.yml": ["Tailwind CSS", "HTML5", "CSS3 Animation", "Bootstrap Framework"],
+              "database.yml": ["SQL", "MongoDB Database", "PostgreSQL", "Redis Database"]
           }
+
+          today = datetime.now().strftime('%Y-%m-%d')
 
           for filename, topics in categories.items():
               path_db = os.path.join(db_folder, filename)
+              
+              # Load data lama
               old_data = []
               if os.path.exists(path_db):
-                  with open(path_db, 'r', encoding='utf-8') as f:
-                      old_data = yaml.safe_load(f) or []
+                  try:
+                      with open(path_db, 'r', encoding='utf-8') as f:
+                          old_data = yaml.safe_load(f) or []
+                  except:
+                      old_data = []
               
               titles_set = set(x.get('t') for x in old_data)
               target = random.choice(topics)
+              
               try:
+                  print(f"Robot sedang mencari info: {target}")
                   search = wikipedia.search(target, results=3)
                   for title in search:
                       if title in titles_set: continue
+                      
                       p = wikipedia.page(title, auto_suggest=False)
+                      summary = p.summary.split('\n')[0][:600] # Ambil paragraf awal
+                      
                       entry = {
                           "t": p.title,
-                          "s": f"### {p.title}\n{p.summary.split('\n')[0]}\n\n
+                          "s": f"### {p.title}\n{summary}",
+                          "d": today
+                      }
+                      old_data.append(entry)
+                      titles_set.add(p.title)
+              except: 
+                  continue
 
-```
+              # Tulis hasil ke file masing-masing
+              with open(path_db, 'w', encoding='utf-8') as f:
+                  yaml.dump(old_data, f, allow_unicode=True, sort_keys=False, default_flow_style=False)
+          EOF
+
+      - name: Simpan Balik ke GitHub
+        run: |
+          git config --local user.name "Kite Robot"
+          git config --local user.email "bot@kite.ai"
+          git add .
+          git diff --staged --quiet || (git commit -m "Neural Update: Multi-Core Synced 🧠" && git push)
