@@ -29,3 +29,30 @@
     dan melakukan transaksi pembayaran. Aplikasi ini telah dipromosikan oleh pemerintah
     Rusia sebagai “messenger na'
   d: '2026-05-11'
+- t: React
+  s: '### React
+
+    React (dikenal juga dengan React.js atau ReactJS) adalah libray JavaScript yang
+    digunakan untuk membangun user interface yang interaktif berbasis component. React
+    yang dibuat oleh Facebook (sekarang Meta) dan bersifat open source (sumber terbuka),
+    sehingga dapat digunakan oleh siapa saja secara gratis. Saat ini React dikelola
+    oleh Meta, komunitas, dan perusahaan individu.'
+  d: '2026-05-11'
+- t: Vue.js
+  s: '### Vue.js
+
+    Vue.js (biasa disebut sebagai Vue; diucapkan , seperti view) adalah kerangka kerja
+    JavaScript yang bersifat progresif, bersumber terbuka untuk membangun antarmuka
+    pengguna. Integrasi ke dalam proyek yang menggunakan pustaka JavaScript lainnya
+    mudah dilakukan dengan Vue karena ia dirancang untuk bisa berjalan hanya di beberapa
+    bagian halaman web. Vue juga bisa berfungsi sebagai kerangka kerja aplikasi web
+    yang mampu menjalankan aplikasi single-page yang canggih. Dengan menggunakan kerangka
+    kerja Nuxt.js, Vue.js dapat direpresentasikan secara dini dari sisi server atau
+    biasa disebut server side '
+  d: '2026-05-11'
+- t: React Router
+  s: '### React Router
+
+    React Router merupakan kerangka kerja web yang bersifat sumber terbuka. React
+    Router digunakan untuk membuat aplikasi web yang menggunakan pustaka React.'
+  d: '2026-05-11'
