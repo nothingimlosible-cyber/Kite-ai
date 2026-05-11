@@ -1,31 +1,29 @@
-name: KITE-AI-CODER-MINER
+```yaml
+name: KITE-AI-MULTI-MINER
 
 on:
   schedule:
-    - cron: '0 */12 * * *' # Nambang otomatis tiap 12 jam
+    - cron: '0 */12 * * *'
   push:
     paths:
       - 'brain/**'
-  workflow_dispatch: # Bisa dijalankan manual dari tab Actions
+  workflow_dispatch:
 
 permissions:
   contents: write
 
 jobs:
-  mining-logic:
+  mining:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.10'
-
-      - name: Install Mining Libs
+      - name: Install Libs
         run: pip install pyyaml wikipedia
-
-      - name: Neural Mining Process
+      - name: Run Miner
         run: |
           python << 'EOF'
           import os, yaml, wikipedia, random
@@ -33,62 +31,31 @@ jobs:
 
           wikipedia.set_lang("id")
           db_folder = 'brain'
-          if not os.path.exists(db_folder):
-              os.makedirs(db_folder)
+          if not os.path.exists(db_folder): os.makedirs(db_folder)
 
-          # KEYWORDS KHUSUS CODING
-          keywords = [
-              "Bahasa Pemrograman Python", "JavaScript ES6", "React Library", 
-              "Cascading Style Sheets", "HTML5 Semantic", "Node.js Runtime",
-              "SQL Database", "Git Version Control", "Tailwind CSS",
-              "REST API Concept", "TypeScript Programming"
-          ]
+          categories = {
+              "javascript.yml": ["JavaScript", "React.js", "Node.js", "TypeScript"],
+              "python.yml": ["Bahasa Pemrograman Python", "Django", "FastAPI"],
+              "web_design.yml": ["Tailwind CSS", "HTML5", "CSS3 Animation"],
+              "database.yml": ["SQL", "MongoDB Database", "PostgreSQL"]
+          }
 
-          path_db = os.path.join(db_folder, 'code_lib.yml')
-
-          # Load data lama
-          old_data = []
-          if os.path.exists(path_db):
-              with open(path_db, 'r', encoding='utf-8') as f:
-                  old_data = yaml.safe_load(f) or []
-
-          titles_set = set(x.get('t') for x in old_data)
-          new_entries = []
-
-          # Ambil 2 topik teknis secara acak
-          selected = random.sample(keywords, 2)
-          for key in selected:
+          for filename, topics in categories.items():
+              path_db = os.path.join(db_folder, filename)
+              old_data = []
+              if os.path.exists(path_db):
+                  with open(path_db, 'r', encoding='utf-8') as f:
+                      old_data = yaml.safe_load(f) or []
+              
+              titles_set = set(x.get('t') for x in old_data)
+              target = random.choice(topics)
               try:
-                  search = wikipedia.search(key, results=3)
+                  search = wikipedia.search(target, results=3)
                   for title in search:
                       if title in titles_set: continue
-                      
                       p = wikipedia.page(title, auto_suggest=False)
-                      # Format jawaban dengan blok kode sederhana agar terlihat jago
-                      summary = p.summary.split('\n')[0]
-                      formatted_content = f"{summary}\n\n**Info Tambahan:**\nPelajari lebih lanjut tentang `{p.title}` melalui dokumentasi resminya."
-                      
                       entry = {
                           "t": p.title,
-                          "s": formatted_content,
-                          "d": datetime.now().strftime('%Y-%m-%d')
-                      }
-                      new_entries.append(entry)
-                      titles_set.add(p.title)
-              except:
-                  continue
+                          "s": f"### {p.title}\n{p.summary.split('\n')[0]}\n\n
 
-          # Gabungkan dan Simpan
-          final_data = old_data + new_entries
-          with open(path_db, 'w', encoding='utf-8') as f:
-              yaml.dump(final_data, f, allow_unicode=True, sort_keys=False, default_flow_style=False)
-
-          print(f"Berhasil menambang {len(new_entries)} data koding baru.")
-          EOF
-
-      - name: Push Brain Update
-        run: |
-          git config --local user.name "Kite Coder Robot"
-          git config --local user.email "coder@kite-ai.local"
-          git add .
-          git diff --staged --quiet || (git commit -m "Neural Update: Coder Logic Synced 🧠 [$(date '+%Y-%m-%d %H:%M')]" && git push)
+```
