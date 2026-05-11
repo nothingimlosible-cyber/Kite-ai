@@ -54,3 +54,43 @@
 
     _Source: Wikipedia_'
   d: '2026-05-11'
+- t: PyTorch
+  s: '### 📘 Knowledge: PyTorch
+
+
+    PyTorch adalah pustaka pemelajaran mesin sumber terbuka yang dibuat berdasarkan
+    pustaka Torch. PyTorch digunakan untuk aplikasi seperti penglihatan komputer dan
+    pemrosesan bahasa alami. Pustaka ini terutama dikembangkan oleh lab Penelitian
+    AI Facebook, Facebooks AI Research lab (FAIR). PyTorch adalah perangkat lunak
+    bebas dan sumber terbuka yang dirilis di bawah lisensi BSD Modifikasi. Meskipun
+    antarmuka Python lebih stabil dan merupakan fokus utama pengembangan, PyTorch
+    juga memiliki antarmuka C++....
+
+
+    _Source: Wikipedia_'
+  d: '2026-05-11'
+- t: TensorFlow
+  s: '### 📘 Knowledge: TensorFlow
+
+
+    TensorFlow adalah pustaka perangkat lunak sumber terbuka dan gratis untuk pembelajaran
+    mesin. Pustaka ini dapat digunakan untuk berbagai keperluan, tetapi memiliki fokus
+    khusus pada pelatihan dan inferensi jaringan syaraf dalam (Deep neural networks)....
+
+
+    _Source: Wikipedia_'
+  d: '2026-05-11'
+- t: Python dalam sains data dan kecerdasan buatan
+  s: '### 📘 Knowledge: Python dalam sains data dan kecerdasan buatan
+
+
+    Python adalah bahasa pemrograman tingkat tinggi yang dikenal karena sintaksnya
+    yang sederhana dan mudah dibaca. Bahasa ini telah menjadi salah satu alat utama
+    dalam berbagai bidang, termasuk analisis data, statistik, sains data, dan kecerdasan
+    buatan (artificial intelligence). Dengan dukungan komunitas yang luas dan pustaka
+    yang kaya, Python menjadi pilihan utama bagi peneliti dan praktisi dalam pengolahan
+    data dan pengembangan sistem cerdas....
+
+
+    _Source: Wikipedia_'
+  d: '2026-05-11'

@@ -94,3 +94,51 @@
 
     _Source: Wikipedia_'
   d: '2026-05-11'
+- t: Amazon Web Services
+  s: '### 📘 Knowledge: Amazon Web Services
+
+
+    Amazon Web Services adalah sekumpulan layanan-layanan berbasis komputasi awan
+    yang di sediakan oleh Amazon sejak tahun 2002. Meskipun salah satu perusahaan
+    raksasa internet ini sering kita kenal untuk membeli buku dan lagu, tetapi sekarang
+    Amazon telah menambah layanannya dalam hal infrastruktur cloud computing. Amazon
+    Web Services ini menyediakan layanan-layanan nya yang saling terintegrasi dan
+    mudah kustomisasi. Pada tahun 2006, amazon mengenalkan Amazon’s Elastic Compute
+    cloud (EC2) sebagai commercial web service yang menyediakan akses cloud kepada
+    perusahaan dan individu untuk menyewa komputer storage yang bisa digunakan sebagai
+    platform pengembangan aplikasi secara online, inilah awal dari IaaS, yaitu perusahaan
+    yang menyediakan infrastruktur sebagai sebuah layanan....
+
+
+    _Source: Wikipedia_'
+  d: '2026-05-11'
+- t: Kubernetes
+  s: '### 📘 Knowledge: Kubernetes
+
+
+    Kubernetes (, biasanya ditulis sebagai K8s) adalah sistem orkestrasi kontainer
+    sumber terbuka untuk mengotomatisasi penerapan, penskalaan, dan manajemen aplikasi
+    komputer. Perangkat lunak ini awalnya dirancang oleh Google dan sekarang dikelola
+    oleh Cloud Native Computing Foundation. Kubernetes bertujuan menyediakan platform
+    untuk mengotomatisasi penyebaran, penskalaan, dan operasi kontainer aplikasi di
+    seluruh klaster hos. Kubernetes bekerja dengan berbagai alat kontainer dan menjalankan
+    kontainer dalam sebuah cluster, seringkali dengan image yang dibuat menggunakan
+    Docker. Kubernetes awalnya berinteraksi dengan runtime Docker melalui Dockershim;
+    tetapi, shim sudah tidak digunakan lagi dan digantikan dengan antarmuka langsung
+    menggunakan container melalui containerd, atau mengganti Doc...
+
+
+    _Source: Wikipedia_'
+  d: '2026-05-11'
+- t: Teraformasi
+  s: '### 📘 Knowledge: Teraformasi
+
+
+    Teraformasi (Inggris: Terraform berarti membentuk Bumi) planet, bulan, atau struktur
+    lainnya, adalah proses bersifat hipotesis yang mengubah atmosfer, temperatur,
+    topografi permukaan atau ekologi menjadi mirip dengan Bumi sehingga dapat dihuni
+    oleh manusia....
+
+
+    _Source: Wikipedia_'
+  d: '2026-05-11'
