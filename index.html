@@ -22,50 +22,43 @@
         .thinking-step { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #6e6e7a; border-left: 2px solid #3b82f6; padding-left: 12px; margin: 6px 0; }
         .fade-in { animation: fadeSlide 0.3s ease-out; }
         @keyframes fadeSlide { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        pre { background: #0d0d12 !important; border-radius: 12px !important; border: 1px solid #25252c !important; }
+        pre { background: #0d0d12 !important; border-radius: 12px !important; border: 1px solid #25252c !important; overflow-x: auto; }
         code { font-family: 'JetBrains Mono', monospace !important; }
-        .prose { max-width: 100% !important; }
-        .prose pre { margin: 0.8rem 0; }
+        .prose { max-width: 100% !important; word-wrap: break-word; }
+        .prose pre { margin: 0.8rem 0; padding: 1rem; }
     </style>
 </head>
-<body class="flex flex-col h-screen">
+<body class="flex flex-col h-screen text-gray-300">
 
-    <!-- Header -->
     <header class="glass-header px-6 py-3 flex justify-between items-center sticky top-0 z-10">
         <div class="flex items-center gap-2">
             <div class="w-2 h-2 bg-blue-500 rounded-full animate-pulse shadow-[0_0_8px_#3b82f6]"></div>
             <span class="text-white font-semibold text-sm tracking-tight">KITE<span class="text-blue-400">AI</span></span>
-            <span class="text-[9px] font-mono text-white/30">neural v3</span>
+            <span class="text-[9px] font-mono text-white/30">neural v3.1</span>
         </div>
-        <div id="statusBadge" class="text-[9px] font-mono text-emerald-400/80 bg-emerald-500/10 px-2 py-0.5 rounded-full">⟳ INIT</div>
+        <div id="statusBadge" class="text-[9px] font-mono text-emerald-400/80 bg-emerald-500/10 px-2 py-0.5 rounded-full">⟳ READY</div>
     </header>
 
-    <!-- Chat Area -->
     <main class="flex-1 overflow-y-auto px-4 md:px-32 lg:px-64 py-6" id="chatArea">
         <div class="max-w-4xl mx-auto space-y-4" id="chatContainer">
             <div class="fade-in">
                 <div class="message-bot rounded-2xl p-4 max-w-[85%]">
-                    <div class="text-blue-400 text-[9px] font-bold uppercase tracking-wide mb-1">✧ KITE NEURAL CORE</div>
-                    <div class="text-sm text-gray-300 leading-relaxed">
-                        Memuat <span id="initialCount" class="text-blue-400">--</span> modul pengetahuan dari direktori <code class="text-blue-300 text-xs">/brain</code>...<br>
-                        Format YAML array detected — setiap file bisa berisi multiple knowledge entries.
+                    <div class="text-blue-400 text-[9px] font-bold uppercase tracking-wide mb-1">✧ SYSTEM NOTIFICATION</div>
+                    <div class="text-sm text-gray-300 leading-relaxed" id="welcomeMsg">
+                        Menghubungkan ke neural database...
                     </div>
                 </div>
             </div>
         </div>
     </main>
 
-    <!-- Input -->
     <footer class="p-4 pb-6 bg-gradient-to-t from-[#0a0a0f] to-transparent sticky bottom-0">
         <div class="max-w-3xl mx-auto relative">
-            <textarea id="userInput" rows="1" placeholder="Tanya soal programming, framework, atau konsep teknis..." 
+            <textarea id="userInput" rows="1" placeholder="Tanya soal koding..." 
                 class="w-full bg-[#121217] border border-white/10 rounded-xl p-3 pr-12 text-white text-sm resize-none focus:outline-none focus:border-blue-500/50 placeholder:text-white/20"></textarea>
             <button id="sendBtn" class="absolute right-2 bottom-2 text-blue-400 hover:text-blue-300 p-1 transition">
                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M3.478 2.405a.75.75 0 00-.926.94l2.432 7.905H13.5a.75.75 0 010 1.5H4.984l-2.432 7.905a.75.75 0 00.926.94 60.519 60.519 0 0018.445-8.986.75.75 0 000-1.218A60.517 60.517 0 003.478 2.405z"/></svg>
             </button>
-        </div>
-        <div class="text-center mt-2">
-            <span class="text-[8px] text-white/20 font-mono">memuat langsung dari GitHub · format YAML sequence ({d, s, t})</span>
         </div>
     </footer>
 
@@ -74,233 +67,119 @@
         const REPO_NAME = "Kite-ai";
         const BRANCH = "main";
         
-        let knowledgeBase = []; // array of { source: 'filename.yml', d, s, t }
+        let knowledgeBase = []; 
         
         async function loadBrainFiles() {
             const statusEl = document.getElementById('statusBadge');
-            const countEl = document.getElementById('initialCount');
-            statusEl.innerHTML = "📡 FETCHING...";
+            const welcomeMsg = document.getElementById('welcomeMsg');
+            statusEl.innerHTML = "📡 SYNCING...";
             
             try {
-                // 1. Dapetin daftar file dari folder brain/
-                const apiUrl = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/brain?ref=${BRANCH}`;
+                // Gunakan cache buster agar data gak nyangkut
+                const apiUrl = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/brain?ref=${BRANCH}&t=${Date.now()}`;
                 const res = await fetch(apiUrl);
-                if (!res.ok) throw new Error(`GitHub API error: ${res.status}`);
                 
-                const files = await res.json();
-                const yamlFiles = files.filter(f => f.name.endsWith('.yml') && f.name !== 'manifest.json');
+                let yamlFiles = [];
+                if (res.ok) {
+                    const files = await res.json();
+                    yamlFiles = files.filter(f => f.name.endsWith('.yml'));
+                } else {
+                    // FALLBACK: Jika API Rate limit, tembak manual file yang umum ada
+                    yamlFiles = [
+                        {name: 'frontend.yml'}, {name: 'backend.yml'}, 
+                        {name: 'mobile_dev.yml'}, {name: 'devops_security.yml'}, 
+                        {name: 'data_science.yml'}, {name: 'personality.yml'}
+                    ];
+                }
                 
-                statusEl.innerHTML = `📂 ${yamlFiles.length} FILES`;
-                
-                let totalEntries = 0;
                 for (const file of yamlFiles) {
                     try {
-                        const rawUrl = `https://raw.githubusercontent.com/${REPO_OWNER}/${REPO_NAME}/${BRANCH}/brain/${file.name}`;
-                        const yamlRes = await fetch(`${rawUrl}?t=${Date.now()}`);
+                        const rawUrl = `https://raw.githubusercontent.com/${REPO_OWNER}/${REPO_NAME}/${BRANCH}/brain/${file.name}?t=${Date.now()}`;
+                        const yamlRes = await fetch(rawUrl);
                         if (yamlRes.ok) {
                             const yamlText = await yamlRes.text();
-                            const parsed = jsyaml.load(yamlText);
+                            // Bersihkan YAML dari karakter aneh
+                            const cleanYaml = yamlText.replace(/\t/g, '  ');
+                            const parsed = jsyaml.load(cleanYaml);
                             
-                            // 🔥 FORMAT YANG LO PAKAI: ARRAY/LIST dengan dash -
                             if (Array.isArray(parsed)) {
-                                for (const item of parsed) {
-                                    if (item.s && item.t) {
-                                        knowledgeBase.push({
-                                            source: file.name,
-                                            d: item.d || 'unknown',
-                                            s: item.s,
-                                            t: item.t
-                                        });
-                                        totalEntries++;
-                                    }
-                                }
-                            } 
-                            // Fallback: kalo ternyata object biasa (bukan array)
-                            else if (parsed && typeof parsed === 'object' && parsed.s) {
-                                knowledgeBase.push({
-                                    source: file.name,
-                                    d: parsed.d || 'unknown',
-                                    s: parsed.s,
-                                    t: parsed.t || 'Knowledge'
+                                parsed.forEach(item => {
+                                    if(item.s) knowledgeBase.push({...item, source: file.name});
                                 });
-                                totalEntries++;
                             }
-                            
-                            statusEl.innerHTML = `⚙️ ${totalEntries} ENTRIES`;
-                            await new Promise(r => setTimeout(r, 20));
                         }
-                    } catch(e) { console.warn(`gagal: ${file.name}`, e); }
+                    } catch(e) { console.error("Skip file:", file.name); }
                 }
                 
                 statusEl.innerHTML = `🧠 ${knowledgeBase.length} MODULES`;
-                if (countEl) countEl.innerText = knowledgeBase.length;
+                welcomeMsg.innerHTML = `Berhasil memuat <b>${knowledgeBase.length}</b> modul koding. Gue siap kerja, Lan! 🚀`;
                 
             } catch(err) {
-                console.error(err);
-                statusEl.innerHTML = "⚠️ ERROR";
-                if (countEl) countEl.innerText = "0";
+                statusEl.innerHTML = "⚠️ SYNC ERROR";
+                welcomeMsg.innerText = "Gagal memuat database. Cek koneksi atau struktur folder brain kamu.";
             }
         }
         
         function searchKnowledge(query) {
-            const lowerQuery = query.toLowerCase();
-            let best = { score: 0, answer: null, source: null, title: null, date: null };
-            
-            for (const item of knowledgeBase) {
+            const words = query.toLowerCase().split(/\s+/);
+            let results = knowledgeBase.map(item => {
                 let score = 0;
-                // Cek di judul (t)
-                if (item.t && item.t.toLowerCase().includes(lowerQuery)) score += 50;
-                // Cek di konten (s)
-                if (item.s && item.s.toLowerCase().includes(lowerQuery)) {
-                    score += 40;
-                    // Bonus kalo kata kunci muncul di awal konten
-                    if (item.s.toLowerCase().indexOf(lowerQuery) < 200) score += 20;
-                }
-                
-                if (score > best.score && item.s) {
-                    best = {
-                        score,
-                        answer: item.s,
-                        source: item.source,
-                        title: item.t,
-                        date: item.d
-                    };
-                }
-            }
-            
-            return best;
+                const text = (item.t + " " + item.s).toLowerCase();
+                words.forEach(word => { if(text.includes(word)) score += 10; });
+                return { ...item, score };
+            });
+            return results.sort((a, b) => b.score - a.score)[0];
         }
-        
-        const chatContainer = document.getElementById('chatContainer');
-        const userInput = document.getElementById('userInput');
-        const sendBtn = document.getElementById('sendBtn');
-        
-        function addMessage(content, isUser = false, metadata = null) {
+
+        async function handleChat() {
+            const userInput = document.getElementById('userInput');
+            const query = userInput.value.trim();
+            if (!query || !knowledgeBase.length) return;
+
+            addMessage(query, true);
+            userInput.value = '';
+            
+            // Animasi Thinking
+            const loadId = 'think-' + Date.now();
+            const thinkDiv = document.createElement('div');
+            thinkDiv.id = loadId;
+            thinkDiv.className = "fade-in mb-4 flex justify-start";
+            thinkDiv.innerHTML = `<div class="message-bot rounded-2xl p-4 max-w-[85%]"><div class="thinking-step">Scanning Brain...</div></div>`;
+            document.getElementById('chatContainer').appendChild(thinkDiv);
+
+            await new Promise(r => setTimeout(r, 1000));
+            
+            const result = searchKnowledge(query);
+            thinkDiv.remove();
+
+            if (result && result.score > 0) {
+                addMessage(result.s, false, result);
+            } else {
+                addMessage("Maaf Lan, data itu gak ada di memori gue. Coba tanya hal lain atau cek file YAML lu.", false);
+            }
+        }
+
+        function addMessage(content, isUser = false, meta = null) {
+            const container = document.getElementById('chatContainer');
             const div = document.createElement('div');
             div.className = `fade-in mb-4 flex ${isUser ? 'justify-end' : 'justify-start'}`;
             
-            if (isUser) {
-                div.innerHTML = `
-                    <div class="message-user rounded-2xl p-3 max-w-[85%]">
-                        <p class="text-white text-sm">${escapeHtml(content)}</p>
-                    </div>
-                `;
-            } else {
-                const parsedContent = marked.parse(content);
-                div.innerHTML = `
-                    <div class="message-bot rounded-2xl p-4 max-w-[85%]">
-                        <div class="flex items-center gap-2 mb-2 flex-wrap">
-                            <span class="text-blue-400 text-[9px] font-bold uppercase tracking-wide">✧ KITE NEURAL</span>
-                            ${metadata?.source ? `<span class="text-[8px] font-mono text-white/30">📄 ${metadata.source}</span>` : ''}
-                            ${metadata?.title ? `<span class="text-[8px] font-mono text-white/20">🏷️ ${metadata.title}</span>` : ''}
-                            ${metadata?.confidence ? `<span class="text-[8px] font-mono text-emerald-500/50 ml-auto">${metadata.confidence}% match</span>` : ''}
-                        </div>
-                        <div class="prose prose-invert prose-sm max-w-none text-gray-300 text-[0.85rem] leading-relaxed">
-                            ${parsedContent}
-                        </div>
-                    </div>
-                `;
-            }
+            const htmlContent = isUser ? content : marked.parse(content);
             
-            chatContainer.appendChild(div);
-            chatContainer.parentElement.scrollTop = chatContainer.parentElement.scrollHeight;
-            
-            if (!isUser) {
-                div.querySelectorAll('pre code').forEach(block => hljs.highlightElement(block));
-            }
-        }
-        
-        function escapeHtml(str) {
-            return str.replace(/[&<>]/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[m]));
-        }
-        
-        async function thinkingProcess(query, onStep) {
-            const steps = [
-                "🔍 Scanning neural pathways...",
-                `📖 Searching ${knowledgeBase.length} knowledge entries...`,
-                "⚙️ Correlating semantic patterns...",
-                `🎯 Targeting: "${query.slice(0, 45)}${query.length > 45 ? '…' : ''}"`,
-                "🧠 Retrieving best match from YAML sequence..."
-            ];
-            for (let i = 0; i < steps.length; i++) {
-                onStep(steps[i]);
-                await new Promise(r => setTimeout(r, 320 + Math.random() * 150));
-            }
-        }
-        
-        let isProcessing = false;
-        
-        async function handleChat() {
-            if (isProcessing) return;
-            const query = userInput.value.trim();
-            if (!query) return;
-            
-            isProcessing = true;
-            addMessage(query, true);
-            userInput.value = '';
-            userInput.style.height = 'auto';
-            
-            // Thinking bubble
-            const thinkingDiv = document.createElement('div');
-            thinkingDiv.className = "fade-in mb-4 flex justify-start";
-            thinkingDiv.innerHTML = `
-                <div class="message-bot rounded-2xl p-3 max-w-[85%]">
-                    <div class="text-blue-400 text-[9px] font-bold mb-1.5">⚙️ PROCESSING</div>
-                    <div id="thinkingSteps" class="space-y-1"></div>
+            div.innerHTML = `
+                <div class="${isUser ? 'message-user' : 'message-bot'} rounded-2xl p-4 max-w-[85%]">
+                    ${!isUser ? `<div class="text-blue-400 text-[9px] font-bold mb-1">✧ KITE AI ${meta ? `| ${meta.source}` : ''}</div>` : ''}
+                    <div class="prose prose-invert prose-sm text-sm">${htmlContent}</div>
                 </div>
             `;
-            chatContainer.appendChild(thinkingDiv);
-            chatContainer.parentElement.scrollTop = chatContainer.parentElement.scrollHeight;
-            
-            const stepsDiv = thinkingDiv.querySelector('#thinkingSteps');
-            const addStep = (text) => {
-                const p = document.createElement('div');
-                p.className = "thinking-step text-[10px]";
-                p.textContent = text;
-                stepsDiv.appendChild(p);
-                chatContainer.parentElement.scrollTop = chatContainer.parentElement.scrollHeight;
-            };
-            
-            await thinkingProcess(query, addStep);
-            thinkingDiv.remove();
-            
-            // Cari jawaban
-            const result = searchKnowledge(query);
-            
-            if (result.answer && result.score > 10) {
-                let finalAnswer = result.answer;
-                addMessage(finalAnswer, false, {
-                    source: result.source,
-                    title: result.title,
-                    confidence: Math.min(98, Math.floor(result.score / 0.8))
-                });
-            } else {
-                addMessage(
-                    `Tidak ditemukan pengetahuan relevan dari **${knowledgeBase.length}** modul yang tersedia.\n\n` +
-                    `**💡 Saran:**\n` +
-                    `• Perjelas konteks pertanyaan (contoh: "Apa itu React?", "cara install Node.js")\n` +
-                    `• Tambahkan file YAML baru di folder \`/brain\` dengan format array:\n` +
-                    `\`\`\`yaml\n- d: '2026-05-11'\n  s: 'jawaban lengkap...'\n  t: 'judul topik'\n\`\`\``,
-                    false
-                );
-            }
-            
-            isProcessing = false;
+            container.appendChild(div);
+            document.getElementById('chatArea').scrollTop = document.getElementById('chatArea').scrollHeight;
+            div.querySelectorAll('pre code').forEach(b => hljs.highlightElement(b));
         }
+
+        document.getElementById('sendBtn').onclick = handleChat;
+        document.getElementById('userInput').onkeydown = e => { if(e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); handleChat(); } };
         
-        userInput.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' && !e.shiftKey) {
-                e.preventDefault();
-                handleChat();
-            }
-        });
-        sendBtn.addEventListener('click', handleChat);
-        userInput.addEventListener('input', function() {
-            this.style.height = 'auto';
-            this.style.height = Math.min(120, this.scrollHeight) + 'px';
-        });
-        
-        // Mulai load
         loadBrainFiles();
     </script>
 </body>
