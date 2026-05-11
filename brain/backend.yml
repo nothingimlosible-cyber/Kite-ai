@@ -88,3 +88,36 @@
 
     _Source: Wikipedia_'
   d: '2026-05-11'
+- t: Blazor
+  s: '### 📘 Knowledge: Blazor
+
+
+    Blazor adalah web framework yang memungkinkan pengembang membuat aplikasi web
+    menggunakan C#, HTML, CSS. ...
+
+
+    _Source: Wikipedia_'
+  d: '2026-05-11'
+- t: Deno (perangkat lunak)
+  s: '### 📘 Knowledge: Deno (perangkat lunak)
+
+
+    Deno adalah runtime untuk JavaScript, TypeScript, dan WebAssembly yang menggunakan
+    mesin JavaScript V8 dan dibangun dengan bahasa pemrograman Rust. Deno dibuat oleh
+    Ryan Dahl, pencipta Node.js. Deno memberikan lingkungan yang terisolasi, sehingga
+    setiap fungsi yang dibutuhkan diperlukan izin....
+
+
+    _Source: Wikipedia_'
+  d: '2026-05-11'
+- t: Laravel
+  s: '### 📘 Knowledge: Laravel
+
+
+    Laravel adalah kerangka kerja aplikasi web berbasis PHP yang sumber terbuka, menggunakan
+    konsep Model-View-Controller (MVC). Laravel berada dibawah lisensi MIT, dengan
+    menggunakan GitHub sebagai tempat berbagi kode....
+
+
+    _Source: Wikipedia_'
+  d: '2026-05-11'

@@ -77,3 +77,35 @@
 
     _Source: Wikipedia_'
   d: '2026-05-11'
+- t: MongoDB
+  s: '### 📘 Knowledge: MongoDB
+
+
+    MongoDB (dari humongous) adalah sistem basis data berorentasi dokumen lintas platform.
+    Diklasifikasikan sebagai basis data NoSQL, MongoDB menghindari struktur basis
+    data relasional tabel berbasis tradisional yang mendukung JSON seperti dokumen
+    dengan skema dinamis (MongoDB menyebutnya sebagai format BSON), membuat integrasi
+    data dalam beberapa jenis aplikasi lebih mudah dan lebih cepat. Dirilis di bawah
+    Server Side Public License, MongoDB adalah perangkat lunak bebas dan sumber terbuka....
+
+
+    _Source: Wikipedia_'
+  d: '2026-05-11'
+- t: Graph database
+  s: '### 📘 Knowledge: Graph database
+
+
+    Graph database (Basis data graf) dalam dunia ilmu komputer adalah basis data yang
+    menggunakan struktur data graf yg memiliki komponen simpel (node), tepi (edge)
+    dan atribut (properties) untuk merepresentasikan penyimpanan data. Basis data
+    graf menyediaakan index-free adjacency, konsep yang memungkinkan penyimpanan dan
+    Pemrosesan graf secara efisien. Dalam sistem ini, setiap simpul langsung terhubung
+    dengan simpul-simpul yang ada di sekitarnya tanpa perlu menggunakan indeks tambahan
+    untuk mencari simpul-simpul tersebut. Artinya, hubungan antar simpul disimpan
+    langsung di dalam simpul itu sendiri, sehingga akses ke simpul terrait bisa dilakukan
+    secara cepas tanpa pencarían melalui indeks yang terpisah. Pendekatan ini sangat
+    berguna dalam aplikasi yang membutuhkan performa tinggi, seperti rek...
+
+
+    _Source: Wikipedia_'
+  d: '2026-05-11'

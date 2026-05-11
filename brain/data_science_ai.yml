@@ -41,3 +41,16 @@
 
     _Source: Wikipedia_'
   d: '2026-05-11'
+- t: Apache Spark
+  s: '### 📘 Knowledge: Apache Spark
+
+
+    Apache Spark adalah kerangka (framework) komputasi klaster dan pemrosesan dalam
+    penyimpanan (in-memory) yang memperluas model MapReduce untuk mendukung jenis
+    perhitungan lain, seperti kueri interaktif dan pemrosesan aliran. Spark dirancang
+    untuk menangani berbagai beban kerja dengan memperkenalkan konsep Resilient Distributed
+    Datasets (RDDs), yang memungkinkan eksekusi perhitungan di memori secara fault-tolerant....
+
+
+    _Source: Wikipedia_'
+  d: '2026-05-11'
