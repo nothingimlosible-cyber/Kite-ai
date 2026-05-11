@@ -25,17 +25,19 @@
         </div>
         <div class="flex flex-col items-end">
             <span class="text-[9px] text-gray-500 uppercase font-black tracking-[0.2em]">Neural Engine v8.0</span>
-            <span class="text-[10px] text-emerald-500/70 font-mono">ULTRA RETRIEVAL</span>
+            <span class="text-[10px] text-emerald-500/70 font-mono">SYNCED MEMORY</span>
         </div>
     </header>
+
     <main id="chatBox" class="flex-1 overflow-y-auto p-4 md:px-64 space-y-8 hide-scroll pb-32">
         <div class="flex justify-start fade-in">
             <div class="bot-bubble text-gray-300 p-4 px-6 max-w-[90%] text-sm leading-relaxed shadow-2xl">
-                <span class="text-emerald-500 font-black text-[9px] uppercase block mb-2 tracking-widest text-left">System</span>
-                Sistem aktif. 101 topik tersedia di memori. Tanya apa saja, Lan!
+                <span class="text-emerald-500 font-black text-[9px] uppercase block mb-2 tracking-widest">System</span>
+                Sistem aktif. Menghubungkan ke database GitHub... Silakan tanya apa saja, Lan!
             </div>
         </div>
     </main>
+
     <footer class="p-6 fixed bottom-0 w-full md:px-64 bg-gradient-to-t from-[#050505] via-[#050505] to-transparent">
         <div class="relative flex items-center max-w-4xl mx-auto group">
             <input type="text" id="userInput" placeholder="Tanya sesuatu..."
@@ -47,68 +49,116 @@
             </button>
         </div>
     </footer>
+
     <script>
         const chatBox = document.getElementById('chatBox');
         const input = document.getElementById('userInput');
-        const riwayat = [];
         const STOPWORDS = new Set(['apa','siapa','bagaimana','kenapa','mengapa','kapan','dimana','berapa','yang','dan','di','ke','dari','untuk','dengan','ini','itu','ada','ya','yah','dong','sih','nih','kak','mas','mbak','bisa','boleh','tolong','jelasin','kasih','tau','tahu','tentang','gimana','gitu','lah','deh','kan','aja','banget','juga','kalau','kalo','atau']);
-        const INTRO = ["Nah, soal itu — ","Oke Lan, jadi gini — ","Hm, yang saya tahu — ","Sip, ini dia — ","","Jadi gini Lan — ","Baik, perlu kamu tahu — "];
-        const TIDAK_TAHU = ["Hmm, saya belum punya data soal itu, Lan. Tambahkan topik baru ke database ya!","Wah, yang ini belum ada di memori saya, Lan.","Maaf Lan, data-nya belum ada. Coba tanya topik lain!","Belum ada info soal itu. Mau kita tambahkan ke database?"];
-        const SAPAAN = { p: [/^(halo|hai|hi|hey|hello|hei|assalamu|salam)\b/i], r: ["Halo Lan! Ada yang bisa saya bantu?","Hai Lan! Siap bantu. Mau tanya apa?","Hey! Saya di sini, silakan tanya apa saja."] };
-        const THX = { p: [/^(terima kasih|makasih|thanks|thx|tq)\b/i], r: ["Sama-sama Lan!","Senang bisa bantu!","Siap Lan! Tanya lagi kapan saja."] };
+        const INTRO = ["Nah, soal itu — ","Oke Lan, jadi gini — ","Hm, yang saya tahu — ","Sip, ini dia — ","Jadi gini Lan — "];
+        const TIDAK_TAHU = ["Hmm, saya belum punya data soal itu di memori GitHub, Lan.","Wah, robot penambang belum menemukan info itu.","Maaf Lan, data-nya belum ada. Coba topik lain!"];
 
         input.addEventListener("keypress", (e) => { if (e.key === "Enter") prosesChat(); });
 
         async function prosesChat() {
             const pesan = input.value.trim(); if (!pesan) return;
             addMsg("user", pesan); input.value = "";
-            riwayat.push({ role: "user", text: pesan }); if (riwayat.length > 20) riwayat.shift();
             const loadId = addThinking();
 
-            const quick = cekCepat(pesan);
-            if (quick) { await delay(500); removeEl(loadId); await addMsgTyping("bot", quick); return; }
-
             try {
-                const idx = await (await fetch('brain_index.json')).json();
-                const kueri = tokenize(pesan); const skor = hitungSkor(kueri, idx);
+                // 1. Fetch Brain Index dari folder database
+                const response = await fetch('database/brain_index.json');
+                const dataIndex = await response.json();
+                const idx = dataIndex.files; 
+
+                // 2. Tokenisasi & Scoring
+                const kueri = tokenize(pesan); 
+                const skor = hitungSkor(kueri, idx);
+                
                 let jawaban = acak(TIDAK_TAHU);
+
                 if (skor.length > 0) {
-                    const data = await (await fetch(skor[0].file)).text();
-                    jawaban = cariJawaban(data, kueri) || jawaban;
+                    // 3. Ambil file database (YAML)
+                    const resData = await fetch(skor[0].file);
+                    const teksData = await resData.text();
+                    jawaban = cariJawaban(teksData, kueri) || jawaban;
                 }
-                await delay(300 + Math.random() * 400);
+
+                await delay(500);
                 removeEl(loadId);
                 await addMsgTyping("bot", jawaban);
-                riwayat.push({role:"bot",text:jawaban});
-            } catch(e) { removeEl(loadId); await addMsgTyping("bot", "Saraf terputus Lan! Pastikan file database ada."); }
+            } catch(e) { 
+                removeEl(loadId); 
+                console.error(e);
+                await addMsgTyping("bot", "Gagal sinkronisasi memori. Pastikan Robot Penambang sudah mengisi folder database!"); 
+            }
         }
 
         function tokenize(t) { return t.toLowerCase().replace(/[^a-z0-9\s]/g,' ').split(/\s+/).filter(k=>k.length>1&&!STOPWORDS.has(k)); }
-        function hitungSkor(q,idx) { const r=[]; for(const e of idx){let s=0;for(const k of q)for(const key of e.keys){if(key===k)s+=3;else if(key.includes(k))s+=1;else if(k.includes(key)&&key.length>2)s+=1;}if(s>0)r.push({file:e.file,skor:s});}return r.sort((a,b)=>b.skor-a.skor); }
-        function cariJawaban(d,q) { const l=d.split('\n');let best=null,bs=-1;for(let i=0;i<l.length;i++){let s=0;const lo=l[i].toLowerCase();for(const k of q)if(lo.includes(k))s++;if(s>0&&s>=bs)for(let j=i+1;j<Math.min(i+10,l.length);j++){if(l[j]&&l[j].trim().startsWith('s:')){let t=l[j].split(/s:\s*/)[1]||"";for(let k=j+1;k<l.length;k++){const c=l[k].trim();if(c.startsWith('- id:')||c.startsWith('t:')||c.startsWith('d:'))break;t+=" "+c;}const r=t.replace(/^["']|["']$/g,'').trim();if(r&&s>=bs){bs=s;best=r;}break;}}}if(!best)return null;return acak(INTRO)+best; }
-        function cekCepat(p) { for(const x of SAPAAN.p)if(x.test(p))return acak(SAPAAN.r);for(const x of THX.p)if(x.test(p))return acak(THX.r);return null; }
+
+        function hitungSkor(q, idx) {
+            const r = [];
+            for (const e of idx) {
+                let s = 0;
+                for (const k of q) {
+                    for (const key of e.keys) {
+                        if (key === k) s += 10;
+                        else if (key.includes(k)) s += 2;
+                    }
+                }
+                if (s > 0) r.push({ file: e.file, skor: s });
+            }
+            return r.sort((a,b) => b.skor - a.skor);
+        }
+
+        function cariJawaban(d, q) {
+            const blocks = d.split(/\n-\s/); 
+            let best = null, maxS = -1;
+            for (let block of blocks) {
+                let s = 0; const low = block.toLowerCase();
+                for (const k of q) if (low.includes(k)) s++;
+                if (s > 0 && s >= maxS) {
+                    const match = block.match(/s:\s*([\s\S]*?)\s*t:/);
+                    if (match && match[1]) {
+                        maxS = s;
+                        best = match[1].replace(/\n\s+/g, ' ').replace(/^['"]|['"]$/g, '').trim();
+                    }
+                }
+            }
+            return best ? acak(INTRO) + best : null;
+        }
 
         function addMsg(role, text) {
             const isBot=role==="bot";const div=document.createElement('div');
             div.className=`flex ${isBot?'justify-start':'justify-end'} fade-in mb-6`;
             div.innerHTML=`<div class="${isBot?'bot-bubble text-gray-300':'user-bubble shadow-lg'} p-4 px-6 max-w-[85%] text-sm leading-relaxed shadow-xl">
-                ${isBot?'<span class="text-emerald-500 font-black text-[9px] uppercase block mb-2 tracking-[0.2em] text-left">LITE AI Core</span>':''}
-                <span class="msg-text">${text}</span></div>`;
+                ${isBot?'<span class="text-emerald-500 font-black text-[9px] uppercase block mb-2 tracking-[0.2em]">LITE AI Core</span>':''}
+                <span>${text}</span></div>`;
             chatBox.appendChild(div);chatBox.scrollTop=chatBox.scrollHeight;
         }
+
         async function addMsgTyping(role, text) {
             const isBot=role==="bot";const div=document.createElement('div');
             div.className=`flex ${isBot?'justify-start':'justify-end'} fade-in mb-6`;
             div.innerHTML=`<div class="${isBot?'bot-bubble text-gray-300':'user-bubble shadow-lg'} p-4 px-6 max-w-[85%] text-sm leading-relaxed shadow-xl">
-                ${isBot?'<span class="text-emerald-500 font-black text-[9px] uppercase block mb-2 tracking-[0.2em] text-left">LITE AI Core</span>':''}
+                ${isBot?'<span class="text-emerald-500 font-black text-[9px] uppercase block mb-2 tracking-[0.2em]">LITE AI Core</span>':''}
                 <span class="msg-text typing-cursor"></span></div>`;
-            chatBox.appendChild(div);chatBox.scrollTop=chatBox.scrollHeight;
-            const span=div.querySelector('.msg-text');const spd=text.length>200?10:text.length>100?16:22;
-            for(let i=0;i<=text.length;i++){span.textContent=text.slice(0,i);chatBox.scrollTop=chatBox.scrollHeight;await delay(spd+Math.random()*8);}
+            chatBox.appendChild(div);
+            const span=div.querySelector('.msg-text');
+            for(let i=0;i<=text.length;i++){
+                span.textContent=text.slice(0,i);
+                chatBox.scrollTop=chatBox.scrollHeight;
+                await delay(15 + Math.random()*10);
+            }
             span.classList.remove('typing-cursor');
         }
-        function addThinking() { const id="t-"+Date.now();const d=document.createElement('div');d.id=id;d.className="flex justify-start animate-pulse mb-6";d.innerHTML=`<div class="bg-white/5 text-gray-500 p-2 px-4 rounded-xl text-[9px] font-bold tracking-widest uppercase">Memindai memori saraf...</div>`;chatBox.appendChild(d);chatBox.scrollTop=chatBox.scrollHeight;return id; }
-        function removeEl(id) { const e=document.getElementById(id);if(e)e.remove(); }
+
+        function addThinking() { 
+            const id="t-"+Date.now();const d=document.createElement('div');d.id=id;d.className="flex justify-start animate-pulse mb-6";
+            d.innerHTML=`<div class="bg-white/5 text-gray-500 p-2 px-4 rounded-xl text-[9px] font-bold tracking-widest uppercase">Memindai Memori Saraf GitHub...</div>`;
+            chatBox.appendChild(d);chatBox.scrollTop=chatBox.scrollHeight;return id; 
+        }
+
+        function removeEl(id) { const e=document.getElementById(id); if(e)e.remove(); }
         function acak(a) { return a[Math.floor(Math.random()*a.length)]; }
         function delay(ms) { return new Promise(r=>setTimeout(r,ms)); }
     </script>
