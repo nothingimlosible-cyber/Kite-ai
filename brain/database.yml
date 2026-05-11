@@ -1,0 +1,29 @@
+- t: MySQL
+  s: '### MySQL
+
+    MySQL adalah sebuah perangkat lunak sistem manajemen basis data SQL (bahasa Inggris:
+    database management system) atau DBMS yang multialur, multipengguna, dengan sekitar
+    6 juta instalasi di seluruh dunia. MySQL AB membuat MySQL tersedia sebagai perangkat
+    lunak gratis di bawah lisensi GNU General Public License (GPL), tetapi mereka
+    juga menjual di bawah lisensi komersial untuk kasus-kasus di mana penggunaannya
+    tidak cocok dengan penggunaan GPL.'
+  d: '2026-05-11'
+- t: SQL
+  s: '### SQL
+
+    SQL (  S-Q-L,  "sequel"; Structured Query Language) adalah sebuah bahasa yang
+    digunakan untuk mengakses data dalam basis data relasional. Bahasa ini secara
+    de facto merupakan bahasa standar yang digunakan dalam manajemen basis data relasional.
+    Saat ini hampir semua server basis data yang ada mendukung bahasa ini untuk melakukan
+    manajemen datanya.'
+  d: '2026-05-11'
+- t: Microsoft SQL Server
+  s: '### Microsoft SQL Server
+
+    Microsoft SQL Server adalah sebuah sistem manajemen basis data relasional (RDBMS)
+    produk Microsoft. Bahasa kueri utamanya adalah Transact-SQL yang merupakan implementasi
+    dari SQL standar ANSI/ISO yang digunakan oleh Microsoft dan Sybase. Umumnya SQL
+    Server digunakan di dunia bisnis yang memiliki basis data berskala kecil sampai
+    dengan menengah, tetapi kemudian berkembang dengan digunakannya SQL Server pada
+    basis data besar.'
+  d: '2026-05-11'
