@@ -1,1 +1,25 @@
-[]
+- d: '2026-05-11'
+  s: '### 📘 Knowledge: Kubernetes
+
+
+    Kubernetes (, biasanya ditulis sebagai K8s) adalah sistem orkestrasi kontainer
+    sumber terbuka untuk mengotomatisasi penerapan, penskalaan, dan manajemen aplikasi
+    komputer. Perangkat lunak ini awalnya dirancang oleh Google dan sekarang dikelola
+    oleh Cloud Native Computing Foundation. Kubernetes bertujuan menyediakan "platform
+    untuk mengotomatisasi penyebaran, penskalaan, dan operasi kontainer aplikasi di
+    seluruh klaster hos". Kubernetes bekerja dengan berbagai alat kontainer dan menjalankan
+    kontainer dalam sebuah cluster, seringkali dengan image yang dibuat menggunakan
+    Docker. Kubernetes awalnya berinteraksi dengan runtime Docker melalui "Dockershim";
+    tetapi, shim sudah tidak digunakan lagi d...'
+  t: Kubernetes
+- d: '2026-05-11'
+  s: '### 📘 Knowledge: Roller docker
+
+
+    Tongkat gulungan landak atau tongkat gulungan berduri (Bahasa Inggris : Roller
+    docker) adalah alat penyiapan olahan pangan yang menyerupai tongkat penggulung
+    kecil berduri , atau anakan putar kecil . Digunakan untuk melubangi adonan roti
+    , adonan kerupuk , adonan pizza atau adonan pastri agar tidak mengembang atau
+    melepuh. Alat khusus ini lebih umum ditemukan di toko roti profesional daripada
+    di rumah yang hanya membuat kue ringan atau sesekali....'
+  t: Roller docker
