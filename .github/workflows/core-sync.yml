@@ -2,8 +2,8 @@ name: KITE-INFINITE-CODER-MINER
 
 on:
   schedule:
-    - cron: '0 */4 * * *' # Sekolah tiap 4 jam (Makin rajin!)
-  workflow_dispatch:
+    - cron: '0 */4 * * *' # Sekolah tiap 4 jam
+  workflow_dispatch: # Bisa dijalankan manual buat ngetes
 
 permissions:
   contents: write
@@ -13,10 +13,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.10'
+
       - name: Install Libs
         run: pip install pyyaml wikipedia
 
@@ -30,31 +32,13 @@ jobs:
           db_folder = 'brain'
           if not os.path.exists(db_folder): os.makedirs(db_folder)
 
-          # --- KURIKULUM CODING DUNIA ---
-          # Saya masukkan semua bahasa dan teknologi inti di sini
           world_coding_map = {
-              "frontend.yml": [
-                  "React.js Architecture", "Vue.js Composition API", "Angular Framework",
-                  "Svelte Framework", "WebAssembly", "TypeScript Interfaces", "Three.js 3D"
-              ],
-              "backend.yml": [
-                  "Node.js Microservices", "Golang Concurrency", "Rust Programming Language",
-                  "Python Asyncio", "Java Spring Boot", "Ruby on Rails", "PHP 8 Attributes"
-              ],
-              "mobile_dev.yml": [
-                  "Flutter SDK", "React Native", "SwiftUI", "Kotlin Multiplatform", "Android Jetpack"
-              ],
-              "data_science.yml": [
-                  "TensorFlow AI", "PyTorch Deep Learning", "Scikit-learn Machine Learning",
-                  "Data Visualization D3.js", "Big Data Hadoop", "Apache Spark"
-              ],
-              "devops_security.yml": [
-                  "Docker Containerization", "Kubernetes Clusters", "Cyber Security",
-                  "Penetration Testing", "CI/CD Pipeline", "Linux Kernel System"
-              ],
-              "personality.yml": [
-                  "Teknik Komunikasi Cerdas", "Bahasa Gaul Programmer", "Mentalitas Coder Dewa"
-              ]
+              "frontend.yml": ["React.js", "Vue.js", "WebAssembly", "TypeScript", "Three.js"],
+              "backend.yml": ["Node.js", "Golang", "Rust Programming", "Python Asyncio", "Microservices"],
+              "mobile_dev.yml": ["Flutter SDK", "React Native", "SwiftUI", "Kotlin Multiplatform"],
+              "data_science.yml": ["TensorFlow", "PyTorch", "Deep Learning", "Machine Learning"],
+              "devops_security.yml": ["Docker", "Kubernetes", "Cyber Security", "Linux Kernel"],
+              "personality.yml": ["Software Engineering", "Open Source", "Clean Code"]
           }
 
           today = datetime.now().strftime('%Y-%m-%d')
@@ -68,31 +52,36 @@ jobs:
                           old_data = yaml.safe_load(f) or []
                   except: pass
               
-              titles_set = set(x.get('t') for x in old_data)
-              # Robot mengambil 2 topik sekaligus biar cepat pinter
+              titles_set = set(x.get('t') for x in old_data if isinstance(x, dict))
               selected_topics = random.sample(topics, min(len(topics), 2))
               
               for target in selected_topics:
                   try:
-                      search = wikipedia.search(target, results=2)
-                      for title in search:
-                          if title in titles_set: continue
-                          p = wikipedia.page(title, auto_suggest=False)
-                          
-                          # Format konten agar lebih "Cerdas"
-                          summary = p.summary.split('\n')[0][:700]
-                          entry = {
-                              "t": p.title,
-                              "s": f"### 📘 Knowledge: {p.title}\n\n{summary}\n\n
-http://googleusercontent.com/immersive_entry_chip/0
+                      search = wikipedia.search(target, results=1)
+                      if not search: continue
+                      title = search[0]
+                      if title in titles_set: continue
+                      
+                      p = wikipedia.page(title, auto_suggest=False)
+                      summary = p.summary.split('\n')[0][:700]
+                      
+                      entry = {
+                          "t": p.title,
+                          "s": f"### 📘 Knowledge: {p.title}\n\n{summary}...",
+                          "d": today
+                      }
+                      old_data.append(entry)
+                      print(f"Berhasil menambang: {p.title}")
+                  except: continue
 
----
+              with open(path_db, 'w', encoding='utf-8') as f:
+                  yaml.dump(old_data, f, allow_unicode=True)
+          EOF
 
-### Kenapa Ini Disebut "Infinite Coder"?
-1.  **Cakupan Raksasa:** Dari bikin web, aplikasi HP, sampai **Artificial Intelligence (AI)** dan **Cyber Security** sudah masuk dalam "kurikulum" robot kamu.
-2.  **Double Learning:** Setiap kali jalan, robot ini ambil 2 topik per kategori. Jadi ilmunya nambah 2x lipat lebih cepat.
-3.  **Automatic Expansion:** Setiap 4 jam dia bakal nambahin ilmu baru. Kalau kamu biarin sebulan, folder `brain` kamu bakal penuh sama ilmu-ilmu sakti.
-
-Sekarang, silakan update kedua filenya. Terus kamu coba manual Actions-nya 2-3 kali. Setelah itu, coba tanya hal sulit seperti: **"Apa itu TensorFlow?"** atau **"Jelasin soal Docker"**. Pasti dia langsung bisa jawab! 🚀🤣
-
-Siap buat punya AI yang paling pinter se-kecamatan, Lan?
+      - name: Commit and Push
+        run: |
+          git config --global user.name "Kite-Minter-Bot"
+          git config --global user.email "bot@kite-infinite.com"
+          git add brain/*.yml
+          git commit -m "🤖 Robot Update: Tambah ilmu baru di folder brain [skip ci]" || exit 0
+          git push
