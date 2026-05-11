@@ -3,223 +3,425 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>KITE AI · DeepThink Engine</title>
+    <title>KITE · Neural Workspace</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..700&family=Fira+Code&display=swap');
-        * { scrollbar-width: thin; }
-        body { background: #0a0c10; font-family: 'Inter', sans-serif; }
-        .chat::-webkit-scrollbar { width: 4px; }
-        .chat::-webkit-scrollbar-track { background: #161b22; }
-        .chat::-webkit-scrollbar-thumb { background: #3b82f6; border-radius: 10px; }
-        .message-bot { background: #0d1117; border: 1px solid #21262d; }
-        .message-user { background: #1f6feb; border: 1px solid #388bfd; }
-        .thinking-step { font-size: 0.75rem; color: #8b949e; border-left: 2px solid #3b82f6; padding-left: 12px; margin: 8px 0; font-family: 'Fira Code', monospace; }
-        .typing::after { content: '▊'; animation: blink 1s step-end infinite; }
-        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
-        pre { border-radius: 12px !important; background: #0a0c10 !important; }
-        .prose pre { background: #0a0c10 !important; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: #0a0a0f;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            height: 100vh;
+            overflow: hidden;
+        }
+        
+        /* Premium scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1a1a1f;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #3a3a40;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #4a4a50;
+        }
+        
+        /* Glassmorphism */
+        .glass {
+            background: rgba(16, 16, 20, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(64, 64, 72, 0.4);
+        }
+        
+        /* Typing animation premium */
+        .cursor-blink::after {
+            content: '▊';
+            animation: blink 1s step-end infinite;
+            margin-left: 2px;
+            color: #3b82f6;
+            font-weight: 400;
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        
+        /* Message animations */
+        .message-in {
+            animation: messageSlide 0.3s cubic-bezier(0.16, 1, 0.2, 1);
+        }
+        
+        @keyframes messageSlide {
+            from {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Thinking steps */
+        .thinking-phase {
+            font-size: 0.75rem;
+            font-family: 'JetBrains Mono', monospace;
+            color: #6e6e7a;
+            padding: 6px 0 6px 14px;
+            border-left: 2px solid #3b82f6;
+            margin: 8px 0;
+            transition: all 0.2s ease;
+        }
+        
+        /* Code blocks */
+        pre {
+            background: #0d0d12 !important;
+            border-radius: 12px !important;
+            padding: 1rem !important;
+            border: 1px solid #2a2a30 !important;
+            overflow-x: auto !important;
+        }
+        
+        code {
+            font-family: 'JetBrains Mono', monospace !important;
+            font-size: 0.8rem !important;
+        }
+        
+        /* Input focus */
+        .input-focus:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
     </style>
 </head>
-<body class="h-screen flex flex-col">
-    <div class="bg-[#0d1117] border-b border-[#21262d] px-5 py-3 flex items-center justify-between sticky top-0 z-10">
-        <div class="flex items-center gap-2">
-            <div class="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
-            <h1 class="font-bold text-sm tracking-tight text-white">KITE AI <span class="text-blue-400 text-[10px] font-mono">· deepThink v2</span></h1>
-        </div>
-        <div id="statusBadge" class="text-[9px] font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full">🧠 BRAIN_LOADED</div>
-    </div>
+<body>
 
-    <div id="chatContainer" class="flex-1 overflow-y-auto p-4 md:px-64 space-y-5 chat">
-        <div class="flex justify-start">
-            <div class="message-bot rounded-2xl p-4 max-w-[85%]">
-                <div class="text-blue-400 text-[10px] font-bold mb-1">⚡ KITE CORE</div>
-                <div class="text-sm text-gray-300">Halo Lan! Gue udah scan folder <span class="font-mono text-blue-300">/brain</span>. Ada 11 file YAML. Tanya apapun tentang coding, gue baca dulu dari knowledge base-ku.</div>
+    <!-- Header -->
+    <header class="glass fixed top-0 left-0 right-0 z-50 px-6 py-3 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+            <div class="w-2 h-2 bg-blue-500 rounded-full shadow-[0_0_8px_#3b82f6]"></div>
+            <span class="text-white font-semibold text-sm tracking-tight">KITE</span>
+            <span class="text-blue-400 font-mono text-[10px] font-medium bg-blue-500/10 px-2 py-0.5 rounded">v3.0</span>
+        </div>
+        <div class="flex items-center gap-3">
+            <div id="brainStats" class="text-[10px] font-mono text-emerald-400/80">⟳ INITIALIZING</div>
+            <div class="w-px h-4 bg-white/10"></div>
+            <div class="text-[10px] text-white/40 font-mono">neural active</div>
+        </div>
+    </header>
+
+    <!-- Chat Container -->
+    <main id="chatContainer" class="h-screen overflow-y-auto pt-20 pb-32 px-4 md:px-32 lg:px-64">
+        <div class="max-w-4xl mx-auto space-y-5">
+            <!-- Welcome Message -->
+            <div class="message-in">
+                <div class="bg-[#121217] rounded-2xl p-5 border border-white/5 max-w-[85%]">
+                    <div class="flex items-center gap-2 mb-2">
+                        <span class="text-blue-400 text-[10px] font-bold uppercase tracking-wide">✧ KITE NEURAL ENGINE</span>
+                    </div>
+                    <p class="text-gray-300 text-[0.9rem] leading-relaxed">
+                        Neural workspace aktif. Memindai direktori <code class="text-blue-300 text-xs bg-blue-500/10 px-1.5 py-0.5 rounded">/brain</code> via GitHub API.<br>
+                        Tersedia <span id="fileCount" class="text-blue-400 font-semibold">--</span> modul pengetahuan. Ajukan pertanyaan teknis Anda.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Input Area -->
+    <div class="fixed bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-[#0a0a0f] via-[#0a0a0f] to-transparent">
+        <div class="max-w-3xl mx-auto">
+            <div class="relative">
+                <textarea id="userInput" rows="1" placeholder="Ajukan pertanyaan..." 
+                    class="w-full bg-[#121217] border border-white/10 rounded-xl p-4 pr-14 text-white text-sm resize-none focus:outline-none focus:border-blue-500/50 transition-all placeholder:text-white/20 input-focus"></textarea>
+                <button id="sendBtn" class="absolute right-3 bottom-3 text-blue-400 hover:text-blue-300 transition-all hover:scale-105 active:scale-95">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M3.478 2.405a.75.75 0 00-.926.94l2.432 7.905H13.5a.75.75 0 010 1.5H4.984l-2.432 7.905a.75.75 0 00.926.94 60.519 60.519 0 0018.445-8.986.75.75 0 000-1.218A60.517 60.517 0 003.478 2.405z"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="text-center mt-2">
+                <span class="text-[9px] text-white/20 font-mono">KITE neural engine · realtime brain scan</span>
             </div>
         </div>
     </div>
 
-    <div class="p-4 md:px-64 pb-6 bg-gradient-to-t from-[#0a0c10] to-transparent sticky bottom-0">
-        <div class="relative">
-            <textarea id="userInput" rows="1" placeholder="Tanya KITE AI ..." class="w-full bg-[#0d1117] border border-[#30363d] rounded-2xl p-3 pr-12 text-sm text-white resize-none focus:outline-none focus:border-blue-500"></textarea>
-            <button id="sendBtn" class="absolute right-3 bottom-3 text-blue-500 hover:text-blue-400">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M3.478 2.405a.75.75 0 00-.926.94l2.432 7.905H13.5a.75.75 0 010 1.5H4.984l-2.432 7.905a.75.75 0 00.926.94 60.519 60.519 0 0018.445-8.986.75.75 0 000-1.218A60.517 60.517 0 003.478 2.405z"/></svg>
-            </button>
-        </div>
-    </div>
-
     <script>
-        const BRAIN_FILES = [
-            "brain/backend.yml", "brain/kode_lib.yml", "brain/data_science.yml", "brain/database.yml",
-            "brain/devops_security.yml", "brain/frontend.yml", "brain/javascript.yml", "brain/mobile_dev.yml",
-            "brain/kepribadian.yml", "brain/python.yml", "brain/web_design.yml"
-        ];
+        // Konfigurasi
+        const REPO_OWNER = "nothingimlosible-cyber";
+        const REPO_NAME = "Kite-ai";
+        const BRANCH = "main";
         
-        let brainCache = new Map(); // nama file -> parsed YAML object
-
-        async function loadAllBrainFiles() {
-            const statusDiv = document.getElementById('statusBadge');
-            statusDiv.innerHTML = "📡 LOADING_BRAIN...";
-            for (const file of BRAIN_FILES) {
-                try {
-                    const res = await fetch(file);
-                    if (res.ok) {
-                        const text = await res.text();
-                        const parsed = jsyaml.load(text);
-                        if (parsed && typeof parsed === 'object') {
-                            brainCache.set(file, parsed);
-                        }
-                    }
-                } catch(e) { console.warn(`gagal load ${file}`, e); }
-            }
-            statusDiv.innerHTML = `🧠 ${brainCache.size} BRAIN_CORES ACTIVE`;
+        let brainModules = new Map();
+        let isLoading = false;
+        
+        // Update statistik
+        function updateStats() {
+            const statsEl = document.getElementById('brainStats');
+            const fileCountEl = document.getElementById('fileCount');
+            if (statsEl) statsEl.innerHTML = `🧠 ${brainModules.size} MODULES`;
+            if (fileCountEl) fileCountEl.innerText = brainModules.size;
         }
-
-        function searchInBrain(query) {
-            const lowerQuery = query.toLowerCase();
-            let bestMatch = { score: 0, answer: null, source: null };
+        
+        // Scan folder brain via GitHub API
+        async function scanBrainDirectory() {
+            const statsEl = document.getElementById('brainStats');
+            statsEl.innerHTML = `⟳ SCANNING REPO`;
             
-            for (const [file, content] of brainCache.entries()) {
-                let fileScore = 0;
-                let answerText = null;
+            try {
+                const apiUrl = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/brain?ref=${BRANCH}`;
+                const response = await fetch(apiUrl);
                 
-                // Cari di semua field yang mengandung 's:' atau 'answer'
-                const stringified = JSON.stringify(content).toLowerCase();
-                if (stringified.includes(lowerQuery)) fileScore += 10;
+                if (!response.ok) throw new Error(`GitHub API error: ${response.status}`);
                 
-                // Jika ada field 's', 'solution', 'answer' -> prioritas
-                if (content.s && content.s.toLowerCase().includes(lowerQuery)) {
-                    fileScore += 50;
-                    answerText = content.s;
-                } else if (content.answer && content.answer.toLowerCase().includes(lowerQuery)) {
-                    fileScore += 40;
-                    answerText = content.answer;
-                } else if (content.solution && content.solution.toLowerCase().includes(lowerQuery)) {
-                    fileScore += 30;
-                    answerText = content.solution;
+                const files = await response.json();
+                const yamlFiles = files.filter(f => 
+                    f.name.endsWith('.yml') && 
+                    !f.name.includes('manifest') &&
+                    f.type === 'file'
+                );
+                
+                statsEl.innerHTML = `📂 ${yamlFiles.length} FOUND`;
+                
+                let loaded = 0;
+                for (const file of yamlFiles) {
+                    try {
+                        const rawUrl = `https://raw.githubusercontent.com/${REPO_OWNER}/${REPO_NAME}/${BRANCH}/brain/${file.name}`;
+                        const yamlResponse = await fetch(`${rawUrl}?t=${Date.now()}`);
+                        
+                        if (yamlResponse.ok) {
+                            const yamlText = await yamlResponse.text();
+                            const parsed = jsyaml.load(yamlText);
+                            
+                            if (parsed && typeof parsed === 'object') {
+                                brainModules.set(file.name.replace('.yml', ''), {
+                                    content: parsed,
+                                    raw: yamlText
+                                });
+                                loaded++;
+                                statsEl.innerHTML = `⚙️ LOADING ${loaded}/${yamlFiles.length}`;
+                            }
+                        }
+                    } catch (err) {
+                        console.warn(`Failed to load ${file.name}:`, err);
+                    }
+                    await new Promise(r => setTimeout(r, 15));
                 }
                 
-                // Ambil teks dari properti manapun yang relevan
-                if (!answerText && content.s) answerText = content.s;
-                else if (!answerText && content.answer) answerText = content.answer;
-                else if (!answerText && content.solution) answerText = content.solution;
-                else if (!answerText && typeof content === 'string') answerText = content;
+                updateStats();
+                statsEl.innerHTML = `🧠 ${brainModules.size} ACTIVE`;
                 
-                if (fileScore > bestMatch.score && answerText) {
-                    bestMatch = { score: fileScore, answer: answerText, source: file };
+            } catch (err) {
+                console.error('Scan failed:', err);
+                statsEl.innerHTML = `⚠️ SCAN FAILED`;
+            }
+        }
+        
+        // Cari jawaban paling relevan
+        function searchNeuralNetwork(query) {
+            const lowerQuery = query.toLowerCase();
+            let bestMatch = {
+                score: 0,
+                answer: null,
+                module: null,
+                confidence: 0
+            };
+            
+            for (const [moduleName, moduleData] of brainModules.entries()) {
+                const content = moduleData.content;
+                let score = 0;
+                let answerText = null;
+                
+                // Prioritaskan field yang mengandung solusi
+                const solutionFields = ['s', 'answer', 'solution', 'code', 'explanation', 'description'];
+                
+                for (const field of solutionFields) {
+                    if (content[field] && typeof content[field] === 'string') {
+                        const fieldLower = content[field].toLowerCase();
+                        if (fieldLower.includes(lowerQuery)) {
+                            const fieldScore = field === 's' ? 60 : (field === 'answer' ? 50 : 40);
+                            score += fieldScore;
+                            if (!answerText) answerText = content[field];
+                        }
+                    }
+                }
+                
+                // Cek juga keseluruhan konten
+                const fullText = JSON.stringify(content).toLowerCase();
+                if (fullText.includes(lowerQuery)) score += 10;
+                
+                if (score > bestMatch.score && answerText) {
+                    bestMatch = {
+                        score,
+                        answer: answerText,
+                        module: moduleName,
+                        confidence: Math.min(96, Math.floor(score / 1.5))
+                    };
                 }
             }
             
             return bestMatch;
         }
-
-        async function simulateThinking(query, stepsCallback) {
-            stepsCallback("🔍 Scanning neural pathways...");
-            await new Promise(r => setTimeout(r, 400));
-            stepsCallback(`📂 Accessing ${brainCache.size} brain modules...`);
-            await new Promise(r => setTimeout(r, 300));
-            stepsCallback("⚙️ Correlating with query: " + query.slice(0, 40) + (query.length > 40 ? "..." : ""));
-            await new Promise(r => setTimeout(r, 500));
-            stepsCallback("🧠 Retrieving best solution...");
-            await new Promise(r => setTimeout(r, 400));
-        }
-
+        
+        // Render pesan
         const chatContainer = document.getElementById('chatContainer');
-        const userInput = document.getElementById('userInput');
-        const sendBtn = document.getElementById('sendBtn');
-
-        function addMessage(content, isUser = false) {
-            const wrapper = document.createElement('div');
-            wrapper.className = `flex ${isUser ? 'justify-end' : 'justify-start'} mb-4 fade-in`;
-            wrapper.innerHTML = `
-                <div class="${isUser ? 'message-user text-white' : 'message-bot text-gray-200'} rounded-2xl p-3 px-4 max-w-[85%] text-sm shadow-md">
-                    ${!isUser ? '<div class="text-blue-400 text-[10px] font-bold mb-1">🧠 KITE DEEPTHINK</div>' : ''}
-                    <div class="prose prose-invert prose-sm max-w-none">${isUser ? escapeHtml(content) : marked.parse(content)}</div>
-                </div>
-            `;
-            chatContainer.appendChild(wrapper);
-            chatContainer.scrollTop = chatContainer.scrollHeight;
-            if (!isUser) {
-                document.querySelectorAll('pre code').forEach(block => hljs.highlightElement(block));
+        const chatArea = chatContainer.querySelector('.max-w-4xl');
+        
+        function appendMessage(content, isUser = false, source = null, confidence = null) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'message-in';
+            
+            let html = '';
+            if (isUser) {
+                html = `
+                    <div class="flex justify-end">
+                        <div class="bg-[#1f6feb] rounded-2xl p-4 max-w-[85%]">
+                            <p class="text-white text-sm leading-relaxed">${escapeHtml(content)}</p>
+                        </div>
+                    </div>
+                `;
+            } else {
+                const parsedContent = marked.parse(content);
+                html = `
+                    <div class="bg-[#121217] rounded-2xl p-5 border border-white/5 max-w-[85%]">
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="text-blue-400 text-[10px] font-bold uppercase tracking-wide">✧ KITE NEURAL</span>
+                            ${source ? `<span class="text-[9px] font-mono text-white/20">from ${source}</span>` : ''}
+                            ${confidence ? `<span class="text-[9px] font-mono text-emerald-500/60 ml-auto">${confidence}% confidence</span>` : ''}
+                        </div>
+                        <div class="prose prose-invert prose-sm max-w-none text-gray-300 text-[0.9rem] leading-relaxed">
+                            ${parsedContent}
+                        </div>
+                    </div>
+                `;
             }
-        }
-
-        function escapeHtml(str) {
-            return str.replace(/[&<>]/g, function(m) {
-                if (m === '&') return '&amp;';
-                if (m === '<') return '&lt;';
-                if (m === '>') return '&gt;';
-                return m;
-            });
-        }
-
-        async function handleUserMessage() {
-            const query = userInput.value.trim();
-            if (!query) return;
-            addMessage(query, true);
-            userInput.value = '';
-            userInput.style.height = 'auto';
-
-            // Tampilkan bubble dengan loading steps
-            const thinkingBubble = document.createElement('div');
-            thinkingBubble.className = "flex justify-start mb-4";
-            thinkingBubble.innerHTML = `
-                <div class="message-bot rounded-2xl p-3 max-w-[85%]">
-                    <div class="text-blue-400 text-[10px] font-bold mb-1">⚙️ THINKING PROCESS</div>
-                    <div id="thinkingSteps" class="space-y-1"></div>
-                </div>
-            `;
-            chatContainer.appendChild(thinkingBubble);
+            
+            messageDiv.innerHTML = html;
+            chatArea.appendChild(messageDiv);
             chatContainer.scrollTop = chatContainer.scrollHeight;
             
-            const stepsDiv = document.getElementById('thinkingSteps');
-            const addStep = (text) => {
-                const p = document.createElement('div');
-                p.className = "thinking-step text-[11px]";
-                p.innerHTML = text;
-                stepsDiv.appendChild(p);
+            // Highlight code blocks
+            if (!isUser) {
+                messageDiv.querySelectorAll('pre code').forEach(block => {
+                    hljs.highlightElement(block);
+                });
+            }
+        }
+        
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+        
+        // Simulasi proses neural thinking
+        async function thinkingProcess(query, onPhase) {
+            const phases = [
+                "🔍 Scanning neural pathways...",
+                `📖 Accessing ${brainModules.size} knowledge modules...`,
+                "⚙️ Correlating semantic patterns...",
+                `🎯 Targeting query: "${query.slice(0, 50)}${query.length > 50 ? '...' : ''}"`,
+                "🧠 Retrieving optimal solution..."
+            ];
+            
+            for (let i = 0; i < phases.length; i++) {
+                onPhase(phases[i]);
+                await new Promise(r => setTimeout(r, 400 + Math.random() * 200));
+            }
+        }
+        
+        // Handle chat
+        async function handleChat() {
+            if (isLoading) return;
+            
+            const input = document.getElementById('userInput');
+            const query = input.value.trim();
+            if (!query) return;
+            
+            isLoading = true;
+            appendMessage(query, true);
+            input.value = '';
+            input.style.height = 'auto';
+            
+            // Thinking indicator
+            const thinkingDiv = document.createElement('div');
+            thinkingDiv.className = 'message-in';
+            thinkingDiv.innerHTML = `
+                <div class="bg-[#121217] rounded-2xl p-4 border border-white/5 max-w-[85%]">
+                    <div class="flex items-center gap-2 mb-2">
+                        <div class="w-1.5 h-1.5 bg-blue-500 rounded-full animate-pulse"></div>
+                        <span class="text-blue-400 text-[9px] font-bold uppercase tracking-wide">✧ THINKING</span>
+                    </div>
+                    <div id="thinkingPhases" class="space-y-1"></div>
+                </div>
+            `;
+            chatArea.appendChild(thinkingDiv);
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+            
+            const phasesContainer = thinkingDiv.querySelector('#thinkingPhases');
+            const addPhase = (text) => {
+                const phaseDiv = document.createElement('div');
+                phaseDiv.className = 'thinking-phase text-[11px]';
+                phaseDiv.textContent = text;
+                phasesContainer.appendChild(phaseDiv);
                 chatContainer.scrollTop = chatContainer.scrollHeight;
             };
             
-            await simulateThinking(query, addStep);
+            await thinkingProcess(query, addPhase);
+            thinkingDiv.remove();
             
-            // Cari jawaban di brain yang sudah di-cache
-            const result = searchInBrain(query);
+            // Cari jawaban
+            const result = searchNeuralNetwork(query);
             
-            thinkingBubble.remove();
-            
-            if (result.answer && result.score > 0) {
-                let finalAnswer = result.answer;
-                // Tambahkan metadata sumber
-                const sourceFile = result.source.replace('brain/', '').replace('.yml', '');
-                finalAnswer += `\n\n---\n📚 *Referensi dari:* \`${sourceFile}\` • *Confidence:* ${Math.min(95, result.score)}%`;
-                addMessage(finalAnswer, false);
+            if (result.answer && result.score > 15) {
+                appendMessage(result.answer, false, result.module, result.confidence);
             } else {
-                addMessage("Maaf Lan, gue udah buka semua file brain (`backend.yml`, `python.yml`, dll) tapi gak nemu info yang cocok. Coba tanya lebih spesifik atau tambahin ilmunya di folder brain.", false);
+                appendMessage(
+                    `Tidak ditemukan solusi relevan di ${brainModules.size} modul pengetahuan yang tersedia.\n\n**Saran:**\n- Perjelas konteks pertanyaan Anda\n- Tambahkan file YAML baru ke direkt \`/brain\`\n- Atau coba formulasi pertanyaan berbeda`,
+                    false,
+                    null,
+                    null
+                );
             }
+            
+            isLoading = false;
         }
-
+        
+        // Event listeners
+        const userInput = document.getElementById('userInput');
+        const sendBtn = document.getElementById('sendBtn');
+        
         userInput.addEventListener('keydown', (e) => {
             if (e.key === 'Enter' && !e.shiftKey) {
                 e.preventDefault();
-                handleUserMessage();
+                handleChat();
             }
         });
-        sendBtn.addEventListener('click', handleUserMessage);
         
-        // Auto-resize textarea
+        sendBtn.addEventListener('click', handleChat);
+        
         userInput.addEventListener('input', function() {
             this.style.height = 'auto';
-            this.style.height = (this.scrollHeight) + 'px';
+            this.style.height = Math.min(120, this.scrollHeight) + 'px';
         });
         
-        loadAllBrainFiles().then(() => {
-            console.log("Brain loaded:", brainCache.size);
-        });
+        // Inisialisasi
+        scanBrainDirectory();
     </script>
 </body>
 </html>
