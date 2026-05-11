@@ -1,1 +1,51 @@
-[]
+- t: Git
+  s: '### 📘 Knowledge: Git
+
+
+    Git adalah perangkat lunak pengendali versi atau proyek manajemen kode perangkat
+    lunak yang diciptakan oleh Linus Torvalds, yang pada awalnya ditujukan untuk pengembangan
+    kernel Linux. Desain Git terinspirasi oleh BitKeeper dan Monotone. Git pada awalnya
+    hanya dirancang sebagai mesin tingkat rendah yang dapat digunakan oleh tampilan
+    muka (front end) lain seperti Cogito atau StGIT. Namun selanjutnya proyek inti
+    Git telah berkembang menjadi pengendali revisi lengkap yang dapat digunakan langsung.
+    Saat ini, beberapa perangkat lunak terkenal menggunakan Git sebagai pengendali
+    revisinya, antara lain kernel Linux, Server X.org, pengembangan inti OLPC (One
+    Laptop per Child), serta kerangka kerja web Ruby on Rails....
+
+
+    _Source: Wikipedia_'
+  d: '2026-05-11'
+- t: Microsoft Azure
+  s: '### 📘 Knowledge: Microsoft Azure
+
+
+    Microsoft Azure adalah platform komputasi awan (bahasa Inggris: cloud computing)
+    milik Microsoft, perusahaan asal Amerika Serikat. Microsoft Azure memungkinkan
+    pengguna untuk membangun, mengelola, dan menyebarkan perangkat lunak pada jaringan
+    global yang masif menggunakan Tools Favorite dan Frameworks. Microsoft Azure menyediakan
+    software as a service (SAaS), platform as a service (PAaS), dan infrastructure
+    as a service (IAaS) dan mendukung banyak bahasa pemrograman, alat, dan kerangka
+    kerja yang berbeda, termasuk perangkat lunak dari Microsoft dan perangkat lunak
+    pihak ketiga khusus....
+
+
+    _Source: Wikipedia_'
+  d: '2026-05-11'
+- t: Penghargaan Hugo untuk Fanzine Terbaik
+  s: '### 📘 Knowledge: Penghargaan Hugo untuk Fanzine Terbaik
+
+
+    Penghargaan Hugo diberikan setiap tahun oleh Perhimpunan Fiksi Ilmiah Sedunia
+    (World Science Fiction Society) untuk karya-karya dan prestasi-prestasi fiksi
+    ilmiah atau fantasi terbaik pada tahun sebelumnya. Penghargaan tersebut mengambil
+    nama dari Hugo Gernsback, pendiri majalah fiksi ilmiah pionir Amazing Stories,
+    dan sempat resmi dikenal sebagai Penghargaan Prestasi Fiksi Ilmiah (Science Fiction
+    Achievement Award). Penghargaan Hugo disebut sebagai sebuah acara sempurna bagi
+    fiksi spekulatif dan penghargaan kesusastraan terkenal bagi penulisan fiksi ilmiah.
+    Penghargaan Hugo untuk Fanzine Terbaik diberikan setip tahun untuk majalah yang
+    disunting secara non profesional, atau fanzine, terkait fiksi ilmiah atau fantasi,
+    yang diterbitkan dalam bahasa Inggris, dan telah diterbitkan seban...
+
+
+    _Source: Wikipedia_'
+  d: '2026-05-11'

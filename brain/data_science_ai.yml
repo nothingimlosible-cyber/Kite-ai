@@ -1,1 +1,43 @@
-[]
+- t: NumPy
+  s: '### 📘 Knowledge: NumPy
+
+
+    NumPy (dieja , atau ) adalah sebuah pustaka untuk bahasa pemrograman Python, NumPy
+    memberikan dukungan untuk himpunan dan matriks multidimensi yang besar, dan dilengkapi
+    koleksi sejumlah besar fungsi matematika tingkat tinggi untuk beroperasi pada
+    himpunan ini. Proyek pendahulu NumPy, Numeric, awalnya dibuat oleh Jim Hugunin
+    dengan kontribusi dari beberapa pengembang lain pada tahun 1995. Pada tahun 2005,
+    Travis Oliphant menciptakan NumPy dengan memasukkan fitur Numarray ke dalam Numeric,
+    serta melakukan modifikasi besar-besaran. NumPy adalah perangkat lunak sumber
+    terbuka dan memiliki banyak kontributor....
+
+
+    _Source: Wikipedia_'
+  d: '2026-05-11'
+- t: Python (bahasa pemrograman)
+  s: '### 📘 Knowledge: Python (bahasa pemrograman)
+
+
+    Python adalah bahasa pemrograman tujuan umum yang ditafsirkan, tingkat tinggi.
+    Dibuat oleh Guido van Rossum dan pertama kali dirilis pada tahun 1991, filosofi
+    desain Python menekankan keterbacaan kode dengan penggunaan spasi putih yang signifikan.
+    Konstruksi bahasanya dan pendekatan berorientasi objek bertujuan untuk membantu
+    pemrogram menulis kode yang jelas dan logis untuk proyek skala kecil dan besar....
+
+
+    _Source: Wikipedia_'
+  d: '2026-05-11'
+- t: R (bahasa pemrograman)
+  s: '### 📘 Knowledge: R (bahasa pemrograman)
+
+
+    R (juga dikenal sebagai GNU S) adalah bahasa pemrograman dan perangkat lunak untuk
+    analisis statistika dan grafik. R dibuat oleh Ross Ihaka dan Robert Gentleman
+    di Universitas Auckland, Selandia Baru, dan kini dikembangkan oleh R Development
+    Core Team, di mana Chambers merupakan anggotanya. R dinamakan sebagian setelah
+    nama dua pembuatnya (Robert Gentleman dan Ross Ihaka), dan sebagian sebagian dari
+    permainan nama dari S....
+
+
+    _Source: Wikipedia_'
+  d: '2026-05-11'

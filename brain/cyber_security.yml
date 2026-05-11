@@ -1,1 +1,53 @@
-[]
+- t: Kriptografi
+  s: '### 📘 Knowledge: Kriptografi
+
+
+    Kriptografi (atau kriptologi; dari bahasa Yunani κρυπτόςcode: grc is deprecated  kryptós,
+    tersembunyi, rahasia; dan γράφεινcode: grc is deprecated  graphein, menulis, atau
+    -λογίαcode: grc is deprecated  logi, ilmu) merupakan keahlian dan ilmu dari cara-cara
+    untuk komunikasi aman pada kehadirannya di pihak ketiga. Secara umum, kriptografi
+    ialah mengenai mengkonstruksi dan menganalisis protokol komunikasi yang dapat
+    memblokir lawan; berbagai aspek dalam keamanan informasi seperti data rahasia,
+    integritas data, autentikasi, dan non-repudansi merupakan pusat dari kriptografi
+    modern. Kriptografi modern terjadi karena terdapat titik temu antara disiplin
+    ilmu matematika, ilmu komputer, dan teknik elektro. Aplikasi dari kriptografi
+    termasuk ATM, password komputer, dan E-commerce....
+
+
+    _Source: Wikipedia_'
+  d: '2026-05-11'
+- t: WhatsApp
+  s: '### 📘 Knowledge: WhatsApp
+
+
+    WhatsApp (secara resmi WhatsApp Messenger) adalah sebuah layanan perpesanan instan
+    (IM) dan voice-over-IP (VoIP) terpusat yang bersifat perangkat lunak gratis, lintas
+    platform, yang dimiliki oleh konglomerat teknologi Amerika Serikat, Meta Platforms.
+    Layanan ini memungkinkan penggunanya untuk mengirimkan pesan teks, pesan suara,
+    dan pesan video, melakukan panggilan suara dan video, serta berbagi gambar, dokumen,
+    lokasi pengguna, dan konten-konten lainnya. Aplikasi klien WhatsApp berjalan pada
+    perangkat seluler, dan dapat diakses dari komputer. Layanan ini membutuhkan nomor
+    telepon seluler untuk mendaftar. Pada bulan Januari 2018, WhatsApp merilis aplikasi
+    bisnis mandiri (standalone) yang disebut WhatsApp Business yang dapat berkomunikasi
+    dengan klien WhatsApp standar....
+
+
+    _Source: Wikipedia_'
+  d: '2026-05-11'
+- t: Injeksi SQL
+  s: '### 📘 Knowledge: Injeksi SQL
+
+
+    Suntik SQL (bahasa Inggris: SQL injectioncode: en is deprecated ) atau injeksi
+    SQL adalah sebuah teknik yang menyalahgunakan sebuah celah keamanan yang terjadi
+    dalam lapisan pangkalan data sebuah aplikasi. Celah ini terjadi ketika masukan
+    pengguna tidak disaring secara benar dari karakter-karakter pelolos berbentuk
+    untaian yang diimbuhkan dalam pernyataan SQL atau masukan pengguna tidak bertipe
+    kuat dan karenanya dijalankan tidak sesuai harapan. Ini sebenarnya adalah sebuah
+    contoh dari sebuah kategori celah keamanan yang lebih umum yang dapat terjadi
+    setiap kali sebuah bahasa pemrograman atau skrip diimbuhkan di dalam bahasa yang
+    lain....
+
+
+    _Source: Wikipedia_'
+  d: '2026-05-11'
