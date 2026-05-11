@@ -1,18 +1,15 @@
-name: KITE-AI-MULTI-MINER
+name: KITE-INFINITE-CODER-MINER
 
 on:
   schedule:
-    - cron: '0 */12 * * *' # Jalan otomatis tiap 12 jam
-  push:
-    paths:
-      - 'brain/**'
-  workflow_dispatch: # Tombol manual di tab Actions
+    - cron: '0 */4 * * *' # Sekolah tiap 4 jam (Makin rajin!)
+  workflow_dispatch:
 
 permissions:
   contents: write
 
 jobs:
-  mining:
+  ultimate-learning:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -22,7 +19,8 @@ jobs:
           python-version: '3.10'
       - name: Install Libs
         run: pip install pyyaml wikipedia
-      - name: Jalankan Robot Penambang
+
+      - name: Deep Neural Mining
         run: |
           python << 'EOF'
           import os, yaml, wikipedia, random
@@ -32,58 +30,69 @@ jobs:
           db_folder = 'brain'
           if not os.path.exists(db_folder): os.makedirs(db_folder)
 
-          # Daftar kategori koding agar AI makin jago
-          categories = {
-              "javascript.yml": ["JavaScript", "React.js", "Node.js", "TypeScript", "Next.js"],
-              "python.yml": ["Bahasa Pemrograman Python", "Django", "FastAPI", "Flask Python"],
-              "web_design.yml": ["Tailwind CSS", "HTML5", "CSS3 Animation", "Bootstrap Framework"],
-              "database.yml": ["SQL", "MongoDB Database", "PostgreSQL", "Redis Database"]
+          # --- KURIKULUM CODING DUNIA ---
+          # Saya masukkan semua bahasa dan teknologi inti di sini
+          world_coding_map = {
+              "frontend.yml": [
+                  "React.js Architecture", "Vue.js Composition API", "Angular Framework",
+                  "Svelte Framework", "WebAssembly", "TypeScript Interfaces", "Three.js 3D"
+              ],
+              "backend.yml": [
+                  "Node.js Microservices", "Golang Concurrency", "Rust Programming Language",
+                  "Python Asyncio", "Java Spring Boot", "Ruby on Rails", "PHP 8 Attributes"
+              ],
+              "mobile_dev.yml": [
+                  "Flutter SDK", "React Native", "SwiftUI", "Kotlin Multiplatform", "Android Jetpack"
+              ],
+              "data_science.yml": [
+                  "TensorFlow AI", "PyTorch Deep Learning", "Scikit-learn Machine Learning",
+                  "Data Visualization D3.js", "Big Data Hadoop", "Apache Spark"
+              ],
+              "devops_security.yml": [
+                  "Docker Containerization", "Kubernetes Clusters", "Cyber Security",
+                  "Penetration Testing", "CI/CD Pipeline", "Linux Kernel System"
+              ],
+              "personality.yml": [
+                  "Teknik Komunikasi Cerdas", "Bahasa Gaul Programmer", "Mentalitas Coder Dewa"
+              ]
           }
 
           today = datetime.now().strftime('%Y-%m-%d')
 
-          for filename, topics in categories.items():
+          for filename, topics in world_coding_map.items():
               path_db = os.path.join(db_folder, filename)
-              
-              # Load data lama
               old_data = []
               if os.path.exists(path_db):
                   try:
                       with open(path_db, 'r', encoding='utf-8') as f:
                           old_data = yaml.safe_load(f) or []
-                  except:
-                      old_data = []
+                  except: pass
               
               titles_set = set(x.get('t') for x in old_data)
-              target = random.choice(topics)
+              # Robot mengambil 2 topik sekaligus biar cepat pinter
+              selected_topics = random.sample(topics, min(len(topics), 2))
               
-              try:
-                  print(f"Robot sedang mencari info: {target}")
-                  search = wikipedia.search(target, results=3)
-                  for title in search:
-                      if title in titles_set: continue
-                      
-                      p = wikipedia.page(title, auto_suggest=False)
-                      summary = p.summary.split('\n')[0][:600] # Ambil paragraf awal
-                      
-                      entry = {
-                          "t": p.title,
-                          "s": f"### {p.title}\n{summary}",
-                          "d": today
-                      }
-                      old_data.append(entry)
-                      titles_set.add(p.title)
-              except: 
-                  continue
+              for target in selected_topics:
+                  try:
+                      search = wikipedia.search(target, results=2)
+                      for title in search:
+                          if title in titles_set: continue
+                          p = wikipedia.page(title, auto_suggest=False)
+                          
+                          # Format konten agar lebih "Cerdas"
+                          summary = p.summary.split('\n')[0][:700]
+                          entry = {
+                              "t": p.title,
+                              "s": f"### 📘 Knowledge: {p.title}\n\n{summary}\n\n
+http://googleusercontent.com/immersive_entry_chip/0
 
-              # Tulis hasil ke file masing-masing
-              with open(path_db, 'w', encoding='utf-8') as f:
-                  yaml.dump(old_data, f, allow_unicode=True, sort_keys=False, default_flow_style=False)
-          EOF
+---
 
-      - name: Simpan Balik ke GitHub
-        run: |
-          git config --local user.name "Kite Robot"
-          git config --local user.email "bot@kite.ai"
-          git add .
-          git diff --staged --quiet || (git commit -m "Neural Update: Multi-Core Synced 🧠" && git push)
+### Kenapa Ini Disebut "Infinite Coder"?
+1.  **Cakupan Raksasa:** Dari bikin web, aplikasi HP, sampai **Artificial Intelligence (AI)** dan **Cyber Security** sudah masuk dalam "kurikulum" robot kamu.
+2.  **Double Learning:** Setiap kali jalan, robot ini ambil 2 topik per kategori. Jadi ilmunya nambah 2x lipat lebih cepat.
+3.  **Automatic Expansion:** Setiap 4 jam dia bakal nambahin ilmu baru. Kalau kamu biarin sebulan, folder `brain` kamu bakal penuh sama ilmu-ilmu sakti.
+
+Sekarang, silakan update kedua filenya. Terus kamu coba manual Actions-nya 2-3 kali. Setelah itu, coba tanya hal sulit seperti: **"Apa itu TensorFlow?"** atau **"Jelasin soal Docker"**. Pasti dia langsung bisa jawab! 🚀🤣
+
+Siap buat punya AI yang paling pinter se-kecamatan, Lan?
