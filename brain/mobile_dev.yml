@@ -1,0 +1,24 @@
+- d: '2026-05-11'
+  s: '### 📘 Knowledge: Kotlin (bahasa pemrograman)
+
+
+    Kotlin adalah sebuah bahasa pemrograman dengan pengetikan statis yang berjalan
+    pada Mesin Virtual Java ataupun menggunakan kompiler LLVM yang dapat pula dikompilasikan
+    kedalam bentuk kode sumber JavaScript. Pengembang utamanya berasal dari tim programer
+    dari JetBrains yang bermarkas di Rusia. Meskipun sintaksisnya tidak kompatibel
+    dengan bahasa Java, Kotlin didesain untuk dapat bekerja sama dengan kode bahasa
+    Java dan bergantung kepada kode bahasa Java dari Kelas Pustaka Java yang ada,
+    seperti berbagai framework Java yang ada. Tim Pengembang memutuskan menamakannya
+    Kotlin dengan mengambil nama dari sebuah pulau di Rusia, sebagaimana Java yang
+    mengambil nama dari pulau Jawa di Indonesia. Sete...'
+  t: Kotlin (bahasa pemrograman)
+- d: '2026-05-11'
+  s: '### 📘 Knowledge: Flutter (perangkat lunak)
+
+
+    Flutter adalah sebuah kerangka kerja aplikasi seluler sumber terbuka yang diciptakan
+    oleh Google. Flutter digunakan dalam pengembangan aplikasi untuk sistem operasi
+    Android, iOS, Windows, Linux, MacOS, serta menjadi metode utama untuk membuat
+    aplikasi Google Fuchsia. Flutter juga mendukung untuk pengembangan aplikasi berbasis
+    web....'
+  t: Flutter (perangkat lunak)
