@@ -32,3 +32,17 @@
     mesin. Pustaka ini dapat digunakan untuk berbagai keperluan, tetapi memiliki fokus
     khusus pada pelatihan dan inferensi jaringan syaraf dalam (Deep neural networks)....'
   t: TensorFlow
+- d: '2026-05-11'
+  s: '### 📘 Knowledge: Pembelajaran mesin
+
+
+    Pembelajaran mesin atau pemelajaran mesin (bahasa Inggris: machine learning atau
+    disingkat dengan ML) adalah sub-bidang kecerdasan buatan yang berkaitan dengan
+    pengembangan dan studi algoritma statistik yang dirancang untuk dapat belajar
+    secara mandiri dari data, kemudian menggunakan pembelajaran tersebut untuk menggeneralisasi
+    dan menangani data baru yang belum pernah ditemui sebelumnya, sehingga sistem
+    ML dapat menjalankan tugas-tugas tertentu tanpa memerlukan instruksi eksplisit
+    yang terprogram sebelumnya. Belakangan, jaringan syaraf tiruan generatif telah
+    menunjukkan performa yang mengungguli berbagai pendekatan konvensional dalam berbagai
+    bidang....'
+  t: Pembelajaran mesin
