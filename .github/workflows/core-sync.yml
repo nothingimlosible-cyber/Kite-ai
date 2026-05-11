@@ -3,7 +3,7 @@ name: KITE-INFINITE-CODER-MINER
 on:
   schedule:
     - cron: '0 */4 * * *' # Sekolah tiap 4 jam
-  workflow_dispatch: # Bisa dijalankan manual buat ngetes
+  workflow_dispatch: # Tombol manual buat ngetes
 
 permissions:
   contents: write
@@ -32,13 +32,43 @@ jobs:
           db_folder = 'brain'
           if not os.path.exists(db_folder): os.makedirs(db_folder)
 
+          # --- KURIKULUM CODING RAKSASA (GLOBAL ARCHIVE) ---
           world_coding_map = {
-              "frontend.yml": ["React.js", "Vue.js", "WebAssembly", "TypeScript", "Three.js"],
-              "backend.yml": ["Node.js", "Golang", "Rust Programming", "Python Asyncio", "Microservices"],
-              "mobile_dev.yml": ["Flutter SDK", "React Native", "SwiftUI", "Kotlin Multiplatform"],
-              "data_science.yml": ["TensorFlow", "PyTorch", "Deep Learning", "Machine Learning"],
-              "devops_security.yml": ["Docker", "Kubernetes", "Cyber Security", "Linux Kernel"],
-              "personality.yml": ["Software Engineering", "Open Source", "Clean Code"]
+              "frontend.yml": [
+                  "HTML5", "CSS3", "JavaScript", "React (perangkat lunak)", "Vue.js", "AngularJS", 
+                  "Svelte", "Next.js", "Tailwind CSS", "Bootstrap (kerangka kerja)", "Three.js", 
+                  "WebAssembly", "TypeScript", "JQuery", "Sass (bahasa gaya)"
+              ],
+              "backend.yml": [
+                  "Node.js", "Deno (perangkat lunak)", "Bun (perangkat lunak)", "Express.js", 
+                  "PHP", "Laravel", "Django (kerangka kerja web)", "Flask", "Ruby on Rails", 
+                  "Golang", "Rust (bahasa pemrograman)", "Java (bahasa pemrograman)", 
+                  "Spring Boot", "ASP.NET Core", "C Plus Plus", "C Sharp"
+              ],
+              "mobile_dev.yml": [
+                  "Android SDK", "iOS SDK", "Flutter (kerangka kerja)", "React Native", 
+                  "Ionic (kerangka kerja)", "Swift (bahasa pemrograman)", "Kotlin", 
+                  "Objective-C", "Xamarin", "Apache Cordova"
+              ],
+              "database.yml": [
+                  "MySQL", "PostgreSQL", "MongoDB", "Redis", "SQLite", "MariaDB", 
+                  "Oracle Database", "Microsoft SQL Server", "Cassandra (database)", 
+                  "Firebase", "Elasticsearch", "Prisma ORM"
+              ],
+              "data_science_ai.yml": [
+                  "Python (bahasa pemrograman)", "R (bahasa pemrograman)", "TensorFlow", 
+                  "PyTorch", "Keras", "Scikit-learn", "Pandas (perangkat lunak)", 
+                  "NumPy", "Apache Spark", "Artificial Intelligence", "Machine Learning"
+              ],
+              "devops_cloud.yml": [
+                  "Docker (perangkat lunak)", "Kubernetes", "Jenkins (perangkat lunak)", 
+                  "Terraform", "Ansible", "Amazon Web Services", "Google Cloud Platform", 
+                  "Microsoft Azure", "Cloud Computing", "Nginx", "Linux Kernel", "Git"
+              ],
+              "cyber_security.yml": [
+                  "Kriptografi", "Penetration Testing", "Metasploit", "Wireshark", 
+                  "Firewall", "SQL Injection", "Malware", "Zero-day vulnerability"
+              ]
           }
 
           today = datetime.now().strftime('%Y-%m-%d')
@@ -53,7 +83,7 @@ jobs:
                   except: pass
               
               titles_set = set(x.get('t') for x in old_data if isinstance(x, dict))
-              selected_topics = random.sample(topics, min(len(topics), 2))
+              selected_topics = random.sample(topics, min(len(topics), 3))
               
               for target in selected_topics:
                   try:
@@ -63,25 +93,32 @@ jobs:
                       if title in titles_set: continue
                       
                       p = wikipedia.page(title, auto_suggest=False)
-                      summary = p.summary.split('\n')[0][:700]
+                      summary = p.summary.split('\n')[0][:800]
+                      
+                      # Bersihkan teks biar gak ngerusak YAML
+                      clean_s = summary.replace("'", "").replace('"', "")
                       
                       entry = {
                           "t": p.title,
-                          "s": f"### 📘 Knowledge: {p.title}\n\n{summary}...",
+                          "s": f"### 📘 Knowledge: {p.title}\n\n{clean_s}...\n\n_Source: Wikipedia_",
                           "d": today
                       }
                       old_data.append(entry)
-                      print(f"Berhasil menambang: {p.title}")
+                      print(f"✅ Berhasil nambah ilmu: {p.title}")
                   except: continue
 
               with open(path_db, 'w', encoding='utf-8') as f:
-                  yaml.dump(old_data, f, allow_unicode=True)
+                  yaml.dump(old_data, f, allow_unicode=True, sort_keys=False)
           EOF
 
       - name: Commit and Push
         run: |
-          git config --global user.name "Kite-Minter-Bot"
-          git config --global user.email "bot@kite-infinite.com"
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add brain/*.yml
-          git commit -m "🤖 Robot Update: Tambah ilmu baru di folder brain [skip ci]" || exit 0
-          git push
+          if git diff --staged --quiet; then
+            echo "Gak ada perubahan, skip push."
+          else
+            git commit -m "🤖 Robot Update: Tambah ilmu coder bumi [skip ci]"
+            git push origin main
+          fi
