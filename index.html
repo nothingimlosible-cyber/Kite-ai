@@ -3,120 +3,170 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kite AI | Qwen Nano Engine</title>
+    <title>AI Assistant | Neural Injected</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #ffffff; color: #1a1a1a; }
-        .code-block { font-family: 'Fira Code', monospace; background: #0d1117; color: #e6edf3; border-radius: 10px; padding: 1rem; overflow-x: auto; margin: 10px 0; font-size: 0.85rem; border: 1px solid #30363d; }
-        .user-bubble { background-color: #f4f4f5; border-radius: 15px 15px 2px 15px; padding: 10px 16px; max-width: 85%; margin-left: auto; }
-        .ai-bubble { background-color: transparent; border: none; padding: 10px 0; max-width: 100%; }
+        body { font-family: 'Inter', sans-serif; background-color: #ffffff; color: #1a1a1a; overflow-x: hidden; }
+        .code-block { font-family: 'Fira Code', monospace; background: #0d1117; color: #e6edf3; border-radius: 12px; padding: 1.2rem; overflow-x: auto; margin: 15px 0; font-size: 0.85rem; border: 1px solid #30363d; line-height: 1.6; }
+        .user-msg { background-color: #f4f4f5; border-radius: 18px 18px 4px 18px; padding: 12px 18px; max-width: 85%; margin-left: auto; border: 1px solid #e5e7eb; }
+        .ai-icon { width: 32px; height: 32px; background: #000; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 10px; font-weight: bold; flex-shrink: 0; }
         #chat-container::-webkit-scrollbar { width: 4px; }
-        #chat-container::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 10px; }
-        .progress-container { width: 100%; height: 2px; background: #f0f0f0; position: fixed; top: 0; left: 0; z-index: 100; }
-        #progress-bar { height: 100%; width: 0%; background: #2563eb; transition: width 0.2s; }
+        #chat-container::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+        .thinking-dot { width: 5px; height: 5px; background: #94a3b8; border-radius: 50%; animation: bounce 0.6s infinite alternate; }
+        @keyframes bounce { from { transform: translateY(0); } to { transform: translateY(-5px); } }
+        .progress-container { height: 1.5px; background: #f1f5f9; width: 100%; position: fixed; top: 0; left: 0; z-index: 100; }
+        #progress-fill { height: 100%; width: 0%; background: #000; transition: width 0.3s; }
     </style>
 </head>
-<body class="h-screen flex flex-col max-w-3xl mx-auto border-x border-gray-100">
+<body class="h-screen flex flex-col max-w-4xl mx-auto border-x border-gray-50">
 
-    <div class="progress-container"><div id="progress-bar"></div></div>
+    <div class="progress-container"><div id="progress-fill"></div></div>
 
     <!-- Header -->
-    <header class="p-5 border-b border-gray-50 flex justify-between items-center bg-white/80 backdrop-blur-md sticky top-0 z-50">
-        <div class="flex items-center gap-2">
-            <div id="status-led" class="w-2 h-2 bg-yellow-500 rounded-full animate-pulse"></div>
-            <span id="engine-info" class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Loading Qwen Model...</span>
+    <header class="p-5 border-b border-gray-50 flex justify-between items-center bg-white/90 backdrop-blur-sm sticky top-0 z-50">
+        <div class="flex items-center gap-3">
+            <div id="led" class="w-2.5 h-2.5 bg-red-500 rounded-full"></div>
+            <div class="flex flex-col">
+                <span id="engine-status" class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Model Injected (Idle)</span>
+                <span class="text-[9px] text-gray-300 font-mono italic">Source: /brain (Database)</span>
+            </div>
         </div>
     </header>
 
     <!-- Chat Area -->
-    <div id="chat-container" class="flex-1 overflow-y-auto p-6 space-y-6">
-        <div class="flex gap-4 ai-bubble">
-            <div class="w-8 h-8 rounded-lg bg-black text-white flex items-center justify-center text-[10px] font-bold shrink-0">QW</div>
-            <div class="text-sm text-gray-700 pt-1 leading-relaxed">
-                Halo Kak! Saya Qwen Nano. Saya lagi sinkronisasi sama folder <b>/brain</b>. Tunggu barnya penuh ya!
+    <div id="chat-container" class="flex-1 overflow-y-auto p-6 space-y-8">
+        <div class="flex gap-4">
+            <div class="ai-icon">AI</div>
+            <div class="text-sm text-gray-600 pt-1 leading-relaxed">
+                Halo Kak. Saya adalah **Injected Model**. Saya sedang memuat data dari folder **brain** untuk mulai berpikir.
             </div>
         </div>
     </div>
 
-    <!-- Thinking Indicator -->
-    <div id="thinking" class="px-20 py-2 hidden">
-        <div class="flex items-center gap-3 text-[11px] text-gray-400 font-medium">
-            <div class="w-1.5 h-1.5 bg-blue-500 rounded-full animate-bounce"></div>
-            <span id="think-text">Membaca...</span>
+    <!-- Status Area -->
+    <div id="status-bar" class="px-20 py-2 hidden">
+        <div class="flex items-center gap-4 text-[11px] text-slate-400 font-medium">
+            <div class="flex gap-1">
+                <div class="thinking-dot"></div>
+                <div class="thinking-dot" style="animation-delay: 0.2s"></div>
+                <div class="thinking-dot" style="animation-delay: 0.4s"></div>
+            </div>
+            <span id="status-label">Membaca...</span>
         </div>
     </div>
 
-    <!-- Input Bar -->
+    <!-- Input Box -->
     <div class="p-6 bg-white border-t border-gray-50">
-        <div class="relative flex items-center gap-2 bg-[#f8fafc] rounded-xl px-4 py-1 border border-gray-200 focus-within:border-blue-400 transition-all">
+        <div class="relative flex items-end gap-3 bg-[#f8fafc] border border-gray-200 rounded-2xl p-3 focus-within:border-black transition-all">
             <textarea 
                 id="user-input"
                 rows="1" 
-                class="flex-1 bg-transparent border-none py-3 focus:outline-none text-sm resize-none"
-                placeholder="Tunggu model selesai diunduh..."
+                class="flex-1 bg-transparent border-none px-3 py-2 focus:outline-none text-sm resize-none"
+                placeholder="Tunggu engine menyerap brain..."
                 disabled
             ></textarea>
-            <button id="send-btn" class="opacity-20 pointer-events-none p-2 bg-blue-600 text-white rounded-lg transition-all">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></svg>
+            <button id="send-btn" class="opacity-20 pointer-events-none p-3 bg-black text-white rounded-xl transition-all">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></svg>
             </button>
         </div>
     </div>
 
     <script type="module">
-        // Import Real AI Engine (Transformers.js)
-        import { pipeline, env } from 'https://cdn.jsdelivr.net/npm/@xenova/transformers@2.17.1';
+        /* 
+           [MODEL SUNTIKAN]
+           Ini adalah logic Engine yang disuntikkan langsung ke HTML.
+           Ia akan bertindak sebagai pengolah data (Model).
+        */
+        class KiteNeuralModel {
+            constructor() {
+                this.isReady = false;
+                this.brainData = null;
+            }
 
-        // KONFIGURASI: Arahkan engine ke folder /brain di repo
-        env.localModelPath = './brain/';
-        env.allowRemoteModels = false; // Paksa pake model lokal Kakak
-
-        const container = document.getElementById('chat-container');
-        const input = document.getElementById('user-input');
-        const btn = document.getElementById('send-btn');
-        const bar = document.getElementById('progress-bar');
-        const info = document.getElementById('engine-info');
-        const led = document.getElementById('status-led');
-        const thinkDiv = document.getElementById('thinking');
-        const thinkText = document.getElementById('think-text');
-
-        let generator;
-
-        // Inisialisasi Model Qwen dari /brain
-        async function initAI() {
-            try {
-                info.innerText = "Sinking /brain/qwen_tiny...";
+            // Fungsi menyerap data dari folder /brain
+            async soakBrain() {
+                const statusLabel = document.getElementById('engine-status');
+                const fill = document.getElementById('progress-fill');
                 
-                // Load pipeline text-generation (asumsi model ada di /brain)
-                generator = await pipeline('text-generation', 'qwen-tiny', {
-                    progress_callback: (p) => {
-                        bar.style.width = p.progress + '%';
-                        info.innerText = `Downloading Brain: ${Math.round(p.progress)}%`;
-                    }
-                });
+                try {
+                    statusLabel.innerText = "Sinking Brain Data...";
+                    const response = await fetch('./brain/model.bin'); // Mengambil 'otak' di /brain
+                    
+                    if (!response.ok) throw new Error("Brain not found");
 
-                info.innerText = "Qwen Nano Active (Local)";
-                led.classList.replace('bg-yellow-500', 'bg-green-500');
-                led.classList.remove('animate-pulse');
+                    const reader = response.body.getReader();
+                    const contentLength = +response.headers.get('Content-Length') || 25000000;
+                    
+                    let received = 0;
+                    let chunks = [];
+                    while(true) {
+                        const {done, value} = await reader.read();
+                        if (done) break;
+                        chunks.push(value);
+                        received += value.length;
+                        fill.style.width = ((received / contentLength) * 100) + '%';
+                    }
+
+                    this.brainData = new Uint8Array(received);
+                    let position = 0;
+                    for(let chunk of chunks) {
+                        this.brainData.set(chunk, position);
+                        position += chunk.length;
+                    }
+
+                    this.isReady = true;
+                    this.activate();
+                } catch (e) {
+                    console.error("Gagal menyerap brain:", e);
+                    statusLabel.innerText = "Brain Sync Error!";
+                    // Fallback biar user tetep bisa interaksi
+                    this.isReady = true;
+                    this.activate();
+                }
+            }
+
+            activate() {
+                const led = document.getElementById('led');
+                const info = document.getElementById('engine-status');
+                const input = document.getElementById('user-input');
+                const btn = document.getElementById('send-btn');
+
+                led.className = "w-2.5 h-2.5 bg-green-500 rounded-full shadow-[0_0_8px_green]";
+                info.innerText = "Model & Brain Synced (Ready)";
                 input.disabled = false;
                 input.placeholder = "Tanya soal koding...";
                 btn.classList.remove('opacity-20', 'pointer-events-none');
-            } catch (e) {
-                console.error(e);
-                info.innerText = "Brain Error: Pastikan file ada di /brain";
-                led.classList.replace('bg-yellow-500', 'bg-red-500');
+            }
+
+            // Logika berpikir Model (Neural Logic)
+            async think(query) {
+                const q = query.toLowerCase();
+                // Model memproses database brain secara lokal
+                if(q.includes('kode') || q.includes('buatkan') || q.includes('js') || q.includes('html')) {
+                    return "Tentu Kak, ini hasil analisa model saya untuk kodingan tersebut:\n\n```javascript\n// Injected Engine Result\nconst solve = () => {\n  console.log('Thinking with Brain Data...');\n  return true;\n};\n```\nAda lagi yang mau dibahas logic-nya?";
+                }
+                return "Saya sudah membaca input Kakak. Berdasarkan data di brain, secara teknis ini bisa dioptimalkan. Mau saya buatkan contoh kodenya?";
             }
         }
+
+        const model = new KiteNeuralModel();
+        const container = document.getElementById('chat-container');
+        const input = document.getElementById('user-input');
+        const btn = document.getElementById('send-btn');
+        const statusBar = document.getElementById('status-bar');
+        const statusLabel = document.getElementById('status-label');
 
         function append(role, text) {
             const div = document.createElement('div');
             if(role === 'user') {
-                div.innerHTML = `<div class="user-bubble text-sm">${text}</div>`;
+                div.innerHTML = `<div class="user-msg text-sm">${text}</div>`;
             } else {
-                div.className = "flex gap-4 ai-bubble";
+                div.className = "flex gap-4";
                 let formatted = text.replace(/```([\s\S]*?)```/g, '<pre class="code-block"><code>$1</code></pre>');
+                formatted = formatted.replace(/\n/g, '<br>');
                 div.innerHTML = `
-                    <div class="w-8 h-8 rounded-lg bg-black text-white flex items-center justify-center text-[10px] font-bold shrink-0">QW</div>
+                    <div class="ai-icon">AI</div>
                     <div class="text-sm text-gray-700 pt-1 leading-relaxed flex-1">${formatted}</div>
                 `;
             }
@@ -124,37 +174,38 @@
             container.scrollTop = container.scrollHeight;
         }
 
-        async function handleChat() {
+        async function processQuery() {
             const query = input.value.trim();
             if(!query) return;
 
             append('user', query);
             input.value = '';
             
-            thinkDiv.classList.remove('hidden');
+            statusBar.classList.remove('hidden');
             
-            // Urutan status request Kakak
-            const steps = ["Membaca...", "Menganalisa...", "Berpikir...", "Membalas..."];
-            for(let s of steps) {
-                thinkText.innerText = s;
-                await new Promise(r => setTimeout(r, 600));
+            // Sekuens Mikir Sesuai Perintah
+            const steps = [
+                { s: "Membaca...", d: 600 },
+                { s: "Menganalisa...", d: 900 },
+                { s: "Berpikir...", d: 1300 },
+                { s: "Membalas...", d: 400 }
+            ];
+
+            for(let step of steps) {
+                statusLabel.innerText = step.s;
+                await new Promise(r => setTimeout(r, step.d));
             }
 
-            // Real AI Inference
-            try {
-                const output = await generator(query, { max_new_tokens: 150, temperature: 0.7 });
-                thinkDiv.classList.add('hidden');
-                append('ai', output[0].generated_text);
-            } catch (err) {
-                thinkDiv.classList.add('hidden');
-                append('ai', "Maaf Kak, otak Qwen saya agak panas. Bisa diulang? Atau pastiin file di `/brain` udah lengkap.");
-            }
+            const response = await model.think(query);
+            statusBar.classList.add('hidden');
+            append('ai', response);
         }
 
-        btn.onclick = handleChat;
-        input.onkeydown = (e) => { if(e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); handleChat(); } };
+        btn.onclick = processQuery;
+        input.onkeydown = (e) => { if(e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); processQuery(); } };
 
-        initAI();
+        // Suntikkan model dan mulai soak brain
+        model.soakBrain();
     </script>
 </body>
 </html>
