@@ -118,3 +118,16 @@
 
     _Source: Wikipedia_'
   d: '2026-05-11'
+- t: Wine (perangkat lunak)
+  s: '### 📘 Knowledge: Wine (perangkat lunak)
+
+
+    Wine merupakan sebuah proyek yang bertujuan untuk membuat agar sistem operasi
+    bertipe Unix (Unix-like) dan X11 yang berjalan pada suatu komputer pribadi dapat
+    menjalankan program yang khusus dibuat untuk Microsoft Windows. Alternatifnya,
+    mereka yang ingin melakukan pemangkalan (porting) suatu aplikasi Windows ke sistem
+    Unix-like dapat melakukan kompilasi melalui pustaka Wine dalam bentuk Winelib....
+
+
+    _Source: Wikipedia_'
+  d: '2026-05-12'
