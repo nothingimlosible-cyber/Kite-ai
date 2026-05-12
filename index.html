@@ -1,186 +1,57 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KITE AI · Neural Knowledge Base</title>
+    <title>Kite AI - Elite Coding Partner</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: #0a0a0f; font-family: 'Inter', sans-serif; height: 100vh; overflow: hidden; }
-        ::-webkit-scrollbar { width: 5px; }
-        ::-webkit-scrollbar-track { background: #1a1a1f; }
-        ::-webkit-scrollbar-thumb { background: #3b82f6; border-radius: 10px; }
-        .glass-header { background: rgba(10, 10, 15, 0.9); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(59, 130, 246, 0.2); }
-        .message-bot { background: #121217; border: 1px solid #25252c; }
-        .message-user { background: #1f6feb; }
-        .thinking-step { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #6e6e7a; border-left: 2px solid #3b82f6; padding-left: 12px; margin: 6px 0; }
-        .fade-in { animation: fadeSlide 0.3s ease-out; }
-        @keyframes fadeSlide { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        pre { background: #0d0d12 !important; border-radius: 12px !important; border: 1px solid #25252c !important; overflow-x: auto; }
-        code { font-family: 'JetBrains Mono', monospace !important; }
-        .prose { max-width: 100% !important; word-wrap: break-word; }
-        .prose pre { margin: 0.8rem 0; padding: 1rem; }
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500&display=swap');
+        body { font-family: 'Fira Code', monospace; background-color: #0d1117; color: #c9d1d9; }
+        .chat-container::-webkit-scrollbar { width: 5px; }
+        .chat-container::-webkit-scrollbar-thumb { background: #30363d; border-radius: 10px; }
+        .glow-border:focus { border-color: #58a6ff; box-shadow: 0 0 10px rgba(88, 166, 255, 0.3); outline: none; }
     </style>
 </head>
-<body class="flex flex-col h-screen text-gray-300">
+<body class="h-screen flex flex-col">
 
-    <header class="glass-header px-6 py-3 flex justify-between items-center sticky top-0 z-10">
+    <!-- Header -->
+    <header class="border-b border-gray-800 p-4 flex justify-between items-center bg-[#161b22]">
         <div class="flex items-center gap-2">
-            <div class="w-2 h-2 bg-blue-500 rounded-full animate-pulse shadow-[0_0_8px_#3b82f6]"></div>
-            <span class="text-white font-semibold text-sm tracking-tight">KITE<span class="text-blue-400">AI</span></span>
-            <span class="text-[9px] font-mono text-white/30">neural v3.1</span>
+            <div class="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+            <h1 class="text-xl font-bold tracking-tighter text-white">Kite AI <span class="text-blue-400">v2.0</span></h1>
         </div>
-        <div id="statusBadge" class="text-[9px] font-mono text-emerald-400/80 bg-emerald-500/10 px-2 py-0.5 rounded-full">⟳ READY</div>
+        <div class="text-xs text-gray-400">System Status: <span class="text-green-400">ONLINE</span></div>
     </header>
 
-    <main class="flex-1 overflow-y-auto px-4 md:px-32 lg:px-64 py-6" id="chatArea">
-        <div class="max-w-4xl mx-auto space-y-4" id="chatContainer">
-            <div class="fade-in">
-                <div class="message-bot rounded-2xl p-4 max-w-[85%]">
-                    <div class="text-blue-400 text-[9px] font-bold uppercase tracking-wide mb-1">✧ SYSTEM NOTIFICATION</div>
-                    <div class="text-sm text-gray-300 leading-relaxed" id="welcomeMsg">
-                        Menghubungkan ke neural database...
-                    </div>
+    <!-- Main Chat Area -->
+    <main class="flex-1 overflow-hidden flex flex-col">
+        <div id="chat-box" class="chat-container flex-1 overflow-y-auto p-6 space-y-6">
+            <!-- Initial Message -->
+            <div class="flex items-start gap-4">
+                <div class="w-8 h-8 bg-blue-600 rounded flex items-center justify-center text-white font-bold">K</div>
+                <div class="bg-[#161b22] border border-gray-800 p-4 rounded-lg max-w-[80%]">
+                    <p class="text-sm">Halo Kak! Saya **Kite AI**. Saya sudah siap bantu Kakak koding apa saja. Mau bikin web, bot, atau cuma mau ngobrol santai? Gas pol!</p>
                 </div>
             </div>
         </div>
+
+        <!-- Input Area -->
+        <div class="p-6 border-t border-gray-800 bg-[#0d1117]">
+            <div class="max-w-4xl mx-auto relative">
+                <textarea id="user-input" 
+                    class="w-full bg-[#161b22] border border-gray-800 rounded-xl p-4 pr-16 text-sm glow-border resize-none"
+                    placeholder="Tulis perintah koding atau pertanyaan di sini..."
+                    rows="2"></textarea>
+                <button id="send-btn" class="absolute right-4 bottom-4 text-blue-500 hover:text-blue-400 transition-colors">
+                    <i class="fas fa-paper-plane text-xl"></i>
+                </button>
+            </div>
+            <p class="text-[10px] text-center mt-2 text-gray-500">Press Enter to send, Shift+Enter for new line.</p>
+        </div>
     </main>
 
-    <footer class="p-4 pb-6 bg-gradient-to-t from-[#0a0a0f] to-transparent sticky bottom-0">
-        <div class="max-w-3xl mx-auto relative">
-            <textarea id="userInput" rows="1" placeholder="Tanya soal koding..." 
-                class="w-full bg-[#121217] border border-white/10 rounded-xl p-3 pr-12 text-white text-sm resize-none focus:outline-none focus:border-blue-500/50 placeholder:text-white/20"></textarea>
-            <button id="sendBtn" class="absolute right-2 bottom-2 text-blue-400 hover:text-blue-300 p-1 transition">
-                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M3.478 2.405a.75.75 0 00-.926.94l2.432 7.905H13.5a.75.75 0 010 1.5H4.984l-2.432 7.905a.75.75 0 00.926.94 60.519 60.519 0 0018.445-8.986.75.75 0 000-1.218A60.517 60.517 0 003.478 2.405z"/></svg>
-            </button>
-        </div>
-    </footer>
-
-    <script>
-        const REPO_OWNER = "nothingimlosible-cyber";
-        const REPO_NAME = "Kite-ai";
-        const BRANCH = "main";
-        
-        let knowledgeBase = []; 
-        
-        async function loadBrainFiles() {
-            const statusEl = document.getElementById('statusBadge');
-            const welcomeMsg = document.getElementById('welcomeMsg');
-            statusEl.innerHTML = "📡 SYNCING...";
-            
-            try {
-                // Gunakan cache buster agar data gak nyangkut
-                const apiUrl = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/brain?ref=${BRANCH}&t=${Date.now()}`;
-                const res = await fetch(apiUrl);
-                
-                let yamlFiles = [];
-                if (res.ok) {
-                    const files = await res.json();
-                    yamlFiles = files.filter(f => f.name.endsWith('.yml'));
-                } else {
-                    // FALLBACK: Jika API Rate limit, tembak manual file yang umum ada
-                    yamlFiles = [
-                        {name: 'frontend.yml'}, {name: 'backend.yml'}, 
-                        {name: 'mobile_dev.yml'}, {name: 'devops_security.yml'}, 
-                        {name: 'data_science.yml'}, {name: 'personality.yml'}
-                    ];
-                }
-                
-                for (const file of yamlFiles) {
-                    try {
-                        const rawUrl = `https://raw.githubusercontent.com/${REPO_OWNER}/${REPO_NAME}/${BRANCH}/brain/${file.name}?t=${Date.now()}`;
-                        const yamlRes = await fetch(rawUrl);
-                        if (yamlRes.ok) {
-                            const yamlText = await yamlRes.text();
-                            // Bersihkan YAML dari karakter aneh
-                            const cleanYaml = yamlText.replace(/\t/g, '  ');
-                            const parsed = jsyaml.load(cleanYaml);
-                            
-                            if (Array.isArray(parsed)) {
-                                parsed.forEach(item => {
-                                    if(item.s) knowledgeBase.push({...item, source: file.name});
-                                });
-                            }
-                        }
-                    } catch(e) { console.error("Skip file:", file.name); }
-                }
-                
-                statusEl.innerHTML = `🧠 ${knowledgeBase.length} MODULES`;
-                welcomeMsg.innerHTML = `Berhasil memuat <b>${knowledgeBase.length}</b> modul koding. Gue siap kerja, Lan! 🚀`;
-                
-            } catch(err) {
-                statusEl.innerHTML = "⚠️ SYNC ERROR";
-                welcomeMsg.innerText = "Gagal memuat database. Cek koneksi atau struktur folder brain kamu.";
-            }
-        }
-        
-        function searchKnowledge(query) {
-            const words = query.toLowerCase().split(/\s+/);
-            let results = knowledgeBase.map(item => {
-                let score = 0;
-                const text = (item.t + " " + item.s).toLowerCase();
-                words.forEach(word => { if(text.includes(word)) score += 10; });
-                return { ...item, score };
-            });
-            return results.sort((a, b) => b.score - a.score)[0];
-        }
-
-        async function handleChat() {
-            const userInput = document.getElementById('userInput');
-            const query = userInput.value.trim();
-            if (!query || !knowledgeBase.length) return;
-
-            addMessage(query, true);
-            userInput.value = '';
-            
-            // Animasi Thinking
-            const loadId = 'think-' + Date.now();
-            const thinkDiv = document.createElement('div');
-            thinkDiv.id = loadId;
-            thinkDiv.className = "fade-in mb-4 flex justify-start";
-            thinkDiv.innerHTML = `<div class="message-bot rounded-2xl p-4 max-w-[85%]"><div class="thinking-step">Scanning Brain...</div></div>`;
-            document.getElementById('chatContainer').appendChild(thinkDiv);
-
-            await new Promise(r => setTimeout(r, 1000));
-            
-            const result = searchKnowledge(query);
-            thinkDiv.remove();
-
-            if (result && result.score > 0) {
-                addMessage(result.s, false, result);
-            } else {
-                addMessage("Maaf Lan, data itu gak ada di memori gue. Coba tanya hal lain atau cek file YAML lu.", false);
-            }
-        }
-
-        function addMessage(content, isUser = false, meta = null) {
-            const container = document.getElementById('chatContainer');
-            const div = document.createElement('div');
-            div.className = `fade-in mb-4 flex ${isUser ? 'justify-end' : 'justify-start'}`;
-            
-            const htmlContent = isUser ? content : marked.parse(content);
-            
-            div.innerHTML = `
-                <div class="${isUser ? 'message-user' : 'message-bot'} rounded-2xl p-4 max-w-[85%]">
-                    ${!isUser ? `<div class="text-blue-400 text-[9px] font-bold mb-1">✧ KITE AI ${meta ? `| ${meta.source}` : ''}</div>` : ''}
-                    <div class="prose prose-invert prose-sm text-sm">${htmlContent}</div>
-                </div>
-            `;
-            container.appendChild(div);
-            document.getElementById('chatArea').scrollTop = document.getElementById('chatArea').scrollHeight;
-            div.querySelectorAll('pre code').forEach(b => hljs.highlightElement(b));
-        }
-
-        document.getElementById('sendBtn').onclick = handleChat;
-        document.getElementById('userInput').onkeydown = e => { if(e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); handleChat(); } };
-        
-        loadBrainFiles();
-    </script>
+    <script src="brain/logic.js"></script>
 </body>
 </html>
