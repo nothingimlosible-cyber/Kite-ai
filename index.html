@@ -3,57 +3,140 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kite-ai | Neural Dashboard</title>
+    <title>Kite-ai | Gemini Neural Interface</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        body { background: #050505; color: #00ffcc; font-family: 'Courier New', Courier, monospace; }
-        .neon-border { border: 1px solid #00ffcc; box-shadow: 0 0 15px #00ffcc; }
-        .glass { background: rgba(0, 255, 204, 0.05); backdrop-filter: blur(10px); }
+        body { 
+            background-color: #0d0d0d; 
+            color: #e5e7eb; 
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-image: radial-gradient(circle at top right, #1e293b, #0d0d0d);
+            min-height: 100vh;
+        }
+        .gemini-card {
+            background: rgba(23, 23, 23, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+        }
+        .progress-container {
+            width: 100%;
+            height: 4px;
+            background: #1a1a1a;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .progress-bar {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, #4285f4, #9b51e0, #e91e63);
+            transition: width 0.3s ease;
+        }
+        .input-area {
+            background: #1e1e1e;
+            border-radius: 30px;
+            border: 1px solid #333;
+            transition: all 0.3s ease;
+        }
+        .input-area:focus-within {
+            border-color: #4285f4;
+            box-shadow: 0 0 15px rgba(66, 133, 244, 0.2);
+        }
+        #loading-overlay {
+            position: fixed;
+            inset: 0;
+            background: #0d0d0d;
+            z-index: 50;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .typing-animation::after {
+            content: '|';
+            animation: blink 1s infinite;
+        }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
     </style>
 </head>
-<body class="min-h-screen p-5">
-    <div class="max-w-4xl mx-auto">
-        <header class="mb-10 text-center">
-            <h1 class="text-4xl font-bold tracking-tighter mb-2">KITE-AI <span class="text-white">ELITE</span></h1>
-            <p class="text-xs opacity-70">SYSTEM STATUS: <span id="ai-status" class="text-yellow-400">Loading Brains...</span></p>
+<body class="flex items-center justify-center p-4">
+
+    <!-- Loading Screen with Progress Bar -->
+    <div id="loading-overlay">
+        <div class="text-center w-64">
+            <h2 class="text-xl font-bold mb-4 animate-pulse">Initializing Brain...</h2>
+            <div class="progress-container mb-2">
+                <div id="download-bar" class="progress-bar"></div>
+            </div>
+            <p id="download-text" class="text-[10px] text-gray-500 uppercase tracking-widest">Waking up Neural Networks...</p>
+        </div>
+    </div>
+
+    <main class="w-full max-w-3xl">
+        <header class="text-center mb-8">
+            <h1 class="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500">Kite-ai Elite</h1>
+            <p class="text-sm text-gray-400 mt-1">Multi-Brain Neural System</p>
         </header>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <!-- Miner Status -->
-            <div class="neon-border p-6 glass rounded-lg">
-                <h2 class="text-xl mb-4 font-bold border-b border-cyan-900 pb-2">⚡ AUTO-MINER</h2>
-                <div class="space-y-3">
-                    <div class="flex justify-between"><span>Status:</span> <span class="text-green-400">ACTIVE</span></div>
-                    <div class="flex justify-between"><span>Interval:</span> <span>30 Mins</span></div>
-                    <div class="flex justify-between"><span>Workflow:</span> <span class="text-blue-400">core-sync.yml</span></div>
+        <!-- Main Chat Interface -->
+        <div class="gemini-card p-6 shadow-2xl">
+            <div id="chat-window" class="min-h-[300px] mb-6 space-y-4">
+                <div id="process-status" class="text-xs font-semibold uppercase tracking-wider mb-2"></div>
+                <div id="ai-output" class="text-lg leading-relaxed text-gray-200">
+                    Halo Kak! Saya siap membantu. Model NeuroBERT sudah siap di sistem cadangan. Silakan ketik perintah kodingan atau analisa Kakak di bawah.
                 </div>
             </div>
 
-            <!-- Neural Interface -->
-            <div class="neon-border p-6 glass rounded-lg">
-                <h2 class="text-xl mb-4 font-bold border-b border-cyan-900 pb-2">🧠 NEURO-BERT BACKUP</h2>
-                <textarea id="ai-input" class="w-full bg-black border border-cyan-800 p-2 text-sm focus:outline-none mb-3" rows="3" placeholder="Tanya sesuatu ke NeuroBERT..."></textarea>
-                <button onclick="askAI()" class="w-full bg-cyan-600 text-black font-bold py-2 hover:bg-cyan-400 transition-all">EKSEKUSI</button>
-                <div id="ai-output" class="mt-4 text-[10px] text-gray-400 overflow-hidden italic"></div>
+            <!-- Input Area -->
+            <div class="input-area p-2 flex items-center">
+                <input type="text" id="ai-input" placeholder="Tanya sesuatu ke AI..." 
+                       class="flex-1 bg-transparent border-none outline-none px-4 py-2 text-white placeholder-gray-500">
+                <button onclick="handleAsk()" class="bg-white text-black rounded-full p-2 px-6 font-bold hover:bg-gray-200 transition-all">
+                    Kirim
+                </button>
             </div>
         </div>
 
-        <footer class="mt-20 text-center text-[10px] opacity-30">
-            KITE-AI CORE v2.0 | NEURO-BERT INTEGRATED
-        </footer>
-    </div>
+        <div class="mt-6 flex justify-center space-x-6 text-[10px] text-gray-500 uppercase tracking-widest">
+            <div class="flex items-center gap-1"><span class="w-2 h-2 bg-green-500 rounded-full"></span> Miner: Active</div>
+            <div class="flex items-center gap-1"><span class="w-2 h-2 bg-blue-500 rounded-full"></span> Model: NeuroBERT v1</div>
+            <div id="ai-status" class="text-blue-400 italic">System Online</div>
+        </div>
+    </main>
 
     <script type="module">
         import kiteBrain from './brain/logic.js';
         
-        window.askAI = async () => {
-            const input = document.getElementById('ai-input').value;
+        window.handleAsk = async () => {
+            const inputEl = document.getElementById('ai-input');
             const outputEl = document.getElementById('ai-output');
-            outputEl.innerText = "Berpikir...";
+            const val = inputEl.value;
             
-            const response = await kiteBrain.processQuery(input);
-            outputEl.innerText = response;
+            if(!val) return;
+
+            outputEl.innerHTML = `<span class="opacity-50 italic">"${val}"</span>`;
+            inputEl.value = '';
+
+            const response = await kiteBrain.processQuery(val);
+            
+            // Efek ngetik manual (Simulasi)
+            outputEl.innerHTML = '';
+            let i = 0;
+            const typeWriter = () => {
+                if (i < response.length) {
+                    outputEl.innerHTML += response.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 15);
+                }
+            };
+            typeWriter();
         }
+
+        // Allow Enter Key
+        document.getElementById('ai-input').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') handleAsk();
+        });
     </script>
 </body>
 </html>
