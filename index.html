@@ -3,134 +3,120 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Assistant | Real Brain v2</title>
+    <title>Kite AI | Qwen Nano Engine</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #ffffff; color: #1a1a1a; overflow: hidden; }
-        .code-block { font-family: 'Fira Code', monospace; background: #0d1117; color: #adbac7; border-radius: 12px; padding: 1.2rem; overflow-x: auto; margin: 15px 0; font-size: 0.85rem; border: 1px solid #30363d; }
-        .user-bubble { background-color: #f0f2f5; border-radius: 18px 18px 4px 18px; padding: 10px 18px; max-width: 80%; margin-left: auto; font-size: 0.9rem; }
-        .ai-icon { width: 30px; height: 30px; background: #000; border-radius: 6px; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 9px; font-weight: bold; flex-shrink: 0; }
+        body { font-family: 'Inter', sans-serif; background-color: #ffffff; color: #1a1a1a; }
+        .code-block { font-family: 'Fira Code', monospace; background: #0d1117; color: #e6edf3; border-radius: 10px; padding: 1rem; overflow-x: auto; margin: 10px 0; font-size: 0.85rem; border: 1px solid #30363d; }
+        .user-bubble { background-color: #f4f4f5; border-radius: 15px 15px 2px 15px; padding: 10px 16px; max-width: 85%; margin-left: auto; }
+        .ai-bubble { background-color: transparent; border: none; padding: 10px 0; max-width: 100%; }
         #chat-container::-webkit-scrollbar { width: 4px; }
-        #chat-container::-webkit-scrollbar-thumb { background: #eee; border-radius: 10px; }
-        .progress-bar { height: 2px; background: #eee; width: 100%; position: absolute; top: 0; left: 0; overflow: hidden; }
-        .progress-fill { height: 100%; background: #000; width: 0%; transition: width 0.3s; }
+        #chat-container::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 10px; }
+        .progress-container { width: 100%; height: 2px; background: #f0f0f0; position: fixed; top: 0; left: 0; z-index: 100; }
+        #progress-bar { height: 100%; width: 0%; background: #2563eb; transition: width 0.2s; }
     </style>
 </head>
-<body class="h-screen flex flex-col max-w-2xl mx-auto border-x border-gray-100 relative">
+<body class="h-screen flex flex-col max-w-3xl mx-auto border-x border-gray-100">
 
-    <!-- Loading Bar Download Model -->
-    <div id="loader" class="progress-bar">
-        <div id="fill" class="progress-fill"></div>
-    </div>
+    <div class="progress-container"><div id="progress-bar"></div></div>
 
     <!-- Header -->
-    <header class="p-5 border-b border-gray-50 flex justify-between items-center bg-white/90 backdrop-blur-md">
-        <div class="flex flex-col">
-            <span class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Neural Status</span>
-            <span id="engine-status" class="text-xs font-semibold text-orange-500 italic">Mendownload Otak (0%)...</span>
+    <header class="p-5 border-b border-gray-50 flex justify-between items-center bg-white/80 backdrop-blur-md sticky top-0 z-50">
+        <div class="flex items-center gap-2">
+            <div id="status-led" class="w-2 h-2 bg-yellow-500 rounded-full animate-pulse"></div>
+            <span id="engine-info" class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Loading Qwen Model...</span>
         </div>
-        <div id="brain-indicator" class="w-2 h-2 bg-gray-300 rounded-full"></div>
     </header>
 
     <!-- Chat Area -->
     <div id="chat-container" class="flex-1 overflow-y-auto p-6 space-y-6">
-        <div class="flex gap-4">
-            <div class="ai-icon">AI</div>
-            <div class="text-sm text-gray-600 pt-1">Sistem siap. Menunggu sinkronisasi model dari <b>/brain</b>...</div>
+        <div class="flex gap-4 ai-bubble">
+            <div class="w-8 h-8 rounded-lg bg-black text-white flex items-center justify-center text-[10px] font-bold shrink-0">QW</div>
+            <div class="text-sm text-gray-700 pt-1 leading-relaxed">
+                Halo Kak! Saya Qwen Nano. Saya lagi sinkronisasi sama folder <b>/brain</b>. Tunggu barnya penuh ya!
+            </div>
         </div>
     </div>
 
-    <!-- Live Status -->
-    <div id="status-area" class="px-16 py-2 hidden">
-        <div class="flex items-center gap-3 text-[11px] text-gray-400 font-medium italic">
-            <div class="w-1.5 h-1.5 bg-gray-400 rounded-full animate-pulse"></div>
-            <span id="status-text">Membaca...</span>
+    <!-- Thinking Indicator -->
+    <div id="thinking" class="px-20 py-2 hidden">
+        <div class="flex items-center gap-3 text-[11px] text-gray-400 font-medium">
+            <div class="w-1.5 h-1.5 bg-blue-500 rounded-full animate-bounce"></div>
+            <span id="think-text">Membaca...</span>
         </div>
     </div>
 
-    <!-- Input Area -->
+    <!-- Input Bar -->
     <div class="p-6 bg-white border-t border-gray-50">
-        <div class="relative flex items-center gap-2 bg-[#f8f9fa] rounded-2xl px-4 py-1.5 border border-transparent focus-within:border-gray-200 transition-all">
+        <div class="relative flex items-center gap-2 bg-[#f8fafc] rounded-xl px-4 py-1 border border-gray-200 focus-within:border-blue-400 transition-all">
             <textarea 
                 id="user-input"
                 rows="1" 
                 class="flex-1 bg-transparent border-none py-3 focus:outline-none text-sm resize-none"
-                placeholder="Tanya soal koding..."
+                placeholder="Tunggu model selesai diunduh..."
                 disabled
             ></textarea>
-            <button id="send-btn" class="opacity-30 pointer-events-none p-2.5 bg-black text-white rounded-xl transition-all">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></svg>
+            <button id="send-btn" class="opacity-20 pointer-events-none p-2 bg-blue-600 text-white rounded-lg transition-all">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></svg>
             </button>
         </div>
     </div>
 
     <script type="module">
+        // Import Real AI Engine (Transformers.js)
+        import { pipeline, env } from 'https://cdn.jsdelivr.net/npm/@xenova/transformers@2.17.1';
+
+        // KONFIGURASI: Arahkan engine ke folder /brain di repo
+        env.localModelPath = './brain/';
+        env.allowRemoteModels = false; // Paksa pake model lokal Kakak
+
         const container = document.getElementById('chat-container');
         const input = document.getElementById('user-input');
         const btn = document.getElementById('send-btn');
-        const fill = document.getElementById('fill');
-        const statusText = document.getElementById('status-text');
-        const statusArea = document.getElementById('status-area');
-        const engineStatus = document.getElementById('engine-status');
-        const brainInd = document.getElementById('brain-indicator');
+        const bar = document.getElementById('progress-bar');
+        const info = document.getElementById('engine-info');
+        const led = document.getElementById('status-led');
+        const thinkDiv = document.getElementById('thinking');
+        const thinkText = document.getElementById('think-text');
 
-        let modelData = null;
+        let generator;
 
-        // FUNGSI UTAMA: Download Model 23MB dari /brain
-        async function loadBrain() {
+        // Inisialisasi Model Qwen dari /brain
+        async function initAI() {
             try {
-                // Kita asumsikan ada file besar di /brain/model.bin atau model.json
-                const response = await fetch('./brain/model.bin'); 
-                const reader = response.body.getReader();
-                const contentLength = +response.headers.get('Content-Length') || 24117248; // Estimasi 23MB
+                info.innerText = "Sinking /brain/qwen_tiny...";
                 
-                let receivedLength = 0;
-                let chunks = []; 
-                
-                while(true) {
-                    const {done, value} = await reader.read();
-                    if (done) break;
-                    chunks.push(value);
-                    receivedLength += value.length;
-                    
-                    let percent = Math.round((receivedLength / contentLength) * 100);
-                    fill.style.width = percent + '%';
-                    engineStatus.innerText = `Mendownload Otak (${percent}%)...`;
-                }
+                // Load pipeline text-generation (asumsi model ada di /brain)
+                generator = await pipeline('text-generation', 'qwen-tiny', {
+                    progress_callback: (p) => {
+                        bar.style.width = p.progress + '%';
+                        info.innerText = `Downloading Brain: ${Math.round(p.progress)}%`;
+                    }
+                });
 
-                // Simpan ke memory browser
-                modelData = new Uint8Array(receivedLength);
-                let position = 0;
-                for(let chunk of chunks) {
-                    modelData.set(chunk, position);
-                    position += chunk.length;
-                }
-
-                // Aktifkan AI
-                engineStatus.innerText = "Neural Brain Aktif";
-                engineStatus.className = "text-xs font-semibold text-green-500";
-                brainInd.className = "w-2 h-2 bg-green-500 rounded-full shadow-[0_0_5px_green]";
+                info.innerText = "Qwen Nano Active (Local)";
+                led.classList.replace('bg-yellow-500', 'bg-green-500');
+                led.classList.remove('animate-pulse');
                 input.disabled = false;
-                btn.classList.remove('opacity-30', 'pointer-events-none');
-                input.placeholder = "Ketik perintah koding...";
-
+                input.placeholder = "Tanya soal koding...";
+                btn.classList.remove('opacity-20', 'pointer-events-none');
             } catch (e) {
-                engineStatus.innerText = "Offline Mode (Brain Gagal Load)";
-                input.disabled = false;
-                btn.classList.remove('opacity-30', 'pointer-events-none');
+                console.error(e);
+                info.innerText = "Brain Error: Pastikan file ada di /brain";
+                led.classList.replace('bg-yellow-500', 'bg-red-500');
             }
         }
 
         function append(role, text) {
             const div = document.createElement('div');
             if(role === 'user') {
-                div.innerHTML = `<div class="user-bubble">${text}</div>`;
+                div.innerHTML = `<div class="user-bubble text-sm">${text}</div>`;
             } else {
-                let formatted = text.replace(/```([\s\S]*?)```/g, '<div class="code-block">$1</div>');
-                div.className = "flex gap-4";
+                div.className = "flex gap-4 ai-bubble";
+                let formatted = text.replace(/```([\s\S]*?)```/g, '<pre class="code-block"><code>$1</code></pre>');
                 div.innerHTML = `
-                    <div class="ai-icon">AI</div>
+                    <div class="w-8 h-8 rounded-lg bg-black text-white flex items-center justify-center text-[10px] font-bold shrink-0">QW</div>
                     <div class="text-sm text-gray-700 pt-1 leading-relaxed flex-1">${formatted}</div>
                 `;
             }
@@ -138,37 +124,37 @@
             container.scrollTop = container.scrollHeight;
         }
 
-        async function thinkProcess(query) {
-            statusArea.classList.remove('hidden');
-            const seq = ["Membaca...", "Menganalisa data /brain...", "Berpikir...", "Membalas..."];
-            for(let s of seq) {
-                statusText.innerText = s;
-                await new Promise(r => setTimeout(r, 800));
-            }
-            statusArea.classList.add('hidden');
+        async function handleChat() {
+            const query = input.value.trim();
+            if(!query) return;
 
-            // Logic koding asli (Simulasi pemrosesan dari binary modelData)
-            let res = "";
-            if(query.toLowerCase().includes('buat') || query.toLowerCase().includes('kode')) {
-                res = "Berdasarkan data di `/brain`, ini struktur kode paling optimal:\n\n```javascript\n// Hasil Analisa Model 23MB\nconst kiteEngine = () => {\n  const memory = new WebAssembly.Memory({ initial: 256 });\n  console.log('Neural Brain Synced');\n};\n```\nAda lagi yang mau dikembangkan dari logic ini?";
-            } else {
-                res = "Saya sudah menganalisa input tersebut. Secara arsitektur, itu memerlukan penanganan pada state management. Mau saya buatkan contoh kodenya?";
+            append('user', query);
+            input.value = '';
+            
+            thinkDiv.classList.remove('hidden');
+            
+            // Urutan status request Kakak
+            const steps = ["Membaca...", "Menganalisa...", "Berpikir...", "Membalas..."];
+            for(let s of steps) {
+                thinkText.innerText = s;
+                await new Promise(r => setTimeout(r, 600));
             }
-            append('ai', res);
+
+            // Real AI Inference
+            try {
+                const output = await generator(query, { max_new_tokens: 150, temperature: 0.7 });
+                thinkDiv.classList.add('hidden');
+                append('ai', output[0].generated_text);
+            } catch (err) {
+                thinkDiv.classList.add('hidden');
+                append('ai', "Maaf Kak, otak Qwen saya agak panas. Bisa diulang? Atau pastiin file di `/brain` udah lengkap.");
+            }
         }
 
-        btn.onclick = () => {
-            const val = input.value.trim();
-            if(!val) return;
-            append('user', val);
-            input.value = '';
-            thinkProcess(val);
-        };
+        btn.onclick = handleChat;
+        input.onkeydown = (e) => { if(e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); handleChat(); } };
 
-        input.onkeydown = (e) => { if(e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); btn.click(); } };
-
-        // Jalankan download saat halaman dibuka
-        loadBrain();
+        initAI();
     </script>
 </body>
 </html>
