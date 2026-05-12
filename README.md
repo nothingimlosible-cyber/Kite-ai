@@ -1,19 +1,18 @@
-# 🚀 Kite-ai Elite Maximizer
+# 🚀 Kite-ai Elite Maximizer & Miner
 
-Repository ini sudah dimaksimalkan untuk performa tinggi dalam berinteraksi dengan ekosistem Kite AI.
+Repository ini sudah dimaksimalkan untuk performa tinggi dan auto-farming.
 
-## ✨ Fitur Baru
-- **Elite Dashboard**: UI modern berbasis web (`index.html`) untuk monitoring real-time.
-- **Auto-Maximizer**: Skrip di `brain/kite.js` yang secara otomatis melakukan chat dengan AI agents.
-- **High Performance**: Loop otomatis dengan manajemen rate-limit.
+## ✨ Fitur Unggulan
+- **24/7 Auto-Miner**: Berjalan otomatis setiap 30 menit via GitHub Actions.
+- **Neural Dashboard**: UI modern ala DeepSeek/Gemini di `index.html`.
+- **Local Brain**: Olah data menggunakan model AI 23MB langsung di browser.
 
-## 🛠 Cara Pakai
-1. Buka `index.html` di browser untuk monitoring.
-2. Edit `brain/kite.js` dan masukkan token Kakak.
-3. Jalankan bot:
-   ```bash
-   node brain/kite.js
-   ```
+## 🛠 Cara Aktifkan Nambang (Workflow)
+1. Pergi ke tab **Settings** di repo ini.
+2. Pilih **Secrets and variables** -> **Actions**.
+3. Klik **New repository secret**.
+4. Nama: `KITE_TOKEN`, Isi: (Masukkan JWT Token Kite AI Kakak).
+5. Selesai! Workflow akan jalan otomatis tiap 30 menit.
 
-## ⚠️ Disclaimer
-Gunakan dengan bijak. Skrip ini dibuat untuk tujuan efisiensi koding.
+## 🖥 Dashboard
+Buka `index.html` untuk akses Neural Interface lokal.
