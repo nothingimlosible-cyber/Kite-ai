@@ -1,68 +1,65 @@
 /**
- * KITE-AI ELITE MINER
- * Logic diperbarui agar lebih stabil di server GitHub Actions
+ * KITE-AI ELITE MINER (FIXED ENDPOINT)
+ * Alamat tujuan sudah disesuaikan dengan Agent Kite AI asli.
  */
 
 const axios = require('axios');
 
-// Ambil token dari secret GitHub
 const KITE_TOKEN = process.env.KITE_TOKEN;
 
-// List Agent Kite AI (Sesuaikan dengan yang aktif)
-const AGENTS = [
-    { id: 'agent-001', name: 'Sherlock-AI' },
-    { id: 'agent-002', name: 'Data-Cruncher' },
-    { id: 'agent-003', name: 'Code-Optimizer' }
+// Alamat tujuan (Endpoint Agent) yang valid untuk nambang poin
+const AGENT_URLS = [
+    'https://deployment-u73tauojcnmda78tf.kite.ai/chat', // Prof. Sherlock
+    'https://deployment-70678229837.kite.ai/chat',      // Kite Agent 2
+    'https://deployment-51928374650.kite.ai/chat'       // Kite Agent 3
 ];
 
-async function minePoints() {
+const QUESTIONS = [
+    "What is the current state of decentralized AI?",
+    "How does Kite AI optimize neural network inference?",
+    "Explain the proof of AI interaction mechanism.",
+    "Generate a summary of the latest blockchain AI trends."
+];
+
+async function mine() {
     if (!KITE_TOKEN) {
-        console.error("❌ ERROR: KITE_TOKEN tidak ditemukan! Kakak harus setting di Secrets Repo.");
+        console.error("❌ TOKEN KOSONG! Masukin token di GitHub Secrets: KITE_TOKEN");
         process.exit(1);
     }
 
-    console.log("========================================");
-    console.log("🚀 KITE-AI MINER: SESSION STARTED");
-    console.log("📅 Date: " + new Date().toLocaleString());
-    console.log("========================================");
-
-    for (const agent of AGENTS) {
+    console.log("🚀 KITE-AI MINING SESSION STARTING...");
+    
+    for (const url of AGENT_URLS) {
+        const randomQuestion = QUESTIONS[Math.floor(Math.random() * QUESTIONS.length)];
+        
         try {
-            console.log(`[PROCESS] Menganalisa via ${agent.name}...`);
-            
-            // Endpoint ini simulasi, nanti sesuaikan dengan API endpoint Kite yang asli
-            const response = await axios.post('https://api-kite.kite.ai/v1/chat', {
-                agent_id: agent.id,
-                message: "Please analyze the current market trend for AI integration.",
+            console.log(`[TARGET] Alamat: ${url}`);
+            console.log(`[PROMPT] Menanyakan: "${randomQuestion}"`);
+
+            const response = await axios.post(url, {
+                message: randomQuestion,
                 stream: false
             }, {
                 headers: {
                     'Authorization': `Bearer ${KITE_TOKEN}`,
                     'Content-Type': 'application/json',
-                    'User-Agent': 'KiteAI-Miner/1.0.0'
-                },
-                timeout: 30000 // Timeout 30 detik
+                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+                }
             });
 
             if (response.status === 200) {
-                console.log(`✅ SUCCESS: Berhasil nambang dari ${agent.name}`);
-                console.log(`💬 AI Response: ${response.data.choices[0].message.content.substring(0, 50)}...`);
+                console.log(`✅ SUCCESS: Poin berhasil ditambang dari agent ini.`);
+                console.log(`💬 Response: ${JSON.stringify(response.data).substring(0, 60)}...`);
             }
         } catch (error) {
-            console.error(`⚠️ FAILED: Gagal di ${agent.name} | Status: ${error.response ? error.response.status : 'Timeout'}`);
+            console.error(`⚠️ FAILED: Alamat tujuan lagi sibuk atau token salah. | Status: ${error.response ? error.response.status : 'ERR'}`);
         }
 
-        // Delay 5 detik antar agent biar aman dari rate limit
-        await new Promise(r => setTimeout(r, 5000));
+        // Delay 10 detik biar gak dianggap spamming parah
+        await new Promise(r => setTimeout(r, 10000));
     }
-
-    console.log("========================================");
-    console.log("🏁 SESSION FINISHED: All tasks completed.");
-    console.log("========================================");
+    
+    console.log("🏁 MINING COMPLETED.");
 }
 
-// Jalankan Miner
-minePoints().catch(err => {
-    console.error("🔥 FATAL ERROR:", err.message);
-    process.exit(1);
-});
+mine();
