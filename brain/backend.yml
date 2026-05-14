@@ -174,3 +174,29 @@
 
     _Source: Wikipedia_'
   d: '2026-05-13'
+- t: PHP
+  s: '### 📘 Knowledge: PHP
+
+
+    PHP: Hypertext Preprocessor (sebelumnya disebut Personal Home Pages) atau hanya
+    PHP saja, adalah bahasa skrip dengan fungsi umum yang terutama digunakan untuk
+    pengembangan web. Bahasa ini awalnya dibuat oleh seorang pemrogram Denmark-Kanada
+    Rasmus Lerdorf pada tahun 1994. Implementasi referensi PHP sekarang diproduksi
+    oleh The PHP Group. PHP awalnya merupakan singkatan dari Personal Home Page, tetapi
+    sekarang merupakan singkatan dari inisialisasi rekursif PHP: Hypertext Preprocessor....
+
+
+    _Source: Wikipedia_'
+  d: '2026-05-14'
+- t: Flask
+  s: '### 📘 Knowledge: Flask
+
+
+    Flask adalah kerangka kerja aplikasi web bersifat kerangka kerja mikro yang ditulis
+    dalam bahasa pemrograman Python dan menggunakan dependensi Werkzeug dan Jinja2.
+    Aplikasi yang menggunakan Flask antara lain adalah Pinterest, LinkedIn, dan halaman
+    web komunitas situs Flask itu sendiri....
+
+
+    _Source: Wikipedia_'
+  d: '2026-05-14'
