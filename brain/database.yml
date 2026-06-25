@@ -172,3 +172,21 @@
 
     _Source: Wikipedia_'
   d: '2026-05-12'
+- t: Log4j
+  s: '### 📘 Knowledge: Log4j
+
+
+    log4j adalah suatu kerentanan pada perangkat lunak Apache Java Logging Library
+    buatan Apache Software Foundation yang dioperasikan utamanya pada MacOS, Windows,
+    dan Linux. Penemuan kerentanan ini pertama kali pada 9 Desember 2021. Pada tanggal
+    10 Desember 2021, kerentanan log4j kemudian dituliskan sebagai CVE-2021-44228
+    dan disebut juga sebagai log4shell. Log4j digunakan sebagai paket logging dalam
+    berbagai perangkat lunak populer yang berbeda oleh sejumlah produsen, termasuk
+    Amazon, Apple iCloud, Cisco, Cloudflare, ElasticSearch, Red Hat, Steam, Tesla,
+    Twitter, dan permainan video seperti Minecraft. Kerentanan zero day pada Log4j
+    memungkinkan penyerang untuk masuk ke dalam sistem tanpa autentikasi dan mengambil
+    alih secara penuh server yang terdampak....
+
+
+    _Source: Wikipedia_'
+  d: '2026-06-25'
