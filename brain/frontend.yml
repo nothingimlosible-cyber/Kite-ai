@@ -182,3 +182,21 @@
 
     _Source: Wikipedia_'
   d: '2026-07-26'
+- t: Progressive Web App
+  s: '### 📘 Knowledge: Progressive Web App
+
+
+    Progressive Web App (disingkat PWA) adalah sebuah aplikasi web yang dirancang
+    atau dibangun dengan melakukan optimasi pada sebuah website. Tiga pilar utama
+    Progressive Web App yaitu capable, reliable, installable. Aplikasi Progressive
+    Web App merupakan website yang dibangun dengan menggunakan service worker, manifest,
+    dan beberapa fitur pembentuk Progressive Web App lainnya. Tujuan dari penerapan
+    Progressive Web App yaitu memungkinkan para pengembang web (web developer) mengubah
+    website yang sudah ada agar bisa berperilaku layaknya aplikasi native. Sebuah
+    aplikasi Progressive Web App memiliki beberapa keunggulan apabila dibandingkan
+    dengan sebuah website biasa, di antaranya yaitu dapat dipasang pada perangkat
+    (installable), aman (secure), progresif, responsif, dan lain sebagainya....
+
+
+    _Source: Wikipedia_'
+  d: '2026-07-27'
