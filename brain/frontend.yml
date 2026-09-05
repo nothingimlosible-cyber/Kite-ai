@@ -218,3 +218,21 @@
 
     _Source: Wikipedia_'
   d: '2026-07-27'
+- t: Nuxt.js
+  s: '### 📘 Knowledge: Nuxt.js
+
+
+    Nuxt.js adalah kerangka kerja aplikasi web yang bebas dan sumber terbuka berketergantungan
+    pada Vue.js, Node.js, Webpack, dan Babel.js. Kerangka kerja ini dipromosikan sebagai
+    kerangka meta untuk aplikasi universal. Istilah universal di sini diartikan bahwa
+    tujuan kerangka kerja ini adalah untuk memungkinkan pengguna membuat tampilan
+    web dalam JavaScript menggunakan sistem komponen berkas tunggal Vue.js yang dapat
+    berfungsi baik sebagai aplikasi halaman tunggal dalam peramban. Tampilan web yang
+    diberikan peladen kemudian dikosongkan agar menjadi fungsionalitas penuh aplikasi
+    halaman tunggal. Selain itu, kerangka kerja ini memungkinkan pengguna untuk memiliki
+    konten, atau hanya beberapa bagiannya, lalu sepenuhnya di-render di peladen dan
+    disajikan dengan cara generator situs statis....
+
+
+    _Source: Wikipedia_'
+  d: '2026-09-05'
