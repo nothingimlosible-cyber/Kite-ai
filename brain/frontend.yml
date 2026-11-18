@@ -247,3 +247,17 @@
 
     _Source: Wikipedia_'
   d: '2026-09-21'
+- t: TypeScript
+  s: '### 📘 Knowledge: TypeScript
+
+
+    TypeScript adalah bahasa pemrograman sumber terbuka yang dikembangkan oleh Microsoft.
+    Bahasa ini merupakan superset sintaksis dari JavaScript yang menambahkan sistem
+    tipe statis opsional, sehingga pengembang dapat mendefinisikan tipe data dan mendeteksi
+    sejumlah kesalahan pemrograman sebelum kode dijalankan. Kode TypeScript dikompilasi
+    menjadi JavaScript agar dapat dijalankan pada lingkungan yang mendukung JavaScript,
+    seperti peramban web dan Node.js....
+
+
+    _Source: Wikipedia_'
+  d: '2026-11-18'
